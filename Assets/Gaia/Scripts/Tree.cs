@@ -16,16 +16,16 @@ public class Tree : DynamicEnvItem
         cleanTree();
         switch (scenario)
         {
-            case Scenario.ScenarioA:
+            case Scenario.scenarioA:
                 _currentLeaves = Instantiate(_TreeLeavesA, transform.position, transform.rotation);
                 break;
-            case Scenario.ScenarioB:
+            case Scenario.scenarioB:
                 _currentLeaves = Instantiate(_TreeLeavesB, transform.position, transform.rotation);
                 break;
-            case Scenario.ScenarioC:
+            case Scenario.scenarioC:
                 _currentLeaves = Instantiate(_TreeLeavesC, transform.position, transform.rotation);
                 break;
-            case Scenario.ScenarioD:
+            case Scenario.scenarioD:
                 _currentLeaves = Instantiate(_TreeLeavesD, transform.position, transform.rotation);
                 break;
         }

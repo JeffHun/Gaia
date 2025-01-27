@@ -6,10 +6,10 @@ namespace Scenarios
 {
     public enum Scenario
     {
-        ScenarioA,
-        ScenarioB,
-        ScenarioC,
-        ScenarioD,
-        ScenarioE
+        scenarioA,
+        scenarioB,
+        scenarioC,
+        scenarioD,
+        scenarioE
     }
 }

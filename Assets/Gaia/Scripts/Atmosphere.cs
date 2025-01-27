@@ -13,6 +13,7 @@ public class Atmosphere : DynamicEnvItem
     [SerializeField]
     private Color _fogColorB, _fogColorC, _fogColorD, _fogColorE;
     private Color _fogColor;
+
     [SerializeField]
     private float _fogDensityB, _fogDensityC, _fogDensityD, _fogDensityE;
     private float _fogDensity;
@@ -24,29 +25,29 @@ public class Atmosphere : DynamicEnvItem
     {
         switch (scenario)
         {
-            case Scenario.ScenarioA:
+            case Scenario.scenarioA:
                 _sky = _skyA;
                 _enableFog = false;
                 break;
-            case Scenario.ScenarioB:
+            case Scenario.scenarioB:
                 _sky = _skyB;
                 _enableFog = true;
                 _fogColor = _fogColorB;
                 _fogDensity = _fogDensityB;
                 break;
-            case Scenario.ScenarioC:
+            case Scenario.scenarioC:
                 _sky = _skyC;
                 _enableFog = true;
                 _fogColor = _fogColorC;
                 _fogDensity = _fogDensityC;
                 break;
-            case Scenario.ScenarioD:
+            case Scenario.scenarioD:
                 _sky = _skyD;
                 _enableFog = true;
                 _fogColor = _fogColorD;
                 _fogDensity = _fogDensityD;
                 break;
-            case Scenario.ScenarioE:
+            case Scenario.scenarioE:
                 _sky = _skyE;
                 _enableFog = true;
                 _fogColor = _fogColorE;
