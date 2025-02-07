@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6983356036301600498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7279044957624917281}
+  - component: {fileID: 430540468928008621}
+  - component: {fileID: 4055333474980536243}
+  m_Layer: 0
+  m_Name: ScenarioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7279044957624917281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983356036301600498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &430540468928008621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983356036301600498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81b0dc8014150f4cab02f016337fe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenario: 0
+--- !u!114 &4055333474980536243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983356036301600498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79429ec8d687e534b804143b29e5aa9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skyA: {fileID: 2100000, guid: 9f559ddd559a9c14f9caa3b13d73064b, type: 2}
+  _skyB: {fileID: 2100000, guid: 1070f586e431e7446826f320a6218c40, type: 2}
+  _skyC: {fileID: 2100000, guid: 8e039c9ded96c5942925ae1756920426, type: 2}
+  _skyD: {fileID: 2100000, guid: 5c495ca4822637a4bb5f7099c2a5ffa8, type: 2}
+  _skyE: {fileID: 2100000, guid: 6463961e6020e384daf1c74e19871dd4, type: 2}
+  _fogColorB: {r: 0.58431375, g: 0.5803922, b: 0.57254905, a: 0}
+  _fogColorC: {r: 0.62352943, g: 0.5764706, b: 0.5137255, a: 0}
+  _fogColorD: {r: 0.67058825, g: 0.6039216, b: 0.5137255, a: 0}
+  _fogColorE: {r: 0.6901961, g: 0.61960787, b: 0.5294118, a: 0}
+  _fogDensityB: 0.01
+  _fogDensityC: 0.02
+  _fogDensityD: 0.03
+  _fogDensityE: 0.04
+  _fogStartDistance: 0
+  _fogEndDistance: 300

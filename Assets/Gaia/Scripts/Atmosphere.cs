@@ -54,10 +54,13 @@ public class Atmosphere : DynamicEnvItem
                 _fogDensity = _fogDensityE;
                 break;
         }
+
         RenderSettings.skybox = _sky;
+
+        RenderSettings.fog = _enableFog;
+
         if(_enableFog)
         {
-            RenderSettings.fog = _enableFog;
             RenderSettings.fogColor = _fogColor;
             RenderSettings.fogDensity = _fogDensity;
             RenderSettings.fogStartDistance = _fogStartDistance;

@@ -8,35 +8,32 @@ using UnityEngine;
 public class Tree : DynamicEnvItem
 {
     [SerializeField]
-    private GameObject _TreeLeavesA, _TreeLeavesB, _TreeLeavesC, _TreeLeavesD;
-    private GameObject _currentLeaves;
+    private GameObject _treeLeavesA, _treeLeavesB, _treeLeavesC, _treeLeavesD;
+
 
     public override void ChangeLook(Scenario scenario)
     {
-        cleanTree();
+        if(transform.childCount > 0)
+            Destroy(transform.GetChild(0).gameObject);
+
+        GameObject currentLeaves = null;
+
         switch (scenario)
         {
             case Scenario.scenarioA:
-                _currentLeaves = Instantiate(_TreeLeavesA, transform.position, transform.rotation);
+                currentLeaves = Instantiate(_treeLeavesA, transform.position, transform.rotation);
                 break;
             case Scenario.scenarioB:
-                _currentLeaves = Instantiate(_TreeLeavesB, transform.position, transform.rotation);
+                currentLeaves = Instantiate(_treeLeavesB, transform.position, transform.rotation);
                 break;
             case Scenario.scenarioC:
-                _currentLeaves = Instantiate(_TreeLeavesC, transform.position, transform.rotation);
+                currentLeaves = Instantiate(_treeLeavesC, transform.position, transform.rotation);
                 break;
             case Scenario.scenarioD:
-                _currentLeaves = Instantiate(_TreeLeavesD, transform.position, transform.rotation);
+                currentLeaves = Instantiate(_treeLeavesD, transform.position, transform.rotation);
                 break;
         }
-        _currentLeaves.transform.SetParent(transform);
-    }
-
-    void cleanTree()
-    {
-        for(int i = 0; i < transform.childCount; ++i)
-        {
-            Destroy(transform.GetChild(i).gameObject);
-        }
+        if(currentLeaves != null)
+            currentLeaves.transform.SetParent(transform);
     }
 }
