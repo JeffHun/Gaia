@@ -41,6 +41,15 @@ public class VegetWall : DynamicEnvItem
                 break;
         }
         if(currentLeaves != null)
+        {
             currentLeaves.transform.SetParent(transform);
+
+            // Change z rotation and x,y scale to create randomness
+            int rotationZ = Random.Range(1,5) * 90;
+            currentLeaves.transform.Rotate(0, 0, rotationZ, Space.Self);
+            int signX = Random.value < 0.5f ? -1 : 1;
+            int signY = Random.value < 0.5f ? -1 : 1;
+            currentLeaves.transform.localScale = new Vector3(signX, signY, 1);
+        }
     }
 }
