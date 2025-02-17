@@ -10,8 +10,8 @@ public class ParkGround : DynamicEnvItem
     
     public override void ChangeLook(Scenario scenario)
     {
-        if (transform.childCount>0)
-            Destroy(transform.GetChild(0).gameObject, 0.1f);
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
 
         switch (scenario)
         {
