@@ -20,7 +20,6 @@ public class Flower : DynamicEnvItem
     FlowerType _type;
 
     List<GameObject> _flowers = new List<GameObject>();
-    GameObject _currentFlower;
 
     private void Start()
     {
