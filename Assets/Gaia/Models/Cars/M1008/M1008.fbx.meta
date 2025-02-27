@@ -8,32 +8,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Body
-    second: {fileID: 2100000, guid: 4f42999c9aeb7e349a42d7406e4faf33, type: 2}
+    second: {fileID: 2100000, guid: 0bd5a7b5db4c23840a03f5915297ca03, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Lights
-    second: {fileID: 2100000, guid: cbcb9f7aa54076947a38c4571c5aedc4, type: 2}
+    second: {fileID: 2100000, guid: 4294cc7733f55c142af9acb58c7818c6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Metalic
-    second: {fileID: 2100000, guid: b90d567bad486864890d858c837a9bdc, type: 2}
+    second: {fileID: 2100000, guid: 0695e847b5907ea4ebb5efe0603d84ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Plastic
-    second: {fileID: 2100000, guid: f07bba98046b4d3409e5ef787e2f2380, type: 2}
+    second: {fileID: 2100000, guid: 899bfe313855dad47918245d621d22b4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Wheel
-    second: {fileID: 2100000, guid: b21448b5b54f2a84e8cbd686b6af9835, type: 2}
+    second: {fileID: 2100000, guid: 899bfe313855dad47918245d621d22b4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M1008_Windows
-    second: {fileID: 2100000, guid: 0aa5c55402b7a0540ad88c537975b72f, type: 2}
+    second: {fileID: 2100000, guid: 970a455090c9a724fb0a0b84d03f5cfa, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

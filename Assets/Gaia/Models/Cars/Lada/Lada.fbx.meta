@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_Orange
-    second: {fileID: 2100000, guid: a98df49ad22e6224b8fef3d1a723972c, type: 2}
+    second: {fileID: 2100000, guid: 4294cc7733f55c142af9acb58c7818c6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,27 +18,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_body
-    second: {fileID: 2100000, guid: 159cee5985e9a094c8a9ee09309f983c, type: 2}
+    second: {fileID: 2100000, guid: 0bd5a7b5db4c23840a03f5915297ca03, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_gray
-    second: {fileID: 2100000, guid: 231e292a815ba8548807163d11896fb4, type: 2}
+    second: {fileID: 2100000, guid: 899bfe313855dad47918245d621d22b4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_metal
-    second: {fileID: 2100000, guid: 816b77798bf46204c828faaac5aba9b9, type: 2}
+    second: {fileID: 2100000, guid: 0695e847b5907ea4ebb5efe0603d84ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_red
-    second: {fileID: 2100000, guid: 51547fc1de27ff24a95f2300a95c785f, type: 2}
+    second: {fileID: 2100000, guid: 4294cc7733f55c142af9acb58c7818c6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lada_wheel
-    second: {fileID: 2100000, guid: dcf384c37143d2d44b14aeec3be4780c, type: 2}
+    second: {fileID: 2100000, guid: 899bfe313855dad47918245d621d22b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
