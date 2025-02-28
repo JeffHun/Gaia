@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6518711554206207261}
   - component: {fileID: 7915294098666095288}
   - component: {fileID: 5349204618451482226}
+  - component: {fileID: -85463326146577018}
   m_Layer: 0
   m_Name: Van
   m_TagString: Untagged
@@ -87,3 +88,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-85463326146577018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5853779232169285543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7733c42e827e6d468e2a82ba543f7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors:
+  - serializedVersion: 2
+    rgba: 0
+  - serializedVersion: 2
+    rgba: 4286611584
+  - serializedVersion: 2
+    rgba: 4294967295
+  - serializedVersion: 2
+    rgba: 4283517877
+  - serializedVersion: 2
+    rgba: 4290862396
+  - serializedVersion: 2
+    rgba: 4284049458
+  targetMaterialName: Car_body
