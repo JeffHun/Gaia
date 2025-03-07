@@ -2,77 +2,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaypointNavigator : MonoBehaviour
+namespace Traffic
 {
-    NavigationController controller;
-    public Waypoint currentWaypoint;
-
-    int direction;
-
-    private void Awake()
+    public class WaypointNavigator : MonoBehaviour
     {
-        controller = GetComponent<NavigationController>();
-    }
+        NavigationController controller;
+        public Waypoint currentWaypoint;
+        public Waypoint nextWaypoint;
 
-    private void Start()
-    {
-        direction = Mathf.RoundToInt(Random.Range(0f, 1f));
+        int direction;
 
-        controller.SetDestination(currentWaypoint.GetPosition());
-    }
-
-    private void Update()
-    {
-        if (controller.ReachedDestination)
+        private void Awake()
         {
-            bool shouldBranch = false;
+            controller = GetComponent<NavigationController>();
+        }
 
-            if (currentWaypoint.Branches != null && currentWaypoint.Branches.Count > 0)
-            {
-                shouldBranch = Random.Range(0f, 1f) <= currentWaypoint.BranchRatio ? true : false;
-            }
+        private void Start()
+        {
+            direction = Mathf.RoundToInt(Random.Range(0f, 1f));
 
-            if (shouldBranch)
+            controller.SetDestination(nextWaypoint.GetPosition());
+        }
+
+        private void Update()
+        {
+            if (controller.ReachedDestination)
             {
-                currentWaypoint = currentWaypoint.Branches[Random.Range(0, currentWaypoint.Branches.Count - 1)];
-                if(direction == 0 && currentWaypoint.NextWaypoint.Branches != null && currentWaypoint.NextWaypoint.Branches.Count > 0)
+                bool shouldBranch = false;
+                currentWaypoint = nextWaypoint;
+
+                if (currentWaypoint.CanCross)
                 {
-                    direction = 1;
-                }
-                if (direction == 1 && currentWaypoint.PreviousWaypoint.Branches != null && currentWaypoint.PreviousWaypoint.Branches.Count > 0)
-                {
-                    direction = 0;
-                }
-            }
-            else
-            {
-                if (direction == 0)
-                {
-                    if (currentWaypoint.NextWaypoint != null)
+                    if (nextWaypoint.Branches != null && nextWaypoint.Branches.Count > 0)
                     {
-                        currentWaypoint = currentWaypoint.NextWaypoint;
+                        shouldBranch = Random.Range(0f, 1f) <= nextWaypoint.BranchRatio ? true : false;
+                    }
+
+                    if (shouldBranch)
+                    {
+                        nextWaypoint = nextWaypoint.Branches[Random.Range(0, nextWaypoint.Branches.Count - 1)];
+                        if (direction == 0 && nextWaypoint.NextWaypoint.Branches != null && nextWaypoint.NextWaypoint.Branches.Count > 0)
+                        {
+                            direction = 1;
+                        }
+                        if (direction == 1 && nextWaypoint.PreviousWaypoint.Branches != null && nextWaypoint.PreviousWaypoint.Branches.Count > 0)
+                        {
+                            direction = 0;
+                        }
                     }
                     else
                     {
-                        currentWaypoint = currentWaypoint.PreviousWaypoint;
-                        direction = 1;
+                        if (direction == 0)
+                        {
+                            if (nextWaypoint.NextWaypoint != null)
+                            {
+                                nextWaypoint = nextWaypoint.NextWaypoint;
+                            }
+                            else
+                            {
+                                nextWaypoint = nextWaypoint.PreviousWaypoint;
+                                direction = 1;
+                            }
+                        }
+                        else if (direction == 1)
+                        {
+                            if (nextWaypoint.PreviousWaypoint != null)
+                            {
+                                nextWaypoint = nextWaypoint.PreviousWaypoint;
+                            }
+                            else
+                            {
+                                nextWaypoint = nextWaypoint.NextWaypoint;
+                                direction = 0;
+                            }
+                        }
                     }
-                }
-                else if (direction == 1)
-                {
-                    if (currentWaypoint.PreviousWaypoint != null)
-                    {
-                        currentWaypoint = currentWaypoint.PreviousWaypoint;
-                    }
-                    else
-                    {
-                        currentWaypoint = currentWaypoint.NextWaypoint;
-                        direction = 0;
-                    }
+                    controller.SetDestination(nextWaypoint.GetPosition());
                 }
             }
-
-            controller.SetDestination(currentWaypoint.GetPosition());
         }
     }
+
 }
