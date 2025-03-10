@@ -1,6 +1,8 @@
+using System;
 using Traffic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Editor
 {
@@ -196,7 +198,8 @@ namespace Editor
             CrosswalkWaypoint crosswalkWaypoint = selectedObject.GetComponent<CrosswalkWaypoint>();
 
             crosswalkWaypoint.CrossingCollider = selectedObject.GetComponent<Collider>();
-            crosswalkWaypoint.Waypoints.Add(selectedWaypoint);
+            crosswalkWaypoint.CrossingCollider.isTrigger = true;
+            crosswalkWaypoint.Waypoint = selectedWaypoint;
         }
 
         void MakeStop()
@@ -208,7 +211,34 @@ namespace Editor
             StopWaypoint stopWaypoint = selectedObject.GetComponent<StopWaypoint>();
 
             stopWaypoint.Waypoint = selectedWaypoint;
-            stopWaypoint.CheckArea = selectedObject.GetComponent<Collider>();
+
+            GameObject colliderChild = new GameObject("Collider " + selectedObject.transform.childCount, typeof(BoxCollider));
+
+
+            stopWaypoint.CheckAreas.Add(CreateStopGameObject("CanEnterCheck", selectedObject.transform, stopWaypoint.OnComingVehicle));
+            stopWaypoint.CheckAreas.Add(CreateStopGameObject("HavePlaceToMove", selectedObject.transform, stopWaypoint.OnFreeSpace));
+
+            //colliderChild = new GameObject("CanEnterCheck", typeof(BoxCollider));
+            //colliderChild.transform.SetParent(selectedObject.transform, false);
+            //colliderChild.GetComponent<BoxCollider>().isTrigger = true;
+            //colliderChild.AddComponent<CollisionCallback>();
+            //colliderChild = new GameObject("HavePlaceToMove", typeof(BoxCollider));
+            //colliderChild.transform.SetParent(selectedObject.transform, false);
+            //colliderChild.GetComponent<BoxCollider>().isTrigger = true;
+            //colliderChild.AddComponent<CollisionCallback>();
+            //stopWaypoint.CheckAreas.Add(colliderChild.GetComponent<BoxCollider>());
         }
+
+         Collider CreateStopGameObject(string name, Transform parent, UnityAction actionCallback)
+        {
+            GameObject newGameObject = new GameObject(name, typeof(BoxCollider));
+            newGameObject.transform.SetParent(parent);
+            newGameObject.GetComponent<BoxCollider>().isTrigger = true;
+            CollisionCallback script = newGameObject.AddComponent<CollisionCallback>();
+            script.CollisionEvent.AddListener(actionCallback);
+
+            return newGameObject.GetComponent<BoxCollider>();
+        }
+
     }
 }

@@ -4,15 +4,57 @@ using UnityEngine;
 
 namespace Traffic
 {
-    [RequireComponent(typeof(BoxCollider))]
     public class StopWaypoint : MonoBehaviour
     {
-        private Waypoint _waypoint;
-        private Collider _checkArea;
-        private bool _isStopped;
+        [SerializeField] private Waypoint _waypoint;
+        [SerializeField] private List<Collider> _checkAreas = new List<Collider>();
+        private bool _hasSpace;
+        private bool _comingVehicle;
 
         public Waypoint Waypoint { get { return _waypoint; } set { _waypoint = value; } }
-        public Collider CheckArea { get { return _checkArea; } set { _checkArea = value; } }
-        public bool IsStopped { get { return _isStopped; } }
+
+        public List<Collider> CheckAreas { get => _checkAreas; set => _checkAreas = value; }
+
+        private void Update()
+        {
+            if (!_comingVehicle && _hasSpace)
+            {
+                Waypoint.CanCross = true;
+            }
+            else
+            {
+                Waypoint.CanCross = false;
+            }
+
+            _comingVehicle = false;
+            _hasSpace = true;
+        }
+
+        public void OnComingVehicle()
+        {
+            _comingVehicle = true;
+        }
+
+        public void OnFreeSpace() 
+        {
+            _hasSpace = false;
+        }
+
+
+        private void OnCollision(Collider other)
+        {
+            if (other.tag == "Vehicle")
+            {
+
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Vehicle")
+            {
+
+            }
+        }
     }
 }
