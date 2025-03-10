@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Traffic
@@ -9,23 +6,24 @@ namespace Traffic
     [RequireComponent(typeof(BoxCollider))]
     public class CrosswalkWaypoint : MonoBehaviour
     {
-        public List<Waypoint> Waypoint = new List<Waypoint>(); // List of waypoints on the path
-        public Collider CrossingCollider;   //Trigger Collider to keep track of crossing objects
-        public int AreCrossing;     //Number of pedestrians on the crosswalk
+        [SerializeField] private List<Waypoint> _waypoints = new List<Waypoint>(); // List of waypoints on the path
+        [SerializeField] private Collider _crossingCollider;   //Trigger Collider to keep track of crossing objects
+        [SerializeField] private int _areCrossing;     //Number of pedestrians on the crosswalk
+
+        public List<Waypoint> Waypoints { get { return _waypoints; } set { _waypoints = value; } }
+        public Collider CrossingCollider { get { return _crossingCollider;} set { _crossingCollider = value; } }
+        public int AreCrossing { get { return _areCrossing; } }
 
 
-        // We will have to check wheter the "other" Object is a car or a pedestrian.
-        // If it is a car, then Pedestrians will slow down or stop (We may be able to move this logic
-        // to pedestrian navigation controller to tell them to slow down if they're seeing a car
-        // moving in front of them
+        // Check if "other" is a Pedestrian or not
         private void OnTriggerEnter(Collider other)
         {
-            AreCrossing++;
+            _areCrossing++;
         }
 
         private void OnTriggerExit(Collider other)
         {
-            AreCrossing--;
+            _areCrossing--;
         }
     }
 }

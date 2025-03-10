@@ -6,31 +6,33 @@ namespace Traffic
 {
     public abstract class NavigationController : MonoBehaviour
     {
-        public float MovementSpeed = 1f;
-        public float RotationSpeed = 120f;
-        public float StopDistance = 2.5f;
-        public Vector3 Destination = new Vector3(0f, 0f, 0f);
-        public bool ReachedDestination = false;
+        [SerializeField] private float _movementSpeed = 1f;
+        [SerializeField] private float _rotationSpeed = 120f;
+        [SerializeField] private float _stopDistance = 2.5f;
+        [SerializeField] private Vector3 _destination = new Vector3(0f, 0f, 0f);
+        [SerializeField] private bool _reachedDestination = false;
         [SerializeField]
-        private Vector3 offset = Vector3.zero;
-        private Vector3 previous;
-        private float velocity;
+        protected Vector3 _offset = Vector3.zero;
+        protected Vector3 _previous;
+        protected float _velocity;
+
+        public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
 
         public float GetVelocity()
         {
-            return velocity;
+            return _velocity;
         }
         
 
         protected virtual void Awake()
         {
-            offset.y = transform.position.y;
+            _offset.y = transform.position.y;
         }
 
         protected virtual void Update()
         {
-            velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
-            previous = transform.position;
+            _velocity = ((transform.position - _previous).magnitude) / Time.deltaTime;
+            _previous = transform.position;
 
             if (!ReachedDestination)
             {
@@ -40,15 +42,15 @@ namespace Traffic
 
         public virtual void SetDestination(Vector3 destination)
         {
-            Destination = destination + offset;
+            _destination = destination + _offset;
             ReachedDestination = false;
         }
 
         protected virtual void MoveToDestination()
         {
-            Vector3 direction = Destination - transform.position;
+            Vector3 direction = _destination - transform.position;
 
-            if (direction.magnitude < StopDistance)
+            if (direction.magnitude < _stopDistance)
             {
                 ReachedDestination = true;
                 return;
@@ -57,9 +59,9 @@ namespace Traffic
             direction.Normalize();
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
-            transform.Translate(Vector3.forward * MovementSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * _movementSpeed * Time.deltaTime);
         }
     }
 }

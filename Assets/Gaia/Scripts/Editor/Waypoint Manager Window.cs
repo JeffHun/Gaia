@@ -12,7 +12,7 @@ namespace Editor
             GetWindow<WaypointManagerWindow>();
         }
 
-        public Transform WaypointRoot;
+        [SerializeField] private Transform _waypointRoot;
 
         private void OnGUI()
         {
@@ -20,7 +20,7 @@ namespace Editor
 
             EditorGUILayout.PropertyField(obj.FindProperty("WaypointRoot"));
 
-            if (WaypointRoot == null)
+            if (_waypointRoot == null)
             {
                 EditorGUILayout.HelpBox("Root transform must be selected. Please assign a root transform.", MessageType.Warning);
             }
@@ -80,13 +80,13 @@ namespace Editor
 
         void CreateWaypoint()
         {
-            GameObject waypointObject = new GameObject("Waypoint " + WaypointRoot.childCount, typeof(Waypoint));
-            waypointObject.transform.SetParent(WaypointRoot, false);
+            GameObject waypointObject = new GameObject("Waypoint " + _waypointRoot.childCount, typeof(Waypoint));
+            waypointObject.transform.SetParent(_waypointRoot, false);
 
             Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
-            if (WaypointRoot.childCount > 1)
+            if (_waypointRoot.childCount > 1)
             {
-                waypoint.PreviousWaypoint = WaypointRoot.GetChild(WaypointRoot.childCount - 2).GetComponent<Waypoint>();
+                waypoint.PreviousWaypoint = _waypointRoot.GetChild(_waypointRoot.childCount - 2).GetComponent<Waypoint>();
                 waypoint.PreviousWaypoint.NextWaypoint = waypoint;
 
                 waypoint.transform.position = waypoint.PreviousWaypoint.transform.position;
@@ -99,8 +99,8 @@ namespace Editor
 
         void CreateWaypointBefore()
         {
-            GameObject waypointObject = new GameObject("Waypoint " + WaypointRoot.childCount, typeof(Waypoint));
-            waypointObject.transform.SetParent(WaypointRoot, false);
+            GameObject waypointObject = new GameObject("Waypoint " + _waypointRoot.childCount, typeof(Waypoint));
+            waypointObject.transform.SetParent(_waypointRoot, false);
 
             Waypoint newWaypoint = waypointObject.GetComponent<Waypoint>();
 
@@ -127,8 +127,8 @@ namespace Editor
 
         void CreateWaypointAfter()
         {
-            GameObject waypointObject = new GameObject("Waypoint " + WaypointRoot.childCount, typeof(Waypoint));
-            waypointObject.transform.SetParent(WaypointRoot, false);
+            GameObject waypointObject = new GameObject("Waypoint " + _waypointRoot.childCount, typeof(Waypoint));
+            waypointObject.transform.SetParent(_waypointRoot, false);
 
             Waypoint newWaypoint = waypointObject.GetComponent<Waypoint>();
 
@@ -172,8 +172,8 @@ namespace Editor
 
         void CreateBranch()
         {
-            GameObject waypointObject = new GameObject("Waypoint " + WaypointRoot.childCount, typeof(Waypoint));
-            waypointObject.transform.SetParent(WaypointRoot, false);
+            GameObject waypointObject = new GameObject("Waypoint " + _waypointRoot.childCount, typeof(Waypoint));
+            waypointObject.transform.SetParent(_waypointRoot, false);
 
             Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
             Debug.Log("New branch : " + waypoint.name);
@@ -195,8 +195,8 @@ namespace Editor
             selectedObject.AddComponent<CrosswalkWaypoint>();
             CrosswalkWaypoint crosswalkWaypoint = selectedObject.GetComponent<CrosswalkWaypoint>();
 
-            crosswalkWaypoint.Waypoint.Add(selectedWaypoint);
             crosswalkWaypoint.CrossingCollider = selectedObject.GetComponent<Collider>();
+            crosswalkWaypoint.Waypoints.Add(selectedWaypoint);
         }
 
         void MakeStop()

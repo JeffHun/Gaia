@@ -7,18 +7,25 @@ namespace Traffic
 
     public class Waypoint : MonoBehaviour
     {
-        public Waypoint PreviousWaypoint;
-        public Waypoint NextWaypoint;
+        [SerializeField] private Waypoint _previousWaypoint;
+        [SerializeField] private Waypoint _nextWaypoint;
 
         [Range(0f, 5f)]
-        public float Width = 1f;
+        [SerializeField] private float _width = 1f;
 
-        public List<Waypoint> Branches;
+        [SerializeField] private List<Waypoint> _branches;
 
         [Range(0f, 1f)]
-        public float BranchRatio = 0.5f;
+        [SerializeField] private float _branchRatio = 0.5f;
 
-        public bool CanCross = true;
+        [SerializeField] private bool _canCross = true;
+
+        public Waypoint PreviousWaypoint { get => _previousWaypoint; set => _previousWaypoint = value; }
+        public Waypoint NextWaypoint { get => _nextWaypoint; set => _nextWaypoint = value; }
+        public float Width { get => _width; set => _width = value; }
+        public List<Waypoint> Branches { get => _branches; set => _branches = value; }
+        public float BranchRatio { get => _branchRatio; set => _branchRatio = value; }
+        public bool CanCross { get => _canCross; set => _canCross = value; }
 
         public Vector3 GetPosition()
         {

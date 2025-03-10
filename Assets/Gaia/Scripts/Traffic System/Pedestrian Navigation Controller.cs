@@ -6,14 +6,14 @@ namespace Traffic
 {
     public class PedestrianNavigationController : NavigationController
     {
-        public Animator animator;
+        [SerializeField] private Animator _animator;
 
         protected override void Update()
         {
             base.Update();
-            if (animator != null )
+            if (_animator != null )
             {
-                animator.SetFloat("Velocity", GetVelocity());
+                _animator.SetFloat("Velocity", GetVelocity());
             }
         }
     }

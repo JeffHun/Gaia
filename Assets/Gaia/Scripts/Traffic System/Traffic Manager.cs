@@ -7,8 +7,8 @@ namespace Traffic
 
     public class TrafficManager : MonoBehaviour
     {
-        public List<StopWaypoint> Stops;
-        public List<CrosswalkWaypoint> CrosswalkWaypoints;
+        [SerializeField] private List<StopWaypoint> _stops;
+        [SerializeField] private List<CrosswalkWaypoint> _crosswalkWaypoints;
     }
 
 }
