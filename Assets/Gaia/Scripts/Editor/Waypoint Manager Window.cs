@@ -18,7 +18,7 @@ namespace Editor
         {
             SerializedObject obj = new SerializedObject(this);
 
-            EditorGUILayout.PropertyField(obj.FindProperty("WaypointRoot"));
+            EditorGUILayout.PropertyField(obj.FindProperty("_waypointRoot"));
 
             if (_waypointRoot == null)
             {
