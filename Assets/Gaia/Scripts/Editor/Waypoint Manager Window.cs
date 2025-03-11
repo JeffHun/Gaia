@@ -73,6 +73,11 @@ namespace Editor
                     MakeStop();
                 }
 
+                if (GUILayout.Button("Make Despawn"))
+                {
+                    MakeDespawnPoint();
+                }
+
                 if (GUILayout.Button("Remove Waypoint"))
                 {
                     RemoveWaypoint();
@@ -217,16 +222,6 @@ namespace Editor
 
             stopWaypoint.CheckAreas.Add(CreateStopGameObject("CanEnterCheck", selectedObject.transform, stopWaypoint.OnComingVehicle));
             stopWaypoint.CheckAreas.Add(CreateStopGameObject("HavePlaceToMove", selectedObject.transform, stopWaypoint.OnFreeSpace));
-
-            //colliderChild = new GameObject("CanEnterCheck", typeof(BoxCollider));
-            //colliderChild.transform.SetParent(selectedObject.transform, false);
-            //colliderChild.GetComponent<BoxCollider>().isTrigger = true;
-            //colliderChild.AddComponent<CollisionCallback>();
-            //colliderChild = new GameObject("HavePlaceToMove", typeof(BoxCollider));
-            //colliderChild.transform.SetParent(selectedObject.transform, false);
-            //colliderChild.GetComponent<BoxCollider>().isTrigger = true;
-            //colliderChild.AddComponent<CollisionCallback>();
-            //stopWaypoint.CheckAreas.Add(colliderChild.GetComponent<BoxCollider>());
         }
 
          Collider CreateStopGameObject(string name, Transform parent, UnityAction actionCallback)
@@ -238,6 +233,19 @@ namespace Editor
             script.CollisionEvent.AddListener(actionCallback);
 
             return newGameObject.GetComponent<BoxCollider>();
+        }
+
+        void MakeDespawnPoint()
+        {
+            GameObject selectedObject = Selection.activeGameObject;
+            Waypoint selectedWaypoint = selectedObject.GetComponent<Waypoint>();
+
+            selectedObject.AddComponent<DespawnWaypoint>();
+            DespawnWaypoint despawnWaypoint = selectedObject.GetComponent<DespawnWaypoint>();
+
+            despawnWaypoint.Collider = selectedObject.GetComponent<Collider>();
+            despawnWaypoint.Collider.isTrigger = true;
+
         }
 
     }

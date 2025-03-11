@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 public class CollisionCallback : MonoBehaviour
 {
-    private UnityEvent _collisionEvent = new UnityEvent();
+    [SerializeField] private UnityEvent _collisionEvent = new UnityEvent();
 
     public UnityEvent CollisionEvent { get => _collisionEvent; set => _collisionEvent = value; }
 
-    private void OnCollisionStay(Collision other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "Vehicle")
         {

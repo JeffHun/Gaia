@@ -21,66 +21,90 @@ namespace Traffic
         {
             _direction = Mathf.RoundToInt(Random.Range(0f, 1f));
 
-            controller.SetDestination(_nextWaypoint.GetPosition());
+            if (_nextWaypoint != null)
+            {
+                controller.SetDestination(_nextWaypoint.GetPosition());
+            }
         }
 
         private void Update()
         {
-            if (controller.ReachedDestination)
+            if (_nextWaypoint != null)
             {
-                bool shouldBranch = false;
-                _currentWaypoint = _nextWaypoint;
-
-                if (_currentWaypoint.CanCross)
+                if (controller.ReachedDestination)
                 {
-                    if (_nextWaypoint.Branches != null && _nextWaypoint.Branches.Count > 0)
-                    {
-                        shouldBranch = Random.Range(0f, 1f) <= _nextWaypoint.BranchRatio ? true : false;
-                    }
+                    bool shouldBranch = false;
+                    _currentWaypoint = _nextWaypoint;
 
-                    if (shouldBranch)
+                    if (_currentWaypoint.CanCross)
                     {
-                        _nextWaypoint = _nextWaypoint.Branches[Random.Range(0, _nextWaypoint.Branches.Count - 1)];
-                        if (_direction == 0 && _nextWaypoint.NextWaypoint.Branches != null && _nextWaypoint.NextWaypoint.Branches.Count > 0)
+                        if (_nextWaypoint.Branches != null && _nextWaypoint.Branches.Count > 0)
                         {
-                            _direction = 1;
+                            shouldBranch = Random.Range(0f, 1f) <= _nextWaypoint.BranchRatio ? true : false;
                         }
-                        if (_direction == 1 && _nextWaypoint.PreviousWaypoint.Branches != null && _nextWaypoint.PreviousWaypoint.Branches.Count > 0)
+
+                        if (shouldBranch)
                         {
-                            _direction = 0;
-                        }
-                    }
-                    else
-                    {
-                        if (_direction == 0)
-                        {
-                            if (_nextWaypoint.NextWaypoint != null)
+                            _nextWaypoint = _nextWaypoint.Branches[Random.Range(0, _nextWaypoint.Branches.Count - 1)];
+                            if (_direction == 0 && _nextWaypoint.NextWaypoint.Branches != null && _nextWaypoint.NextWaypoint.Branches.Count > 0)
                             {
-                                _nextWaypoint = _nextWaypoint.NextWaypoint;
-                            }
-                            else
-                            {
-                                _nextWaypoint = _nextWaypoint.PreviousWaypoint;
                                 _direction = 1;
                             }
-                        }
-                        else if (_direction == 1)
-                        {
-                            if (_nextWaypoint.PreviousWaypoint != null)
+                            if (_direction == 1 && _nextWaypoint.PreviousWaypoint.Branches != null && _nextWaypoint.PreviousWaypoint.Branches.Count > 0)
                             {
-                                _nextWaypoint = _nextWaypoint.PreviousWaypoint;
-                            }
-                            else
-                            {
-                                _nextWaypoint = _nextWaypoint.NextWaypoint;
                                 _direction = 0;
                             }
                         }
+                        else
+                        {
+                            if (_direction == 0)
+                            {
+                                if (_nextWaypoint.NextWaypoint != null)
+                                {
+                                    _nextWaypoint = _nextWaypoint.NextWaypoint;
+                                }
+                                else
+                                {
+                                    _nextWaypoint = _nextWaypoint.PreviousWaypoint;
+                                    _direction = 1;
+                                }
+                            }
+                            else if (_direction == 1)
+                            {
+                                if (_nextWaypoint.PreviousWaypoint != null)
+                                {
+                                    _nextWaypoint = _nextWaypoint.PreviousWaypoint;
+                                }
+                                else
+                                {
+                                    _nextWaypoint = _nextWaypoint.NextWaypoint;
+                                    _direction = 0;
+                                }
+                            }
+                        }
+                        if (_nextWaypoint != null)
+                            controller.SetDestination(_nextWaypoint.GetPosition());
                     }
-                    controller.SetDestination(_nextWaypoint.GetPosition());
                 }
             }
         }
+    
+        public void EnterOnCircuit(Waypoint waypoint)
+        {
+            _nextWaypoint = waypoint;
+            controller = GetComponent<NavigationController>();
+            controller.Activate();
+            controller.SetDestination(_nextWaypoint.GetPosition());
+            _direction = 0;
+        }
+    
+        public void ExitCircuit()
+        {
+            _currentWaypoint = null;
+            _nextWaypoint = null;
+            controller.Deactivate();
+        }
+
     }
 
 }

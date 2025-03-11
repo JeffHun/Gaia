@@ -32,6 +32,7 @@ namespace Traffic
 
         public void OnComingVehicle()
         {
+            Debug.Log("Coming vehicle");
             _comingVehicle = true;
         }
 
