@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pedestrian
   - Vehicle
+  - Transport
+  - Bike
   layers:
   - Default
   - TransparentFX

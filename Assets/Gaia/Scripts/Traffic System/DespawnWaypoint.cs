@@ -16,7 +16,9 @@ namespace Traffic
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.tag == "Vehicle")
+            if (other.gameObject.transform.tag == "Vehicle" ||
+                other.gameObject.transform.tag == "Bike" ||
+                other.gameObject.transform.tag == "Transport")
             {
                 CollisionEvent.Invoke(other);
             }

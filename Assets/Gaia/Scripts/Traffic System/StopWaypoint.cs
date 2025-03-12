@@ -32,30 +32,12 @@ namespace Traffic
 
         public void OnComingVehicle()
         {
-            Debug.Log("Coming vehicle");
             _comingVehicle = true;
         }
 
         public void OnFreeSpace() 
         {
             _hasSpace = false;
-        }
-
-
-        private void OnCollision(Collider other)
-        {
-            if (other.tag == "Vehicle")
-            {
-
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.tag == "Vehicle")
-            {
-
-            }
         }
     }
 }

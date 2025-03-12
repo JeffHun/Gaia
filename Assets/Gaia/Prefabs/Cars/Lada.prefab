@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMovementSpeed: 7
   _movementSpeed: 0
-  _rotationSpeed: 8.5
+  _rotationSpeed: 4
   _stopDistance: 3
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 1

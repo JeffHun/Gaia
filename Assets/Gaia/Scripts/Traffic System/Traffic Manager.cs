@@ -99,10 +99,34 @@ namespace Traffic
         public void Despawn(Collider other)
         {
             GameObject otherVehicle = other.gameObject;
-            otherVehicle.transform.SetParent(_roadPool.transform);
-            otherVehicle.transform.position = _roadPool.transform.position;
             WaypointNavigator navigator = otherVehicle.GetComponent<WaypointNavigator>();
-            navigator.ExitCircuit();
+
+            switch (otherVehicle.tag)
+            {
+                case "Vehicle":
+                    otherVehicle.transform.SetParent(_roadPool.transform);
+                    otherVehicle.transform.position = _roadPool.transform.position;
+                    navigator.ExitCircuit();
+                    break;
+                case "Bike":
+                    otherVehicle.transform.SetParent(_bikePool.transform);
+                    otherVehicle.transform.position = _bikePool.transform.position;
+                    navigator.ExitCircuit();
+                    break;
+                case "Pedestrian":
+                    otherVehicle.transform.SetParent(_pedestrianPool.transform);
+                    otherVehicle.transform.position = _pedestrianPool.transform.position;
+                    navigator.ExitCircuit();
+                    break;
+                case "Transport":
+                    otherVehicle.transform.SetParent(_transportPool.transform);
+                    otherVehicle.transform.position = _transportPool.transform.position;
+                    navigator.ExitCircuit();
+                    break;
+                default:
+                    return;
+            }
+
         }
     }
 

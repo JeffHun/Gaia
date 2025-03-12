@@ -8,6 +8,8 @@ namespace Editor
 {
     public class WaypointManagerWindow : EditorWindow
     {
+        Vector2 _scrollPos;
+
         [MenuItem("Tools/Waypoint Editor")]
         public static void Open()
         {
@@ -19,6 +21,8 @@ namespace Editor
         private void OnGUI()
         {
             SerializedObject obj = new SerializedObject(this);
+
+            _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
 
             EditorGUILayout.PropertyField(obj.FindProperty("_waypointRoot"));
 
@@ -38,6 +42,7 @@ namespace Editor
                     EditorGUILayout.EndVertical();
                 }
             }
+            EditorGUILayout.EndScrollView();
 
             obj.ApplyModifiedProperties();
         }
@@ -157,6 +162,8 @@ namespace Editor
             waypoint.transform.position = selectedWaypoint.transform.position;
             waypoint.transform.forward = selectedWaypoint.transform.forward;
             waypoint.Width = selectedWaypoint.Width;
+
+            waypoint.transform.SetSiblingIndex(selectedWaypoint.transform.GetSiblingIndex() + 1);
 
             Selection.activeGameObject = waypoint.gameObject;
         }

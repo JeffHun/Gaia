@@ -92,9 +92,9 @@ namespace Traffic
         {
             if (Physics.Raycast(_ray, out _hit, _breakDistance + 10))
             {
-                if (_hit.transform.tag == "Vehicle" || _hit.transform.tag == "Pedestrian")
+                if (_hit.transform.tag == "Vehicle" || _hit.transform.tag == "Pedestrian" || 
+                    _hit.transform.tag == "Transport" ||_hit.transform.tag == "Bike")
                 {
-                    Debug.Log("Breaking!");
                     float distance = Vector3.Distance(transform.position, _hit.transform.position);
                     if (distance <= _stopDistance)
                     {
