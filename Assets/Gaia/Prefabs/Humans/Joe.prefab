@@ -117,8 +117,8 @@ MonoBehaviour:
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
   _offset: {x: 0, y: 0, z: 0}
-  _breakDistance: 2
-  _breakForce: 1.001
+  _breakDistance: 3
+  _breakForce: 1.05
   _animator: {fileID: 8097705862303429323}
 --- !u!114 &2829597885651831730
 MonoBehaviour:
