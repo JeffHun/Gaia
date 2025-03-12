@@ -47,7 +47,8 @@ namespace Editor
                 foreach (Waypoint branch in waypoint.Branches)
                 {
                     Gizmos.color = Color.blue;
-                    Gizmos.DrawLine(waypoint.transform.position, branch.transform.position);
+                    if (branch != null)
+                        Gizmos.DrawLine(waypoint.transform.position, branch.transform.position);
                 }
             }
         }

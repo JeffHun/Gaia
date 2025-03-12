@@ -10,10 +10,10 @@ namespace Traffic
         [SerializeField] private Waypoint _previousWaypoint;
         [SerializeField] private Waypoint _nextWaypoint;
 
-        [Range(0f, 5f)]
+        [Range(0f, 7f)]
         [SerializeField] private float _width = 1f;
 
-        [SerializeField] private List<Waypoint> _branches;
+        [SerializeField] private List<Waypoint> _branches = new List<Waypoint>();
 
         [Range(0f, 1f)]
         [SerializeField] private float _branchRatio = 0.5f;

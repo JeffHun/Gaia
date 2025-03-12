@@ -317,11 +317,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1613c09b4121240bbac86f5ecc5799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roadInputWaypoints: []
+  _roadInputWaypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _pedestrianInputWaypoints: []
   _bikeInputWaypoints: []
   _transportInputWaypoints: []
-  _roadOutputWaypoints: []
+  _roadOutputWaypoints:
+  - {fileID: 0}
   _pedestrianOutputWaypoints: []
   _bikeOutputWaypoints: []
   _transportOutputWaypoints: []
@@ -333,10 +337,10 @@ MonoBehaviour:
   _roadQueue: {fileID: 758084924953962136}
   _bikeQueue: {fileID: 5619340555869831309}
   _transportQueue: {fileID: 1503110999369008782}
-  _pedestrianRatio: 0
-  _roadRatio: 0
-  _bikeRatio: 0
-  _transportRatio: 0
+  _pedestrianRatio: 1
+  _roadRatio: 1
+  _bikeRatio: 1
+  _transportRatio: 1
 --- !u!1 &9140447602009757204
 GameObject:
   m_ObjectHideFlags: 0

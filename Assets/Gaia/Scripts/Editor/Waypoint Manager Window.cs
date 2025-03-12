@@ -183,9 +183,21 @@ namespace Editor
             waypointObject.transform.SetParent(_waypointRoot, false);
 
             Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
-            Debug.Log("New branch : " + waypoint.name);
+
+            if (Selection.activeGameObject == null)
+            {
+                Debug.LogError("No GameObject selected.");
+                return;
+            }
 
             Waypoint branchedFrom = Selection.activeGameObject.GetComponent<Waypoint>();
+
+            if (branchedFrom.Branches == null)
+            {
+                Debug.LogError("Selected GameObject does not have a Waypoint component.");
+                return;
+            }
+
             branchedFrom.Branches.Add(waypoint);
 
             waypoint.transform.position = branchedFrom.transform.position;

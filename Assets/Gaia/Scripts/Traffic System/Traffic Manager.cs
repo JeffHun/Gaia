@@ -37,32 +37,61 @@ namespace Traffic
         [SerializeField, Range(0.0f, 1.0f)] private float _bikeRatio;
         [SerializeField, Range(0.0f, 1.0f)] private float _transportRatio;
 
+        // Spawn rate
+        [SerializeField] private Vector2 _spawnRate = new Vector2(0f, 3f);
+
+        private float _randTimer = 0f;
+
         private void Start()
         {
-            InvokeRepeating("SpawnTest", 3f, 3f);
         }
 
         private void Update()
         {
+            if(_randTimer <= 0f)
+            {
+                _randTimer = Random.Range(_spawnRate.x, _spawnRate.y);
+                float doSpawn = Random.Range(0f, 1f);
+
+                if (doSpawn < _pedestrianRatio)
+                {
+                    Spawn(_pedestrianPool, _pedestrianQueue, _pedestrianInputWaypoints);
+                }
+                if (doSpawn < _roadRatio)
+                {
+                    Spawn(_roadPool, _roadQueue, _roadInputWaypoints);
+                }
+                if (doSpawn < _bikeRatio)
+                {
+                    Spawn(_bikePool, _bikeQueue, _bikeInputWaypoints);
+                }
+                if (doSpawn < _transportRatio)
+                {
+                    Spawn(_transportPool, _transportQueue, _transportInputWaypoints);
+                }
+
+            }
+
+            _randTimer -= Time.deltaTime;
         }
 
-        void SpawnTest()
+        void Spawn(GameObject pool, GameObject queue, List<Waypoint> inputs)
         {
-            if (_roadPool.transform.childCount > 0)
+            if (pool.transform.childCount > 0)
             {
-                // pick a vehicle in the pool
-                GameObject vehicle = _roadPool.transform.GetChild(Random.Range(0, _roadPool.transform.childCount - 1)).gameObject;
-                vehicle.transform.SetParent(_roadQueue.transform);
-                WaypointNavigator navigator = vehicle.GetComponent<WaypointNavigator>();
+                // pick an entity in the pool
+                GameObject entity = pool.transform.GetChild(Random.Range(0, pool.transform.childCount - 1)).gameObject;
+                entity.transform.SetParent(queue.transform);
+                WaypointNavigator navigator = entity.GetComponent<WaypointNavigator>();
                 navigator.enabled = true;
 
                 // choose an input waypoint to move it there
-                Waypoint targetWaypoint = _roadInputWaypoints[Random.Range(0, _roadInputWaypoints.Count)];
+                Waypoint targetWaypoint = inputs[Random.Range(0, inputs.Count)];
 
 
                 // allow it to move
-                vehicle.transform.position = targetWaypoint.GetPosition();
-                vehicle.transform.forward = targetWaypoint.transform.forward;
+                entity.transform.position = targetWaypoint.GetPosition();
+                entity.transform.forward = targetWaypoint.transform.forward;
                 navigator.EnterOnCircuit(targetWaypoint);
             }
         }

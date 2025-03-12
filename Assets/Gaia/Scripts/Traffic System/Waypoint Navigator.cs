@@ -45,14 +45,27 @@ namespace Traffic
 
                         if (shouldBranch)
                         {
-                            _nextWaypoint = _nextWaypoint.Branches[Random.Range(0, _nextWaypoint.Branches.Count - 1)];
-                            if (_direction == 0 && _nextWaypoint.NextWaypoint.Branches != null && _nextWaypoint.NextWaypoint.Branches.Count > 0)
+                            _nextWaypoint = _nextWaypoint.Branches[Random.Range(0, _nextWaypoint.Branches.Count)];
+                            if (_direction == 0 && _nextWaypoint.NextWaypoint == null ||
+                                _direction == 0 && _nextWaypoint.NextWaypoint != null &&
+                                _nextWaypoint.NextWaypoint.BranchRatio == 1)
                             {
                                 _direction = 1;
                             }
-                            if (_direction == 1 && _nextWaypoint.PreviousWaypoint.Branches != null && _nextWaypoint.PreviousWaypoint.Branches.Count > 0)
+                            else
                             {
                                 _direction = 0;
+                            }
+
+                            if (_direction == 1 && _nextWaypoint.PreviousWaypoint == null ||
+                                _direction == 0 && _nextWaypoint.PreviousWaypoint != null &&
+                                _nextWaypoint.PreviousWaypoint.BranchRatio == 1)
+                            {
+                                _direction = 0;
+                            }
+                            else
+                            {
+                                _direction = 1;
                             }
                         }
                         else

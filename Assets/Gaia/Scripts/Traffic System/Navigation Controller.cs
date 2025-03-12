@@ -21,6 +21,7 @@ namespace Traffic
         [SerializeField] protected float _breakForce = 1.2f;
         private Ray _ray;
         private RaycastHit _hit;
+        private Vector3 _rayOffset = new Vector3(0f, 0.5f, 0f);
 
         public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
 
@@ -49,7 +50,7 @@ namespace Traffic
 
         protected virtual void Update()
         {
-            _ray = new Ray(transform.position, transform.forward);
+            _ray = new Ray(transform.position + _rayOffset, transform.forward);
             _velocity = ((transform.position - _previous).magnitude) / Time.deltaTime;
             _previous = transform.position;
 
@@ -89,10 +90,11 @@ namespace Traffic
 
         void RaycastAction()
         {
-            if (Physics.Raycast(_ray, out _hit, 40))
+            if (Physics.Raycast(_ray, out _hit, _breakDistance + 10))
             {
                 if (_hit.transform.tag == "Vehicle" || _hit.transform.tag == "Pedestrian")
                 {
+                    Debug.Log("Breaking!");
                     float distance = Vector3.Distance(transform.position, _hit.transform.position);
                     if (distance <= _stopDistance)
                     {
@@ -108,6 +110,12 @@ namespace Traffic
                     }
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_hit.point, 0.2f);
         }
     }
 }

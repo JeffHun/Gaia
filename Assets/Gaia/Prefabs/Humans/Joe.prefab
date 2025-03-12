@@ -110,12 +110,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e0b9823c351d846ab18887dadce2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxMovementSpeed: 2
   _movementSpeed: 2
   _rotationSpeed: 4
   _stopDistance: 0.6
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
   _offset: {x: 0, y: 0, z: 0}
+  _breakDistance: 2
+  _breakForce: 1.001
   _animator: {fileID: 8097705862303429323}
 --- !u!114 &2829597885651831730
 MonoBehaviour:

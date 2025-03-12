@@ -138,7 +138,7 @@ MonoBehaviour:
   _reachedDestination: 1
   _offset: {x: 0, y: 0, z: 0}
   _breakDistance: 30
-  _breakForce: 1.3
+  _breakForce: 1.5
   _exhaustParticles: {fileID: 0}
   _parked: 1
 --- !u!54 &6905487651082402305
@@ -187,8 +187,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.175656, y: 1.3853868, z: 1.4512873}
-  m_Center: {x: 0.014497638, y: 0.69690555, z: 0.00000008940697}
+  m_Size: {x: 1.5, y: 1.4, z: 3.1555328}
+  m_Center: {x: 0, y: 0.7, z: 0.03888315}
 --- !u!114 &3829034179586877279
 MonoBehaviour:
   m_ObjectHideFlags: 0
