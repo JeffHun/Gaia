@@ -11,6 +11,7 @@ namespace Traffic
         [SerializeField] protected float _movementSpeed;
         [SerializeField] protected float _rotationSpeed = 120f;
         [SerializeField] protected float _stopDistance = 2.5f;
+        [SerializeField] protected float _reachDistance = 1f;
         [SerializeField] protected Vector3 _destination = new Vector3(0f, 0f, 0f);
         [SerializeField] protected bool _reachedDestination = false;
         [SerializeField]
@@ -45,6 +46,7 @@ namespace Traffic
         protected virtual void Awake()
         {
             _offset.y = transform.position.y;
+            _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 3;
             _movementSpeed = _maxMovementSpeed;
         }
 
@@ -70,7 +72,7 @@ namespace Traffic
         {
             Vector3 direction = _destination - transform.position;
 
-            if (direction.magnitude < _stopDistance)
+            if (direction.magnitude < _reachDistance)
             {
                 ReachedDestination = true;
                 return;
@@ -102,12 +104,17 @@ namespace Traffic
                     }
                     else if (distance <= _breakDistance)
                     {
+                        if(_movementSpeed <= 0f)
+                            _movementSpeed = _maxMovementSpeed;
                         _movementSpeed /= _breakForce;
                     }
                     else
                     {
                         _movementSpeed = _maxMovementSpeed;
                     }
+
+                    Debug.Log(_movementSpeed);
+
                 }
             }
         }

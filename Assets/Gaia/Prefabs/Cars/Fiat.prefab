@@ -133,7 +133,8 @@ MonoBehaviour:
   _maxMovementSpeed: 7
   _movementSpeed: 0
   _rotationSpeed: 4
-  _stopDistance: 3
+  _stopDistance: 4
+  _reachDistance: 2.5
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 1
   _offset: {x: 0, y: 0, z: 0}
@@ -187,8 +188,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.4, z: 3.1555328}
-  m_Center: {x: 0, y: 0.7, z: 0.03888315}
+  m_Size: {x: 1.5, y: 1.4, z: 3.15}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &3829034179586877279
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -134,7 +134,8 @@ MonoBehaviour:
   _maxMovementSpeed: 7
   _movementSpeed: 0
   _rotationSpeed: 4
-  _stopDistance: 3
+  _stopDistance: 5.5
+  _reachDistance: 3
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 1
   _offset: {x: 0, y: 0, z: 0}
@@ -214,7 +215,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1623430986978048016, guid: f60fe4b0ba96283469bf9b1d6fc724c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.54
+      value: -0.608
       objectReference: {fileID: 0}
     - target: {fileID: 1623430986978048016, guid: f60fe4b0ba96283469bf9b1d6fc724c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -222,7 +223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1623430986978048016, guid: f60fe4b0ba96283469bf9b1d6fc724c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.44
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 1623430986978048016, guid: f60fe4b0ba96283469bf9b1d6fc724c4, type: 3}
       propertyPath: m_LocalRotation.w

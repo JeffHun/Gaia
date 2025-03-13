@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bcb420068b561934faec6e61d2698b10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.6243
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcb420068b561934faec6e61d2698b10, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcb420068b561934faec6e61d2698b10, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.537834
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcb420068b561934faec6e61d2698b10, type: 3}
       propertyPath: m_LocalRotation.w
@@ -113,12 +113,13 @@ MonoBehaviour:
   _maxMovementSpeed: 2
   _movementSpeed: 2
   _rotationSpeed: 4
-  _stopDistance: 0.6
+  _stopDistance: 0.8
+  _reachDistance: 1
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
   _offset: {x: 0, y: 0, z: 0}
   _breakDistance: 3
-  _breakForce: 1.05
+  _breakForce: 1.1
   _animator: {fileID: 8097705862303429323}
 --- !u!114 &2829597885651831730
 MonoBehaviour:
