@@ -107,12 +107,12 @@ MonoBehaviour:
   _maxMovementSpeed: 7
   _movementSpeed: 0
   _rotationSpeed: 0
-  _stopDistance: 2
-  _reachDistance: 1
+  _stopDistance: 20
+  _reachDistance: 5
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
   _offset: {x: 0, y: 0, z: 0}
-  _breakDistance: 20
+  _breakDistance: 30
   _breakForce: 1.6
   _exhaustParticles: {fileID: 0}
   _parked: 1
