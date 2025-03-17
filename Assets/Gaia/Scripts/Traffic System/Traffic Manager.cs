@@ -39,8 +39,10 @@ namespace Traffic
 
         // Spawn rate
         [SerializeField] private Vector2 _spawnRate = new Vector2(0f, 3f);
+        [SerializeField] private Vector2 _transportSpawnRate = new Vector2(3f, 5f);
 
         private float _randTimer = 0f;
+        private float _transportTimer = 0f;
 
         private void Start()
         {
@@ -67,12 +69,17 @@ namespace Traffic
                 }
                 if (doSpawn < _transportRatio)
                 {
-                    Spawn(_transportPool, _transportQueue, _transportInputWaypoints);
+                    if (_transportTimer <= 0f)
+                    {
+                        _transportTimer = Random.Range(_transportSpawnRate.x, _transportSpawnRate.y);
+                        Spawn(_transportPool, _transportQueue, _transportInputWaypoints);
+                    }
                 }
 
             }
 
             _randTimer -= Time.deltaTime;
+            _transportTimer -= Time.deltaTime;
         }
 
         void Spawn(GameObject pool, GameObject queue, List<Waypoint> inputs)

@@ -6,14 +6,14 @@ using UnityEngine.Events;
 public class CollisionCallback : MonoBehaviour
 {
     [SerializeField] private UnityEvent _collisionEvent = new UnityEvent();
+    [SerializeField] private List<string> _tags = new List<string>();
+
 
     public UnityEvent CollisionEvent { get => _collisionEvent; set => _collisionEvent = value; }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Vehicle" ||
-            other.transform.tag == "Bike" ||
-            other.transform.tag == "Transport")
+        if (_tags.Contains(other.transform.tag))
         {
             CollisionEvent.Invoke();
         }
