@@ -30,9 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1859913940822962648}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 3029329835249875400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5772464138203886367
 MeshFilter:
@@ -309,6 +308,7 @@ Transform:
   - {fileID: 5451969009647677947}
   - {fileID: 2841204657133433522}
   - {fileID: 5713422991899033586}
+  - {fileID: 1885105424954617837}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-3628690753497469737
@@ -663,3 +663,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &913853062825957373
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3029329835249875400}
+    m_Modifications:
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580330456387639729, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+      propertyPath: m_Name
+      value: FX_Exhaust_Smoke 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+--- !u!4 &1885105424954617837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1623430986978048016, guid: 7e89923785626684fbd0ac4cddfff8bf, type: 3}
+  m_PrefabInstance: {fileID: 913853062825957373}
+  m_PrefabAsset: {fileID: 0}
