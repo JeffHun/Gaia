@@ -112,9 +112,6 @@ namespace Traffic
                     {
                         _movementSpeed = _maxMovementSpeed;
                     }
-
-                    Debug.Log(_movementSpeed);
-
                 }
             }
         }
