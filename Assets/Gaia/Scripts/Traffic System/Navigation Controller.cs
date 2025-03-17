@@ -8,7 +8,8 @@ namespace Traffic
     public abstract class NavigationController : MonoBehaviour
     {
         [SerializeField] protected float _maxMovementSpeed = 1f;
-        [SerializeField] protected float _movementSpeed;
+        [SerializeField] protected float _movementSpeed = 0;
+        [SerializeField] protected float _acceleration = 1f;
         [SerializeField] protected float _rotationSpeed = 120f;
         [SerializeField] protected float _stopDistance = 2.5f;
         [SerializeField] protected float _reachDistance = 1f;
@@ -35,7 +36,7 @@ namespace Traffic
         {
             ReachedDestination = false;
             _offset.y = transform.position.y;
-            _movementSpeed = _maxMovementSpeed;
+            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
         }
 
         public virtual void Deactivate()
@@ -47,7 +48,7 @@ namespace Traffic
         {
             _offset.y = transform.position.y;
             _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 3;
-            _movementSpeed = _maxMovementSpeed;
+            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
         }
 
         protected virtual void Update()
@@ -59,6 +60,10 @@ namespace Traffic
             if (!ReachedDestination)
             {
                 MoveToDestination();
+            }
+            else
+            {
+                Mathf.Lerp(_movementSpeed, 0, _breakForce * Time.deltaTime);
             }
         }
 
@@ -100,17 +105,17 @@ namespace Traffic
                     float distance = Vector3.Distance(transform.position, _hit.transform.position);
                     if (distance <= _stopDistance)
                     {
-                        _movementSpeed = 0f;
+                        Mathf.Lerp(_movementSpeed, 0, _breakForce * Time.deltaTime);
                     }
                     else if (distance <= _breakDistance)
                     {
                         if(_movementSpeed <= 0f)
-                            _movementSpeed = _maxMovementSpeed;
+                            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
                         _movementSpeed /= _breakForce;
                     }
                     else
                     {
-                        _movementSpeed = _maxMovementSpeed;
+                        Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
                     }
                 }
             }

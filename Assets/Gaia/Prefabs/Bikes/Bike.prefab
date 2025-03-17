@@ -97,7 +97,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6711197, y: 1.5925996, z: 2.166027}
+  m_Size: {x: 1, y: 1.6, z: 2.166027}
   m_Center: {x: 0, y: 0.81525004, z: 0.15}
 --- !u!54 &-4442494873813562473
 Rigidbody:
@@ -140,8 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMovementSpeed: 4.5
   _movementSpeed: 0
+  _acceleration: 1
   _rotationSpeed: 5
-  _stopDistance: 2
+  _stopDistance: 3
   _reachDistance: 1.5
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
