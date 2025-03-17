@@ -105,7 +105,7 @@ namespace Traffic
                     float distance = Vector3.Distance(transform.position, _hit.transform.position);
                     if (distance <= _stopDistance)
                     {
-                        Mathf.Lerp(_movementSpeed, 0, _breakForce * Time.deltaTime);
+                        _movementSpeed = 0f;
                     }
                     else if (distance <= _breakDistance)
                     {
