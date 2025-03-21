@@ -48,7 +48,8 @@ namespace Traffic
             _lerpT = 0f;
             ReachedDestination = false;
             _offset.y = transform.position.y;
-            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
+            _movementSpeed = _maxMovementSpeed;
+            _breakForce = defaultBreakForce;
         }
 
         public virtual void Deactivate()
@@ -61,12 +62,23 @@ namespace Traffic
             _lerpT = 0f;
             _offset.y = transform.position.y;
             _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 3;
-            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
+            _movementSpeed = _maxMovementSpeed;
+            _breakForce = defaultBreakForce;
         }
 
         protected virtual void Update()
         {
-            _lerpT += Time.deltaTime * acceleration;
+            _easing = _curve.Evaluate(_lerpT);
+            if (_breaking)
+            {
+                _lerpT += Time.deltaTime * _breakForce;
+            }
+            else
+            {
+                _lerpT += Time.deltaTime * acceleration;
+            }
+
+
             _ray = new Ray(transform.position + _rayOffset, transform.forward);
             _velocity = ((transform.position - _previous).magnitude) / Time.deltaTime;
             _previous = transform.position;
@@ -75,11 +87,35 @@ namespace Traffic
 
             if (!ReachedDestination)
             {
+
+                
+
+                    /*else
+                    {
+                        if (_breaking)
+                        {
+                            _breaking = false;
+                            _lerpT = 0f;
+                        }
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
+                    }*/
+
+                    // We check if there's something blocking the way
+                    SpeedManagement();
+
                 MoveToDestination();
+
             }
             else
             {
-                _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _lerpT);
+                if (_movementSpeed > Mathf.Epsilon)
+                {
+                    _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
+                }
+                else
+                {
+                    _movementSpeed = 0f;
+                }
             }
         }
 
@@ -121,17 +157,45 @@ namespace Traffic
                     _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
                     if (_movementSpeed > Mathf.Epsilon)
                     {
-                        _movementSpeed = 0f;
+                        _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                        if (_movementSpeed > Mathf.Epsilon)
+                        {
+                            _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
+                        }
+                        else
+                        {
+                            _movementSpeed = 0f;
+                        }
                     }
                     else if (distance <= _breakDistance)
                     {
-                        if(_movementSpeed <= 0f)
-                            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
-                        _movementSpeed /= _breakForce;
+                        if(!_breaking)
+                        {
+                            _breaking = true;
+                            _lerpT = 0f;
+                        }
+                        _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 4, _easing);
+                    }
+                    else if (Vector3.Distance(transform.position, _destination) <= _breakDistance && !_isAllowedToCross)
+                    {
+                        if (!_breaking)
+                        {
+                            _breaking = true;
+                            _lerpT = 0f;
+                            _breakForce = defaultBreakForce;
+                        }
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 4, _easing);
                     }
                     else
                     {
-                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
+                        if (_breaking)
+                        {
+                            _breaking = false;
+                            _lerpT = 0f;
+                            _breakForce = defaultBreakForce;
+                        }
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
                     }
                 }
                 else if (distance <= _breakDistance || 
