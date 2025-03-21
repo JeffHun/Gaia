@@ -116,8 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMovementSpeed: 1.5
   _movementSpeed: 0
-  _rotationSpeed: 4
-  acceleration: 1
+  _rotationSpeed: 10
+  acceleration: 0.1
   _stopDistance: 0.8
   _reachDistance: 1
   _destination: {x: 0, y: 0, z: 0}
