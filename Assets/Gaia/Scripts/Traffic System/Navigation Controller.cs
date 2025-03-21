@@ -9,8 +9,8 @@ namespace Traffic
     {
         [SerializeField] protected float _maxMovementSpeed = 1f;
         [SerializeField] protected float _movementSpeed = 0;
-        [SerializeField] protected float _acceleration = 1f;
         [SerializeField] protected float _rotationSpeed = 120f;
+        [SerializeField] protected float acceleration = 1f;
         [SerializeField] protected float _stopDistance = 2.5f;
         [SerializeField] protected float _reachDistance = 1f;
         [SerializeField] protected Vector3 _destination = new Vector3(0f, 0f, 0f);
@@ -24,6 +24,7 @@ namespace Traffic
         private Ray _ray;
         private RaycastHit _hit;
         private Vector3 _rayOffset = new Vector3(0f, 0.5f, 0f);
+        private float _lerpT;
 
         public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
 
@@ -34,9 +35,10 @@ namespace Traffic
         
         public virtual void Activate()
         {
+            _lerpT = 0f;
             ReachedDestination = false;
             _offset.y = transform.position.y;
-            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
+            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
         }
 
         public virtual void Deactivate()
@@ -46,13 +48,15 @@ namespace Traffic
         }
         protected virtual void Awake()
         {
+            _lerpT = 0f;
             _offset.y = transform.position.y;
             _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 3;
-            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
+            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
         }
 
         protected virtual void Update()
         {
+            _lerpT += Time.deltaTime * acceleration;
             _ray = new Ray(transform.position + _rayOffset, transform.forward);
             _velocity = ((transform.position - _previous).magnitude) / Time.deltaTime;
             _previous = transform.position;
@@ -63,7 +67,7 @@ namespace Traffic
             }
             else
             {
-                Mathf.Lerp(_movementSpeed, 0, _breakForce * Time.deltaTime);
+                _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _lerpT);
             }
         }
 
@@ -110,12 +114,12 @@ namespace Traffic
                     else if (distance <= _breakDistance)
                     {
                         if(_movementSpeed <= 0f)
-                            Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
+                            _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
                         _movementSpeed /= _breakForce;
                     }
                     else
                     {
-                        Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _acceleration * Time.deltaTime);
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _lerpT);
                     }
                 }
             }

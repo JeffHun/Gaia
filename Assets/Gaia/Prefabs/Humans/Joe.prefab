@@ -110,9 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e0b9823c351d846ab18887dadce2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxMovementSpeed: 2
-  _movementSpeed: 2
+  _maxMovementSpeed: 1.5
+  _movementSpeed: 0
   _rotationSpeed: 4
+  acceleration: 1
   _stopDistance: 0.8
   _reachDistance: 1
   _destination: {x: 0, y: 0, z: 0}
