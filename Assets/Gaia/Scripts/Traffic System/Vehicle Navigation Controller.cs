@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 namespace Traffic
 {
@@ -45,7 +46,7 @@ namespace Traffic
             {
                 if (_exhaustParticles != null)
                     _exhaustParticles.gameObject.SetActive(true);
-                _movementSpeed = _maxMovementSpeed;
+                _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
             }
             else
             {
