@@ -140,14 +140,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMovementSpeed: 4.5
   _movementSpeed: 0
-  _acceleration: 1
   _rotationSpeed: 5
-  _stopDistance: 3
+  acceleration: 0.1
+  _stopDistance: 2
   _reachDistance: 1.5
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
-  _offset: {x: 0, y: 0, z: 0}
-  _breakDistance: 15
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _breakDistance: 6
+  defaultBreakForce: 1.15
+  maxBreakForce: 1.8
   _breakForce: 1.15
   _exhaustParticles: {fileID: 0}
   _parked: 1

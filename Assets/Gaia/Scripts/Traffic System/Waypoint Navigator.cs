@@ -36,6 +36,7 @@ namespace Traffic
                     bool shouldBranch = false;
                     _currentWaypoint = _nextWaypoint;
 
+
                     if (_currentWaypoint.CanCross)
                     {
                         if (_nextWaypoint.Branches != null && _nextWaypoint.Branches.Count > 0)
@@ -96,7 +97,10 @@ namespace Traffic
                             }
                         }
                         if (_nextWaypoint != null)
+                        {
                             controller.SetDestination(_nextWaypoint.GetPosition());
+                            controller.IsAllowedToCross = _nextWaypoint.CanCross;
+                        }
                     }
                 }
             }
