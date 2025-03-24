@@ -100,7 +100,6 @@ namespace Traffic
                         if (_nextWaypoint != null)
                         {
                             controller.SetDestination(_nextWaypoint.GetPosition());
-                            controller.IsAllowedToCross = _nextWaypoint.CanCross;
                         }
                     }
                 }
