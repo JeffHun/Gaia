@@ -335,6 +335,12 @@ MonoBehaviour:
   defaultBreakForce: 1
   maxBreakForce: 2
   _breakForce: 0.7
+  _tags:
+  - Vehicle
+  - Pedestrian
+  _easing: 0
+  _breaking: 0
+  _isAllowedToCross: 1
   _exhaustParticles: {fileID: 0}
   _parked: 1
 --- !u!54 &-5898938805223695522

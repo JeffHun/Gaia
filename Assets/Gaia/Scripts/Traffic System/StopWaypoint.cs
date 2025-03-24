@@ -8,8 +8,10 @@ namespace Traffic
     {
         [SerializeField] private Waypoint _waypoint;
         [SerializeField] private List<Collider> _checkAreas = new List<Collider>();
+        [SerializeField] private float _timer = 1f;
         private bool _hasSpace;
         private bool _comingVehicle;
+        private bool _hasWaited = false;
 
         public Waypoint Waypoint { get { return _waypoint; } set { _waypoint = value; } }
 
@@ -17,7 +19,7 @@ namespace Traffic
 
         private void Update()
         {
-            if (!_comingVehicle && _hasSpace)
+            if (!_comingVehicle && _hasSpace && _hasWaited)
             {
                 Waypoint.CanCross = true;
             }
@@ -38,6 +40,18 @@ namespace Traffic
         public void OnFreeSpace() 
         {
             _hasSpace = false;
+        }
+
+        public void TimerCheck()
+        {
+            _hasWaited = false;
+            StartCoroutine(HasToStop());
+        }
+
+        private IEnumerator HasToStop()
+        {;
+            yield return new WaitForSeconds(_timer);
+            _hasWaited = true;
         }
     }
 }

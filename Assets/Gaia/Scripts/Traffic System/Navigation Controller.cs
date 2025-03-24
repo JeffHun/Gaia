@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 namespace Traffic
 {
@@ -24,13 +25,14 @@ namespace Traffic
         [SerializeField] protected float defaultBreakForce = 1.2f;
         [SerializeField] protected float maxBreakForce = 1.2f;
         [SerializeField] protected float _breakForce = 1.2f;
-        private Ray _ray;
-        private RaycastHit _hit;
+        [SerializeField] protected List<string> _tags = new List<string>();
+        protected Ray _ray;
+        protected RaycastHit _hit;
         private Vector3 _rayOffset = new Vector3(0f, 0.5f, 0f);
         private float _lerpT;
         [SerializeField] protected float _easing;
         
-        [SerializeField] private bool _breaking = false;
+        [SerializeField] protected bool _breaking = false;
         [SerializeField] private bool _isAllowedToCross = true;
 
         public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
@@ -81,37 +83,11 @@ namespace Traffic
             _velocity = ((transform.position - _previous).magnitude) / Time.deltaTime;
             _previous = transform.position;
 
+            SpeedManagement();
+
             if (!ReachedDestination)
             {
-
-                
-
-                    /*else
-                    {
-                        if (_breaking)
-                        {
-                            _breaking = false;
-                            _lerpT = 0f;
-                        }
-                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
-                    }*/
-
-                    // We check if there's something blocking the way
-                    SpeedManagement();
-
                 MoveToDestination();
-
-            }
-            else
-            {
-                if (_movementSpeed > Mathf.Epsilon)
-                {
-                    _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
-                }
-                else
-                {
-                    _movementSpeed = 0f;
-                }
             }
         }
 
@@ -141,56 +117,81 @@ namespace Traffic
         }
 
 
-        void SpeedManagement()
+        protected virtual void SpeedManagement()
         {
-            if (Physics.Raycast(_ray, out _hit, _breakDistance + 10))
+
+            if (Physics.Raycast(_ray, out _hit, _breakDistance + 10) && _tags.Contains(_hit.transform.tag))
             {
-                if (_hit.transform.tag == "Vehicle" || _hit.transform.tag == "Pedestrian" || 
-                    _hit.transform.tag == "Transport" ||_hit.transform.tag == "Bike")
+                float distance = Vector3.Distance(transform.position, _hit.transform.position);
+                if (distance <= _stopDistance * 1.2 ||
+                    Vector3.Distance(transform.position, _destination) <= _stopDistance && !_isAllowedToCross)
                 {
-                    float distance = Vector3.Distance(transform.position, _hit.transform.position);
-                    if (distance <= _stopDistance)
+                    _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                    if (_movementSpeed > Mathf.Epsilon)
                     {
-                        _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
-                        if (_movementSpeed > Mathf.Epsilon)
-                        {
-                            _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
-                        }
-                        else
-                        {
-                            _movementSpeed = 0f;
-                        }
-                    }
-                    else if (distance <= _breakDistance)
-                    {
-                        if(!_breaking)
-                        {
-                            _breaking = true;
-                            _lerpT = 0f;
-                        }
-                        _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
-                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 4, _easing);
-                    }
-                    else if (Vector3.Distance(transform.position, _destination) <= _breakDistance && !_isAllowedToCross)
-                    {
-                        if (!_breaking)
-                        {
-                            _breaking = true;
-                            _lerpT = 0f;
-                            _breakForce = defaultBreakForce;
-                        }
-                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 4, _easing);
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
                     }
                     else
                     {
-                        if (_breaking)
-                        {
-                            _breaking = false;
-                            _lerpT = 0f;
-                            _breakForce = defaultBreakForce;
-                        }
-                        _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
+                        _movementSpeed = 0f;
                     }
+                }
+                else if (distance <= _breakDistance || 
+                    Vector3.Distance(transform.position, _destination) <= _breakDistance && !_isAllowedToCross)
+                {
+                    if(!_breaking) 
+                    {
+                        _breaking = true;
+                        _lerpT = 0f;
+                    }
+                    _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                    _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 4, _easing);
+                }
+                else
+                {
+                    if (_breaking)
+                    {
+                        _breaking = false;
+                        _lerpT = 0f;
+                        _breakForce = defaultBreakForce;
+                    }
+                    _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
+                }
+            }
+            else if (!_isAllowedToCross)
+            {
+                float distance = Vector3.Distance(_destination, transform.position);
+                if (distance <= _stopDistance - 4)
+                {
+                    _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                    if (_movementSpeed > Mathf.Epsilon)
+                    {
+                        _movementSpeed = Mathf.Lerp(_movementSpeed, 0, _easing);
+                    }
+                    else
+                    {
+                        _movementSpeed = 0f;
+                    }
+                }
+                else if (distance <= _breakDistance)
+                {
+                    if (!_breaking)
+                    {
+                        _breaking = true;
+                        _lerpT = 0f;
+                    }
+                    _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
+                    _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed / 3, _easing);
+                }
+                else
+                {
+                    if (_breaking)
+                    {
+                        _breaking = false;
+                        _lerpT = 0f;
+                        _breakForce = defaultBreakForce;
+                    }
+                    _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
                 }
             }
         }
