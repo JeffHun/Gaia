@@ -87,9 +87,7 @@ namespace Traffic
 
             if (!ReachedDestination)
             {
-
                 MoveToDestination();
-
             }
         }
 
@@ -122,12 +120,10 @@ namespace Traffic
         protected virtual void SpeedManagement()
         {
 
-            if (Physics.Raycast(_ray, out _hit, _breakDistance + 10) && 
-                (_hit.transform.tag == "Vehicle" || _hit.transform.tag == "Pedestrian" ||
-                    _hit.transform.tag == "Transport" || _hit.transform.tag == "Bike"))
+            if (Physics.Raycast(_ray, out _hit, _breakDistance + 10) && _tags.Contains(_hit.transform.tag))
             {
                 float distance = Vector3.Distance(transform.position, _hit.transform.position);
-                if (distance <= _stopDistance ||
+                if (distance <= _stopDistance * 1.2 ||
                     Vector3.Distance(transform.position, _destination) <= _stopDistance && !_isAllowedToCross)
                 {
                     _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
@@ -141,7 +137,7 @@ namespace Traffic
                     }
                 }
                 else if (distance <= _breakDistance || 
-                    Vector3.Distance(transform.position, _destination) <= _breakDistance - 5 && !_isAllowedToCross)
+                    Vector3.Distance(transform.position, _destination) <= _breakDistance && !_isAllowedToCross)
                 {
                     if(!_breaking) 
                     {
@@ -162,11 +158,10 @@ namespace Traffic
                     _movementSpeed = Mathf.Lerp(_movementSpeed, _maxMovementSpeed, _easing);
                 }
             }
-            else
-            if (!_isAllowedToCross)
+            else if (!_isAllowedToCross)
             {
                 float distance = Vector3.Distance(_destination, transform.position);
-                if (distance <= _stopDistance)
+                if (distance <= _stopDistance - 4)
                 {
                     _breakForce = Mathf.Lerp(maxBreakForce, defaultBreakForce, distance / _breakDistance);
                     if (_movementSpeed > Mathf.Epsilon)
@@ -178,8 +173,7 @@ namespace Traffic
                         _movementSpeed = 0f;
                     }
                 }
-                else if (distance <= _breakDistance ||
-                    Vector3.Distance(transform.position, _destination) <= _breakDistance && !_isAllowedToCross)
+                else if (distance <= _breakDistance)
                 {
                     if (!_breaking)
                     {
