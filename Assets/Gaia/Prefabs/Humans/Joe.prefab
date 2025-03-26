@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joe
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bcb420068b561934faec6e61d2698b10, type: 3}
+      propertyPath: m_TagString
+      value: Pedestrian
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: bcb420068b561934faec6e61d2698b10, type: 3}
       propertyPath: m_Controller
       value: 
@@ -114,7 +118,7 @@ MonoBehaviour:
   _movementSpeed: 0
   _rotationSpeed: 10
   acceleration: 0.1
-  _stopDistance: 0.8
+  _stopDistance: 1.2
   _reachDistance: 1
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
@@ -146,7 +150,16 @@ MonoBehaviour:
   defaultBreakForce: 1.1
   maxBreakForce: 1.5
   _breakForce: 1.1
+  _tags:
+  - Pedestrian
+  _easing: 0
+  _breaking: 0
+  _isAllowedToCross: 1
   _animator: {fileID: 8097705862303429323}
+  _waitingTime: 5
+  _waitingTimer: 0
+  _recoverTime: 2
+  _recoverTimer: 0
 --- !u!114 &2829597885651831730
 MonoBehaviour:
   m_ObjectHideFlags: 0
