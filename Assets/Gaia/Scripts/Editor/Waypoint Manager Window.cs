@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Editor
+namespace Tyrm.Editor
 {
     public class WaypointManagerWindow : EditorWindow
     {
@@ -338,7 +338,7 @@ namespace Editor
             stopWaypoint.CheckAreas.Add(CreateStopGameObject("HavePlaceToMove", selectedObject.transform, stopWaypoint.OnFreeSpace));
         }
 
-         Collider CreateStopGameObject(string name, Transform parent, UnityAction actionCallback)
+        Collider CreateStopGameObject(string name, Transform parent, UnityAction actionCallback)
         {
             GameObject newGameObject = new GameObject(name, typeof(BoxCollider));
             newGameObject.transform.SetParent(parent);

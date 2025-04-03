@@ -2,7 +2,7 @@ using Traffic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor
+namespace Tyrm.Editor
 {
     [InitializeOnLoad()]
     public class WaypointEditor
