@@ -338,6 +338,7 @@ MonoBehaviour:
   _tags:
   - Vehicle
   - Pedestrian
+  - Bike
   _easing: 0
   _breaking: 0
   _isAllowedToCross: 1
