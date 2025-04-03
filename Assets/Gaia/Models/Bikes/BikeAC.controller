@@ -76,7 +76,11 @@ BlendTree:
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
+<<<<<<< HEAD
   m_UseAutomaticThresholds: 0
+=======
+  m_UseAutomaticThresholds: 1
+>>>>>>> 9fba5ec ([Feat] Corrected several behaviours, improved management, modifying bikes to make several cyclists)
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!91 &9100000
