@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbf924b599662c84c8df00158fa26c9d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0108
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbf924b599662c84c8df00158fa26c9d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0063
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbf924b599662c84c8df00158fa26c9d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 335497646629574934}
     - target: {fileID: 8627385207412569921, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9567548
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8627385207412569921, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       propertyPath: m_LocalPosition.y
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8627385207412569921, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.357539
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8627385207412569921, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       propertyPath: m_LocalRotation.w
@@ -311,18 +311,118 @@ PrefabInstance:
       objectReference: {fileID: 239817491457600395}
     - target: {fileID: 9003101986919902715, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       propertyPath: m_Name
-      value: Bike_Setup_Prefab Variant
+      value: Bike_Brian
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9003101986919902715, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+      propertyPath: m_TagString
+      value: Bike
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1211239589180862353, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5096458376997310033, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2058292788459006692}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9003101986919902715, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 2260816298361067289}
+    - targetCorrespondingSourceObject: {fileID: 9003101986919902715, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: -6612354520215719747}
   m_SourcePrefab: {fileID: 100100000, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+--- !u!1 &164821778712794304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9003101986919902715, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+  m_PrefabInstance: {fileID: 9131295663292021051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2260816298361067289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164821778712794304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dace04050612a154eb8446381df1f76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxMovementSpeed: 4.5
+  _movementSpeed: 0
+  _rotationSpeed: 5
+  acceleration: 0.1
+  _stopDistance: 2.5
+  _reachDistance: 1.5
+  _destination: {x: 0, y: 0, z: 0}
+  _reachedDestination: 1
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6953551
+      value: 0.2978002
+      inSlope: 1.4844484
+      outSlope: 1.4844484
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _breakDistance: 6
+  defaultBreakForce: 1.15
+  maxBreakForce: 1.8
+  _breakForce: 1.15
+  _tags:
+  - Bike
+  - Vehicle
+  _easing: 0
+  _breaking: 0
+  _isAllowedToCross: 1
+  _animator: {fileID: 6391700220815228198}
+  _animMovingSpeed: 4.5
+--- !u!114 &-6612354520215719747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164821778712794304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681502de41c2fca4fa41141d41003fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentWaypoint: {fileID: 0}
+  _nextWaypoint: {fileID: 0}
 --- !u!4 &4035965112508020586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5096458376997310033, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
+  m_PrefabInstance: {fileID: 9131295663292021051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6391700220815228198 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2741285325827458077, guid: 930f6ddbfa296774ea13db2f042ec834, type: 3}
   m_PrefabInstance: {fileID: 9131295663292021051}
   m_PrefabAsset: {fileID: 0}
