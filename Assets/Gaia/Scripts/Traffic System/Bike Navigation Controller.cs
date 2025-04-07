@@ -7,7 +7,7 @@ namespace Traffic
     public class BikeNavigationController : NavigationController
     {
         [SerializeField] private Animator _animator;
-        [SerializeField] private float _animMovingSpeed = 1f;
+        [SerializeField, Range(0f, 1f)] private float _speedThreshold = 0.1f;
 
         override protected void Update()
         {
@@ -15,10 +15,18 @@ namespace Traffic
 
             if (_animator != null)
             {
-                _animator.SetFloat("Velocity", _movementSpeed / _animMovingSpeed);
+
+                if (_movementSpeed / _maxMovementSpeed >= _speedThreshold)
+                {
+                    _animator.SetFloat("Velocity", 1f);
+                    _animator.speed = _movementSpeed / _maxMovementSpeed;
+                }
+
+                if (_movementSpeed <= Mathf.Epsilon)
+                {
+                    _animator.SetFloat("Velocity", 0f);
+                }
             }
-
-
         }
     }
 }

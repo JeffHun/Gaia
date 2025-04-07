@@ -33,7 +33,7 @@ namespace Traffic
         [SerializeField] protected float _easing;
         
         [SerializeField] protected bool _breaking = false;
-        [SerializeField] private bool _isAllowedToCross = true;
+        [SerializeField] protected bool _isAllowedToCross = true;
 
         public bool ReachedDestination { get => _reachedDestination; set => _reachedDestination = value; }
         public bool IsAllowedToCross { get => _isAllowedToCross; set => _isAllowedToCross = value; }
