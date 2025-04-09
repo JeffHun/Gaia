@@ -9,16 +9,31 @@ public class UIManager : MonoBehaviour
     GameObject _idlePage, _componentPage, _warningPage, _overviewPage;
 
     [SerializeField]
-    int _footPrintBudget = 50000, _euroBudget = 10000;
+    int _footprintBudget = 50000, _euroBudget = 10000, _maxCompFootprint = 2500;
 
     private UIState _currentState;
+
 
     void Start()
     {
         ChangeState(UIState.component);
 
-        _idlePage.GetComponent<IdlePage>().setFootprintBudget(_footPrintBudget);
+        _idlePage.GetComponent<IdlePage>().setFootprintBudget(_footprintBudget);
         _idlePage.GetComponent<IdlePage>().setEuroBudget(_euroBudget);
+    }
+    public int GetMaxFootprint()
+    {
+        return _maxCompFootprint;
+    }
+
+    public int GetFootprintBudget()
+    {
+        return _footprintBudget;
+    }
+
+    public int GetEuroBudget()
+    {
+        return _euroBudget;
     }
 
     public void ChangeState(UIState newState)
