@@ -2,59 +2,77 @@ using categories;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace categories
 {
     public enum Category
     {
-        type,
-        engine,
-        option
+        Type,
+        Moteur,
+        Options
     }
 }
 
-public class Component : MonoBehaviour
+public class Component
 {
+    int _id;
     Category _category;
     string _name;
     int _price;
     int _manufactureFootprint;
     int _useFootprint;
     int _recycleFootprint;
-    Image _img;
+    Sprite _img;
 
-    public Category getCategory()
+    public Component(int id, Category category, string name, int price, int manufactureFootprint, int useFootprint, int recycleFootprint, Sprite img)
+    {
+        _id = id;
+        _category = category;
+        _name = name;
+        _price = price;
+        _manufactureFootprint = manufactureFootprint;
+        _useFootprint = useFootprint;
+        _recycleFootprint = recycleFootprint;
+        _img = img;
+    }
+
+    public int GetId()
+    {
+        return _id;
+    }
+
+    public Category GetCategory()
     {
         return _category;
     }
 
-    public string getName()
+    public string GetName()
     {
         return _name;
     }
 
-    public int getPrice()
+    public int GetPrice()
     {
         return _price;
     }
 
-    public int getManufactureFootprint()
+    public int GetManufactureFootprint()
     {
         return _manufactureFootprint;
     }
 
-    public int getUseFootprint()
+    public int GetUseFootprint()
     {
         return _useFootprint;
     }
 
-    public int getRecycleFootprint()
+    public int GetRecycleFootprint()
     {
         return _recycleFootprint;
     }
 
-    public Image getImg()
+    public Sprite GetImg()
     {
         return _img;
     }
