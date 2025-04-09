@@ -11,7 +11,7 @@ public class ComponentPage : MonoBehaviour
     UIManager _UImanager;
 
     [SerializeField]
-    TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt, _typeTxt, _engineTxt, _optionTxt, _totalFootprint, _totalEuro, _footprintBudget, _euroBudget;
+    TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt, _typeTxt, _engineTxt, _optionTxt, _totalFootprint, _totalPrice, _footprintBudget, _priceBudget;
 
     [SerializeField]
     Image _currentImg, _manufactureSlider, _useSlider, _recycleSlider, _typeImg, _engineImg, _optionImg;
@@ -24,7 +24,7 @@ public class ComponentPage : MonoBehaviour
     private void Start()
     {
         components = new Component[3];
-        _euroBudget.text = _UImanager.GetEuroBudget().ToString();
+        _priceBudget.text = _UImanager.GetPriceBudget().ToString();
         _footprintBudget.text = _UImanager.GetFootprintBudget().ToString();
 
         // test
@@ -61,7 +61,7 @@ public class ComponentPage : MonoBehaviour
         }
 
         if(isUpdate)
-            UpdateComponents();
+            UpdateComponentsPart();
     }
 
     void RemoveComponent(Component comp)
@@ -73,17 +73,17 @@ public class ComponentPage : MonoBehaviour
                 if(components[i].GetId() == comp.GetId())
                 {
                     components[i] = null;
-                    UpdateComponents();
+                    UpdateComponentsPart();
                     return;
                 }
             }
         }
     }
 
-    void UpdateComponents()
+    void UpdateComponentsPart()
     {
         int totalFootprint = 0;
-        int totalEuro = 0;
+        int totalPrice = 0;
 
         for(int i = 0; i < components.Length; i++)
         {
@@ -92,16 +92,16 @@ public class ComponentPage : MonoBehaviour
                 totalFootprint += components[i].GetManufactureFootprint();
                 totalFootprint += components[i].GetUseFootprint();
                 totalFootprint += components[i].GetRecycleFootprint();
-                totalEuro += components[i].GetPrice();
+                totalPrice += components[i].GetPrice();
             }
         }
 
         _totalFootprint.text = totalFootprint.ToString();
-        _totalEuro.text = totalEuro.ToString();
+        _totalPrice.text = totalPrice.ToString();
 
         if (components[0] != null)
         {
-            _typeTxt.text = "Type - " + components[0].GetName();
+            _typeTxt.text = "Type -" + components[0].GetName();
             _typeImg.sprite = components[0].GetImg();
         }
         else
@@ -112,7 +112,7 @@ public class ComponentPage : MonoBehaviour
 
         if (components[1] != null)
         {
-            _engineTxt.text = "Moteur - " + components[1].GetName();
+            _engineTxt.text = "Moteur -" + components[1].GetName();
             _engineImg.sprite = components[1].GetImg();
         }
         else
@@ -123,7 +123,7 @@ public class ComponentPage : MonoBehaviour
 
         if (components[2] != null)
         {
-            _optionTxt.text = "Options - " + components[2].GetName();
+            _optionTxt.text = "Options -" + components[2].GetName();
             _optionImg.sprite = components[2].GetImg();
         }
         else
