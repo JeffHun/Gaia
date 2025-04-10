@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using categories;
+using Components;
 
 public class ComponentPage : MonoBehaviour
 {
@@ -16,32 +15,32 @@ public class ComponentPage : MonoBehaviour
     [SerializeField]
     Image _currentImg, _manufactureSlider, _useSlider, _recycleSlider, _typeImg, _engineImg, _optionImg;
 
-    Component[] components;
+    ComponentData[] components;
 
     [SerializeField]
     Sprite _unknowImg, _defaultImg;
 
     private void Start()
     {
-        components = new Component[3];
+        components = new ComponentData[3];
         _priceBudget.text = _UImanager.GetPriceBudget().ToString();
         _footprintBudget.text = _UImanager.GetFootprintBudget().ToString();
 
         // test
-        Component typeComponent = new Component(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
-        Component noAddedEngineComponent = new Component(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
-        Component optionComponent = new Component(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
+        ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
+        ComponentData noAddedEngineComponent = new ComponentData(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
+        ComponentData optionComponent = new ComponentData(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
         AddComponent(typeComponent);
         AddComponent(optionComponent);
 
         RemoveComponent(optionComponent);
         RemoveComponent(noAddedEngineComponent);
 
-        Component engineComponent = new Component(666, Category.Moteur, "Electrique", 6000, 1000, 150, 2250, _defaultImg);
+        ComponentData engineComponent = new ComponentData(666, Category.Moteur, "Electrique", 6000, 1000, 150, 2250, _defaultImg);
         UpdateCurrentComponent(engineComponent);
     }
 
-    void AddComponent(Component comp)
+    void AddComponent(ComponentData comp)
     {
         bool isUpdate = false;
         switch(comp.GetCategory())
@@ -64,7 +63,7 @@ public class ComponentPage : MonoBehaviour
             UpdateComponentsPart();
     }
 
-    void RemoveComponent(Component comp)
+    void RemoveComponent(ComponentData comp)
     {
         for (int i = 0; i < components.Length; i++)
         {
@@ -134,7 +133,7 @@ public class ComponentPage : MonoBehaviour
 
     }
 
-    void UpdateCurrentComponent(Component comp)
+    void UpdateCurrentComponent(ComponentData comp)
     {
         _currentCategoryTxt.text = comp.GetCategory().ToString() + " -";
         _currentNameTxt.text = comp.GetName().ToString();

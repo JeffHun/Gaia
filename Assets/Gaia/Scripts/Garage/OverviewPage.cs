@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using categories;
 using TMPro;
+using Components;
 
 public class OverviewPage : MonoBehaviour
 {
@@ -24,17 +25,17 @@ public class OverviewPage : MonoBehaviour
     private void Start()
     {
         // test
-        Component typeComponent = new Component(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
-        Component engineComponent = new Component(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
-        Component optionComponent = new Component(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
-        Component[] components = new Component[3];
+        ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
+        ComponentData engineComponent = new ComponentData(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
+        ComponentData optionComponent = new ComponentData(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
+        ComponentData[] components = new ComponentData[3];
         components[0] = typeComponent;
         components[1] = engineComponent;
         components[2] = optionComponent;
         UpdatePage(components);
     }
 
-    public void UpdatePage(Component[] components)
+    public void UpdatePage(ComponentData[] components)
     {
         if(components.Length != 3)
         {
@@ -42,11 +43,11 @@ public class OverviewPage : MonoBehaviour
             return;
         }
 
-        foreach(Component comp in components)
+        foreach(ComponentData comp in components)
         {
             if(comp == null)
             {
-                Debug.LogWarning("There is a null component");
+                Debug.LogWarning("There is a null ComponentData");
                 return;
             }
         }

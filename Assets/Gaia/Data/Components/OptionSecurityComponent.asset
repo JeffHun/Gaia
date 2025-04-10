@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cbf31a7d1616d40bb5058ebb4c8bf2, type: 3}
+  m_Name: OptionSecurityComponent
+  m_EditorClassIdentifier: 
+  _componentId: 42
+  _category: 2
+  _name: "S\xE9curit\xE9"
+  _price: 500
+  _manufactureFootprint: 50
+  _useFootprint: 100
+  _recycleFootprint: 1500
+  _image: {fileID: 21300000, guid: 6220ccff7f2457e44805f6d3d5d55edd, type: 3}
+  _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
+  _useScale: {x: 0, y: 0, z: 0}
+  _storedScale: {x: 0, y: 0, z: 0}
