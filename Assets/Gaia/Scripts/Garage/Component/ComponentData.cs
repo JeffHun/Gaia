@@ -19,6 +19,10 @@ namespace Components
         int _recycleFootprint;
         Sprite _img;
 
+        XRGrabInteractable _xrGrabInteractable;
+        BoxCollider _collider;
+        Vector3 _resizedCollider;
+
         private void Awake()
         {
             _id = _componentData.GetCompId();
@@ -29,20 +33,18 @@ namespace Components
             _useFootprint = _componentData.GetUseFootprint();
             _recycleFootprint = _componentData.GetRecycleFootprint();
             _img = _componentData.GetImage();
-            Instantiate(_componentData.GetModel(), gameObject.transform);
+            Instantiate(_componentData.GetModel(), gameObject.transform, false);
+            _collider = GetComponent<BoxCollider>();
+            _collider.size = _componentData.GetColliderScale();
+            _resizedCollider = new Vector3(_collider.size.x* _componentData.GetStoredScale().x,
+                    _collider.size.y* _componentData.GetStoredScale().y,
+                    _collider.size.z* _componentData.GetStoredScale().z);
 
-            XRGrabInteractable xrGrabInteractable = GetComponent<XRGrabInteractable>();
-            if (xrGrabInteractable)
+            _xrGrabInteractable = GetComponent<XRGrabInteractable>();
+            if (_xrGrabInteractable)
             {
-                xrGrabInteractable.colliders.Add(GetComponentInChildren<Collider>());
+                _xrGrabInteractable.colliders.Add(GetComponentInChildren<Collider>());
             }
-            /*
-            MeshCollider meshCollider = GetComponent<MeshCollider>();
-            if (meshCollider)
-            {
-                meshCollider.sharedMesh = GetComponentInChildren<MeshFilter>().mesh;
-            }*/
-
         }
 
 
@@ -57,6 +59,23 @@ namespace Components
             _recycleFootprint = recycleFootprint;
             _img = img;
         }
+
+        private void Update()
+        {
+            if (_xrGrabInteractable.isSelected)
+            {
+                transform.localScale = _componentData.GetStoredScale();
+                _collider.size = _resizedCollider;
+                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetStoredScale();
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = Vector3.one;
+                _collider.size = _componentData.GetColliderScale();
+            }
+        }
+
 
         public int GetId()
         {

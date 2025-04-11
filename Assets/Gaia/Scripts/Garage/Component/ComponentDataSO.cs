@@ -27,6 +27,7 @@ namespace Components
         [SerializeField] private GameObject _model;
         [SerializeField] private Vector3 _useScale;         // When in the car model preview
         [SerializeField] private Vector3 _storedScale;      // When in hands or on shelf
+        [SerializeField] private Vector3 _colliderScale;
 
         public int GetCompId()
         {
@@ -81,6 +82,11 @@ namespace Components
         public Vector3 GetStoredScale()
         {
             return _storedScale;
+        }
+
+        public Vector3 GetColliderScale()
+        {
+            return _colliderScale;
         }
     }
 }
