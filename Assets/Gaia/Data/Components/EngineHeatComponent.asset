@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cbf31a7d1616d40bb5058ebb4c8bf2, type: 3}
   m_Name: EngineHeatComponent
   m_EditorClassIdentifier: 
-  _componentId: 493
+  _componentId: 12
   _category: 1
   _name: Thermique
   _price: 3500

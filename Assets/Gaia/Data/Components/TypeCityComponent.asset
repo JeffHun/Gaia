@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41cbf31a7d1616d40bb5058ebb4c8bf2, type: 3}
-  m_Name: EngineElecComponent
+  m_Name: TypeCityComponent
   m_EditorClassIdentifier: 
-  _componentId: 11
-  _category: 1
-  _name: Electrique
-  _price: 6000
-  _manufactureFootprint: 1000
-  _useFootprint: 150
-  _recycleFootprint: 2250
+  _componentId: 22
+  _category: 0
+  _name: Citadine
+  _price: 4250
+  _manufactureFootprint: 1860
+  _useFootprint: 950
+  _recycleFootprint: 1325
   _image: {fileID: 21300000, guid: 6220ccff7f2457e44805f6d3d5d55edd, type: 3}
   _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
   _useScale: {x: 1, y: 1, z: 1}

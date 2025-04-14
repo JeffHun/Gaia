@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41cbf31a7d1616d40bb5058ebb4c8bf2, type: 3}
   m_Name: OptionSecurityComponent
   m_EditorClassIdentifier: 
-  _componentId: 42
+  _componentId: 33
   _category: 2
   _name: "S\xE9curit\xE9"
   _price: 500

@@ -8,6 +8,10 @@ TagManager:
   - Vehicle
   - Transport
   - Bike
+  - Right hand
+  - Left hand
+  - Floor
+  - Component
   layers:
   - Default
   - TransparentFX

@@ -25,14 +25,14 @@ public class OverviewPage : MonoBehaviour
     private void Start()
     {
         // test
-        ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
+        /*ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
         ComponentData engineComponent = new ComponentData(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
         ComponentData optionComponent = new ComponentData(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
         ComponentData[] components = new ComponentData[3];
         components[0] = typeComponent;
         components[1] = engineComponent;
         components[2] = optionComponent;
-        UpdatePage(components);
+        UpdatePage(components);*/
     }
 
     public void UpdatePage(ComponentData[] components)

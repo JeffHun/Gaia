@@ -18,12 +18,29 @@ namespace Components
         int _useFootprint;
         int _recycleFootprint;
         Sprite _img;
+        ComponentAnchor _anchor;
 
         XRGrabInteractable _xrGrabInteractable;
         BoxCollider _collider;
         Vector3 _resizedCollider;
 
-        private void Awake()
+        public void SetComponentDataSO(ComponentDataSO compDataSO)
+        {
+            _componentData = compDataSO;
+            Init();
+        }
+
+        public void SetAnchor(ComponentAnchor anchor)
+        {
+            _anchor = anchor;
+        }
+
+        public ComponentAnchor getAnchor()
+        {
+            return _anchor;
+        }
+
+        private void Init()
         {
             _id = _componentData.GetCompId();
             _category = _componentData.GetCategory();
@@ -48,7 +65,7 @@ namespace Components
         }
 
 
-        public ComponentData(int id, Category category, string name, int price, int manufactureFootprint, int useFootprint, int recycleFootprint, Sprite img)
+        /*public ComponentData(int id, Category category, string name, int price, int manufactureFootprint, int useFootprint, int recycleFootprint, Sprite img)
         {
             _id = id;
             _category = category;
@@ -58,7 +75,7 @@ namespace Components
             _useFootprint = useFootprint;
             _recycleFootprint = recycleFootprint;
             _img = img;
-        }
+        }*/
 
         private void Update()
         {
