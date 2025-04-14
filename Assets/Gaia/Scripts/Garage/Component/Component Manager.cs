@@ -18,23 +18,19 @@ public class ComponentManager : MonoBehaviour
     {
         if (_leftInteractor.interactablesSelected.Count >= 1)
             _leftComponent = _leftInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
-        else
-            _leftComponent = null;
         if (_rightInteractor.interactablesSelected.Count >= 1)
             _rightComponent = _rightInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
-        else 
-            _rightComponent = null;
 
-        Debug.Log(_rightComponent);
         if (_leftComponent)
         {
             _uiManager.ChangeState(UIState.component);
             _componentPage.AddComponent(_leftComponent);
         }
-        else if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
+        if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
             _uiManager.ChangeState(UIState.idle);
             _componentPage.RemoveComponent(_leftComponent);
+            _leftComponent = null;
         }
 
         if (_rightComponent)
@@ -42,10 +38,11 @@ public class ComponentManager : MonoBehaviour
             _uiManager.ChangeState(UIState.component);
             _componentPage.AddComponent(_rightComponent);
         }
-        else if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
+        if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
         {
             _uiManager.ChangeState(UIState.idle);
             _componentPage.RemoveComponent(_rightComponent);
+            _rightComponent = null;
         }
     }
 }
