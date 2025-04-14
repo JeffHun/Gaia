@@ -18,9 +18,14 @@ public class ComponentManager : MonoBehaviour
     {
         if (_leftInteractor.interactablesSelected.Count >= 1)
             _leftComponent = _leftInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
+        else
+            _leftComponent = null;
         if (_rightInteractor.interactablesSelected.Count >= 1)
             _rightComponent = _rightInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
+        else 
+            _rightComponent = null;
 
+        Debug.Log(_rightComponent);
         if (_leftComponent)
         {
             _uiManager.ChangeState(UIState.component);
