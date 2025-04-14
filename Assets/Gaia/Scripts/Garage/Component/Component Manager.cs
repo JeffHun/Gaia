@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UIStates;
 using Components;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ComponentManager : MonoBehaviour
 {
@@ -21,28 +22,31 @@ public class ComponentManager : MonoBehaviour
         if (_rightInteractor.interactablesSelected.Count >= 1)
             _rightComponent = _rightInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
 
-        if (_leftComponent)
+        if (_leftComponent && !_rightComponent)
         {
             _uiManager.ChangeState(UIState.component);
-            _componentPage.AddComponent(_leftComponent);
+            _componentPage.UpdateCurrentComponent(_leftComponent);
         }
         if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
             _uiManager.ChangeState(UIState.idle);
-            _componentPage.RemoveComponent(_leftComponent);
             _leftComponent = null;
         }
 
-        if (_rightComponent)
+        if (_rightComponent && !_leftComponent)
         {
             _uiManager.ChangeState(UIState.component);
-            _componentPage.AddComponent(_rightComponent);
+            _componentPage.UpdateCurrentComponent(_rightComponent);
         }
         if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
         {
             _uiManager.ChangeState(UIState.idle);
-            _componentPage.RemoveComponent(_rightComponent);
             _rightComponent = null;
+        }
+
+        if(_rightComponent && _leftComponent)
+        {
+            _uiManager.ChangeState(UIState.warning);
         }
     }
 }
