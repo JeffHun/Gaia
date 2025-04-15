@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UIStates;
 using Components;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ComponentManager : MonoBehaviour
 {
@@ -18,34 +19,34 @@ public class ComponentManager : MonoBehaviour
     {
         if (_leftInteractor.interactablesSelected.Count >= 1)
             _leftComponent = _leftInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
-        else
-            _leftComponent = null;
         if (_rightInteractor.interactablesSelected.Count >= 1)
             _rightComponent = _rightInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>();
-        else 
+
+        if (_leftComponent && !_rightComponent)
+        {
+            _uiManager.ChangeState(UIState.component);
+            _componentPage.UpdateCurrentComponent(_leftComponent);
+        }
+        if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
+        {
+            _uiManager.ChangeState(UIState.idle);
+            _leftComponent = null;
+        }
+
+        if (_rightComponent && !_leftComponent)
+        {
+            _uiManager.ChangeState(UIState.component);
+            _componentPage.UpdateCurrentComponent(_rightComponent);
+        }
+        if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
+        {
+            _uiManager.ChangeState(UIState.idle);
             _rightComponent = null;
-
-        Debug.Log(_rightComponent);
-        if (_leftComponent)
-        {
-            _uiManager.ChangeState(UIState.component);
-            _componentPage.AddComponent(_leftComponent);
-        }
-        else if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
-        {
-            _uiManager.ChangeState(UIState.idle);
-            _componentPage.RemoveComponent(_leftComponent);
         }
 
-        if (_rightComponent)
+        if(_rightComponent && _leftComponent)
         {
-            _uiManager.ChangeState(UIState.component);
-            _componentPage.AddComponent(_rightComponent);
-        }
-        else if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
-        {
-            _uiManager.ChangeState(UIState.idle);
-            _componentPage.RemoveComponent(_rightComponent);
+            _uiManager.ChangeState(UIState.warning);
         }
     }
 }

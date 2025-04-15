@@ -67,8 +67,10 @@ public class ComponentPage : MonoBehaviour
                 break;
         }
 
-        if(isUpdate)
+        if (isUpdate)
+        {
             UpdateComponentsPart();
+        }
     }
 
     public void RemoveComponent(ComponentData comp)
@@ -141,7 +143,7 @@ public class ComponentPage : MonoBehaviour
 
     }
 
-    void UpdateCurrentComponent(ComponentData comp)
+    public void UpdateCurrentComponent(ComponentData comp)
     {
         _currentCategoryTxt.text = comp.GetCategory().ToString() + " -";
         _currentNameTxt.text = comp.GetName().ToString();
