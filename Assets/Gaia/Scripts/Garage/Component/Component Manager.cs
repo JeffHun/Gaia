@@ -11,7 +11,10 @@ public class ComponentManager : MonoBehaviour
     [SerializeField] private XRDirectInteractor _rightInteractor;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private ComponentPage _componentPage;
-    
+    [SerializeField] private Socket _socketType;
+    [SerializeField] private Socket _socketEngine;
+    [SerializeField] private Socket _socketSettings;
+
     private ComponentData _leftComponent;
     private ComponentData _rightComponent;
 
@@ -24,23 +27,35 @@ public class ComponentManager : MonoBehaviour
 
     public void AddCarComponent(ComponentData comp)
     {
+        Rigidbody body = comp.GetComponent<Rigidbody>();
         switch (comp.GetCategory())
         {
             case Category.Type:
                 _components[0] = comp;
+                comp.transform.position = _socketType.transform.position;
+                comp.transform.rotation = _socketType.transform.rotation;
                 break;
             case Category.Moteur:
                 _components[1] = comp;
+                comp.transform.position = _socketEngine.transform.position;
+                comp.transform.rotation = _socketEngine.transform.rotation;
                 break;
             case Category.Options:
                 _components[2] = comp;
+                comp.transform.position = _socketSettings.transform.position;
+                comp.transform.rotation = _socketSettings.transform.rotation;
                 break;
         }
+        body.useGravity = false;
+        body.velocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
     }
 
 
     public void RemoveCarComponent(ComponentData comp)
     {
+        Rigidbody body = comp.GetComponent<Rigidbody>();
+        body.useGravity = true;
         for (int i = 0; i < _components.Length; i++)
         {
             if (_components[i] != null)
@@ -65,8 +80,8 @@ public class ComponentManager : MonoBehaviour
 
         if (_leftComponent && !_rightComponent)
         {
-            _uiManager.ChangeState(UIState.component);
             _componentPage.UpdateCurrentComponent(_leftComponent);
+            _uiManager.ChangeState(UIState.component);
         }
         if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
@@ -76,8 +91,8 @@ public class ComponentManager : MonoBehaviour
 
         if (_rightComponent && !_leftComponent)
         {
-            _uiManager.ChangeState(UIState.component);
             _componentPage.UpdateCurrentComponent(_rightComponent);
+            _uiManager.ChangeState(UIState.component);
         }
         if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
         {
