@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UIStates;
 using Components;
-using static Unity.Burst.Intrinsics.X86.Avx;
+using categories;
 
 public class ComponentManager : MonoBehaviour
 {
@@ -11,8 +11,49 @@ public class ComponentManager : MonoBehaviour
     [SerializeField] private XRDirectInteractor _rightInteractor;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private ComponentPage _componentPage;
+    
     private ComponentData _leftComponent;
     private ComponentData _rightComponent;
+
+    private ComponentData[] _components;
+
+    private void Awake()
+    {
+        _components = new ComponentData[3];
+    }
+
+    public void AddCarComponent(ComponentData comp)
+    {
+        switch (comp.GetCategory())
+        {
+            case Category.Type:
+                _components[0] = comp;
+                break;
+            case Category.Moteur:
+                _components[1] = comp;
+                break;
+            case Category.Options:
+                _components[2] = comp;
+                break;
+        }
+    }
+
+
+    public void RemoveCarComponent(ComponentData comp)
+    {
+        for (int i = 0; i < _components.Length; i++)
+        {
+            if (_components[i] != null)
+            {
+                if (_components[i].GetId() == comp.GetId())
+                {
+                    _components[i] = null;
+                    return;
+                }
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -48,5 +89,20 @@ public class ComponentManager : MonoBehaviour
         {
             _uiManager.ChangeState(UIState.warning);
         }
+    }
+
+
+    public void OnColliderEntered(Collider collider)
+    {
+        ComponentData comp = collider.GetComponent<ComponentData>();
+        AddCarComponent(comp);
+        _componentPage.UIAddComponent(comp);
+    }
+
+    public void OnColliderExited(Collider collider)
+    {
+        ComponentData comp = collider.GetComponent<ComponentData>();
+        RemoveCarComponent(comp);
+        _componentPage.UIRemoveComponent(comp);
     }
 }

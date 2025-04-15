@@ -1195,6 +1195,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155946451}
   m_CullTransparentMesh: 1
+--- !u!1 &178497612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178497613}
+  - component: {fileID: 178497615}
+  - component: {fileID: 178497614}
+  m_Layer: 0
+  m_Name: Car
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178497613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178497612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1749471583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178497614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178497612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181581835ab24714f82904d846560d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _collisionExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2057963465}
+        m_TargetAssemblyTypeName: ComponentManager, Assembly-CSharp
+        m_MethodName: OnColliderExited
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _collisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2057963465}
+        m_TargetAssemblyTypeName: ComponentManager, Assembly-CSharp
+        m_MethodName: OnColliderEntered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _tags:
+  - Component
+--- !u!65 &178497615
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178497612}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.7, z: 5}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!1 &180581639
 GameObject:
   m_ObjectHideFlags: 0
@@ -10873,7 +10974,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1550238778635889193, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 178497613}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -4334315650604636168, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
       insertIndex: -1
@@ -10894,6 +10998,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1688925247}
   m_SourcePrefab: {fileID: 100100000, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
+--- !u!4 &1749471583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1550238778635889193, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
+  m_PrefabInstance: {fileID: 1749471582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756593610
 GameObject:
   m_ObjectHideFlags: 0
