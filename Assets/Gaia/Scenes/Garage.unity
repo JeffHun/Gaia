@@ -8169,9 +8169,9 @@ MonoBehaviour:
   _componentPage: {fileID: 610680040}
   _warningPage: {fileID: 1718587684}
   _overviewPage: {fileID: 510087031}
-  _footprintBudget: 50000
-  _priceBudget: 10000
-  _maxCompFootprint: 2500
+  _footprintBudget: 40000
+  _priceBudget: 30000
+  _maxCompFootprint: 30000
 --- !u!1 &1101404325
 GameObject:
   m_ObjectHideFlags: 0
