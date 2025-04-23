@@ -11,6 +11,8 @@ public class ComponentManager : MonoBehaviour
     [SerializeField] private XRDirectInteractor _rightInteractor;
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private ComponentPage _componentPage;
+    [SerializeField] private OverviewPage _overviewPage;
+    [SerializeField] private CarMovement _car;
     [SerializeField] private Socket _socketType;
     [SerializeField] private Socket _socketEngine;
     [SerializeField] private Socket _socketSettings;
@@ -34,21 +36,31 @@ public class ComponentManager : MonoBehaviour
                 _components[0] = comp;
                 comp.transform.position = _socketType.transform.position;
                 comp.transform.rotation = _socketType.transform.rotation;
+                comp.transform.parent = _socketType.transform;
                 break;
             case Category.Moteur:
                 _components[1] = comp;
                 comp.transform.position = _socketEngine.transform.position;
                 comp.transform.rotation = _socketEngine.transform.rotation;
+                comp.transform.parent = _socketEngine.transform;
                 break;
             case Category.Options:
                 _components[2] = comp;
                 comp.transform.position = _socketSettings.transform.position;
                 comp.transform.rotation = _socketSettings.transform.rotation;
+                comp.transform.parent = _socketSettings.transform;
                 break;
         }
         body.useGravity = false;
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
+
+        if(_components[0] != null && _components[1] != null && _components[2] != null)
+        {
+            _uiManager.ChangeState(UIState.overview);
+            _overviewPage.UpdatePage(_components);
+            _car.StartCarMovement();
+        }
     }
 
 
