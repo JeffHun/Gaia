@@ -15,7 +15,7 @@ public class CloudManager : MonoBehaviour
     float _currentFootprint;
     bool _isAnimate = false;
 
-    void GenerateCloud(float currentFooprint, float maxFooprint)
+    public void GenerateCloud(float currentFooprint, float maxFooprint)
     {
         _currentFootprint = currentFooprint;
         _maxFootprint = maxFooprint;

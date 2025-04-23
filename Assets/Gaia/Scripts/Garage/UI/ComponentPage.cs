@@ -18,7 +18,7 @@ public class ComponentPage : MonoBehaviour
     ComponentData[] components;
 
     [SerializeField]
-    Sprite _unknowImg, _defaultImg;
+    Sprite _unknowImg;
 
     private void Awake()
     {
@@ -29,26 +29,9 @@ public class ComponentPage : MonoBehaviour
     {
         _priceBudget.text = _UImanager.GetPriceBudget().ToString();
         _footprintBudget.text = _UImanager.GetFootprintBudget().ToString();
-
-        // test
-        /*
-        
-        ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
-        ComponentData noAddedEngineComponent = new ComponentData(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
-        ComponentData optionComponent = new ComponentData(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
-        AddComponent(typeComponent);
-        AddComponent(optionComponent);
-
-        RemoveComponent(optionComponent);
-        RemoveComponent(noAddedEngineComponent);
-
-        ComponentData engineComponent = new ComponentData(666, Category.Moteur, "Electrique", 6000, 1000, 150, 2250, _defaultImg);
-        UpdateCurrentComponent(engineComponent);
-        
-         */
     }
 
-    public void AddComponent(ComponentData comp)
+    public void UIAddComponent(ComponentData comp)
     {
         bool isUpdate = false;
         switch(comp.GetCategory())
@@ -73,7 +56,7 @@ public class ComponentPage : MonoBehaviour
         }
     }
 
-    public void RemoveComponent(ComponentData comp)
+    public void UIRemoveComponent(ComponentData comp)
     {
         for (int i = 0; i < components.Length; i++)
         {

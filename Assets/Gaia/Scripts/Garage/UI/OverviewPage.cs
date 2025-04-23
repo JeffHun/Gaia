@@ -22,19 +22,6 @@ public class OverviewPage : MonoBehaviour
     [SerializeField]
     UIManager _UIManager;
 
-    private void Start()
-    {
-        // test
-        /*ComponentData typeComponent = new ComponentData(69, Category.Type, "Berline", 5000, 2000, 500, 1000, _defaultImg);
-        ComponentData engineComponent = new ComponentData(493, Category.Moteur, "Thermique", 3500, 2500, 150, 1550, _defaultImg);
-        ComponentData optionComponent = new ComponentData(42, Category.Options, "Sécurité", 500, 50, 100, 1500, _defaultImg);
-        ComponentData[] components = new ComponentData[3];
-        components[0] = typeComponent;
-        components[1] = engineComponent;
-        components[2] = optionComponent;
-        UpdatePage(components);*/
-    }
-
     public void UpdatePage(ComponentData[] components)
     {
         if(components.Length != 3)
@@ -70,7 +57,7 @@ public class OverviewPage : MonoBehaviour
         _footprintBar.SetValues(typeTotal, engineTotal, optionsTotal);
 
         _footprintTxt.text = (typeTotal + engineTotal + optionsTotal).ToString();
-        _footprintBudgetTxt.text = _UIManager.GetPriceBudget().ToString();
+        _footprintBudgetTxt.text = _UIManager.GetFootprintBudget().ToString();
 
         typeTotal = components[0].GetPrice();
         _typePriceTxt.text = typeTotal.ToString();
