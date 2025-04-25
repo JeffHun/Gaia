@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UIStates;
+using categories;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject _idlePage, _componentPage, _warningPage, _overviewPage;
+    GameObject _idlePage, _componentPage, _warningPage, _overviewPage, _componentsValues;
 
     [SerializeField]
-    int _footprintBudget = 50000, _priceBudget = 10000, _maxCompFootprint = 2500, _maxCarFootprint;
+    int _footprintBudget = 50000, _priceBudget = 10000;
 
     private UIState _currentState;
 
@@ -22,14 +24,20 @@ public class UIManager : MonoBehaviour
         _idlePage.GetComponent<IdlePage>().setPriceBudget(_priceBudget);
     }
 
-    public int GetMaxComponentFootprint()
+    public int GetMaxComponentFootprint(Category category)
     {
-        return _maxCompFootprint;
+        if(category == Category.Moteur)
+            return _componentsValues.GetComponent<ComponentsValues>().GetMaxEngineFootprint();
+        if (category == Category.Options)
+            return _componentsValues.GetComponent<ComponentsValues>().GetMaxOptionFootprint();
+        if (category == Category.Type)
+            return _componentsValues.GetComponent<ComponentsValues>().GetMaxTypeFootprint();
+        return 0;
     }
 
     public int GetMaxCarFootprint()
     {
-        return _maxCarFootprint;
+        return _componentsValues.GetComponent<ComponentsValues>().GetMaxCarFootrint();
     }
 
     public int GetFootprintBudget()

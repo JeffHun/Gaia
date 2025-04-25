@@ -106,9 +106,12 @@ public class ComponentManager : MonoBehaviour
             _componentPage.UpdateCurrentComponent(_leftComponent);
             _uiManager.ChangeState(UIState.component);
         }
+
+
         if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
-            _uiManager.ChangeState(UIState.idle);
+            // Show idle page at the beginning only
+            //_uiManager.ChangeState(UIState.idle);
             _leftComponent = null;
         }
 
@@ -119,7 +122,8 @@ public class ComponentManager : MonoBehaviour
         }
         if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
         {
-            _uiManager.ChangeState(UIState.idle);
+            // Show idle page at the beginning only
+            //_uiManager.ChangeState(UIState.idle);
             _rightComponent = null;
         }
 

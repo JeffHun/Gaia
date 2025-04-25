@@ -10,6 +10,9 @@ public class ComponentPage : MonoBehaviour
     UIManager _UImanager;
 
     [SerializeField]
+    ComponentsValues _componentsValues;
+
+    [SerializeField]
     TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt, _typeTxt, _engineTxt, _optionTxt, _totalFootprint, _totalPrice, _footprintBudget, _priceBudget;
 
     [SerializeField]
@@ -140,13 +143,29 @@ public class ComponentPage : MonoBehaviour
 
         _currentImg.sprite = comp.GetImg();
 
-        _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_UImanager.GetMaxComponentFootprint());
+        if(comp.GetCategory() == Category.Moteur)
+        {
+            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
+            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
+            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
+        }
+
+        if (comp.GetCategory() == Category.Options)
+        {
+            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
+            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
+            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
+        }
+
+        if (comp.GetCategory() == Category.Type)
+        {
+            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
+            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
+            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
+        }
+
         _currentManufactureTxt.text = comp.GetManufactureFootprint().ToString();
-
-        _useSlider.SetBar(comp.GetUseFootprint(), (float)_UImanager.GetMaxComponentFootprint());
         _currentUseTxt.text = comp.GetUseFootprint().ToString();
-
-        _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_UImanager.GetMaxComponentFootprint());
         _currentRecycleTxt.text = comp.GetRecycleFootprint().ToString();
     }
 }
