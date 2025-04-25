@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     GameObject _idlePage, _componentPage, _warningPage, _overviewPage;
 
     [SerializeField]
-    int _footprintBudget = 50000, _priceBudget = 10000, _maxCompFootprint = 2500;
+    int _footprintBudget = 50000, _priceBudget = 10000, _maxCompFootprint = 2500, _maxCarFootprint;
 
     private UIState _currentState;
 
@@ -21,9 +21,15 @@ public class UIManager : MonoBehaviour
         _idlePage.GetComponent<IdlePage>().setFootprintBudget(_footprintBudget);
         _idlePage.GetComponent<IdlePage>().setPriceBudget(_priceBudget);
     }
-    public int GetMaxFootprint()
+
+    public int GetMaxComponentFootprint()
     {
         return _maxCompFootprint;
+    }
+
+    public int GetMaxCarFootprint()
+    {
+        return _maxCarFootprint;
     }
 
     public int GetFootprintBudget()

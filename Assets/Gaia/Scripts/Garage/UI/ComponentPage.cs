@@ -13,7 +13,10 @@ public class ComponentPage : MonoBehaviour
     TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt, _typeTxt, _engineTxt, _optionTxt, _totalFootprint, _totalPrice, _footprintBudget, _priceBudget;
 
     [SerializeField]
-    Image _currentImg, _manufactureSlider, _useSlider, _recycleSlider, _typeImg, _engineImg, _optionImg;
+    Image _currentImg, _typeImg, _engineImg, _optionImg;
+
+    [SerializeField]
+    SliderGradient _manufactureSlider, _useSlider, _recycleSlider;
 
     ComponentData[] components;
 
@@ -128,7 +131,7 @@ public class ComponentPage : MonoBehaviour
 
     public void UpdateCurrentComponent(ComponentData comp)
     {
-        _currentCategoryTxt.text = comp.GetCategory().ToString() + " -";
+        _currentCategoryTxt.text = comp.GetCategory().ToString() + "-";
         _currentNameTxt.text = comp.GetName().ToString();
 
         int footprint = comp.GetManufactureFootprint() + comp.GetUseFootprint() + comp.GetRecycleFootprint();
@@ -137,13 +140,13 @@ public class ComponentPage : MonoBehaviour
 
         _currentImg.sprite = comp.GetImg();
 
-        _manufactureSlider.fillAmount = comp.GetManufactureFootprint() / (float)_UImanager.GetMaxFootprint();
+        _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_UImanager.GetMaxComponentFootprint());
         _currentManufactureTxt.text = comp.GetManufactureFootprint().ToString();
 
-        _useSlider.fillAmount = comp.GetUseFootprint() / (float)_UImanager.GetMaxFootprint();
+        _useSlider.SetBar(comp.GetUseFootprint(), (float)_UImanager.GetMaxComponentFootprint());
         _currentUseTxt.text = comp.GetUseFootprint().ToString();
 
-        _recycleSlider.fillAmount = comp.GetRecycleFootprint() / (float)_UImanager.GetMaxFootprint();
+        _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_UImanager.GetMaxComponentFootprint());
         _currentRecycleTxt.text = comp.GetRecycleFootprint().ToString();
     }
 }

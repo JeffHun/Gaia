@@ -5,16 +5,25 @@ using UnityEngine.UI;
 
 public class SliderGradient : MonoBehaviour
 {
-    [SerializeField] private Gradient _gradient = null;
-    [SerializeField] private Image _image = null;
+    [SerializeField] private Gradient _greenGradient, _redGradiant;
+    [SerializeField] private Image _rightSide;
+    [SerializeField] private Image _leftSide;
 
-    private void Awake()
-    {
-        _image = GetComponent<Image>();
-    }
 
-    private void Update()
+    public void SetBar(float value, float maxValue)
     {
-        _image.color = _gradient.Evaluate(_image.fillAmount);
+        _leftSide.GetComponent<Image>().fillAmount = 0f;
+        _rightSide.GetComponent<Image>().fillAmount = 0f;
+
+        if (value > 0)
+        {
+            _rightSide.GetComponent<Image>().fillAmount = value / maxValue;
+            _rightSide.color = _redGradiant.Evaluate(_rightSide.fillAmount);
+        }
+        else
+        {
+            _leftSide.GetComponent<Image>().fillAmount = -value / maxValue;
+            _leftSide.color = _greenGradient.Evaluate(_leftSide.fillAmount);
+        }
     }
 }

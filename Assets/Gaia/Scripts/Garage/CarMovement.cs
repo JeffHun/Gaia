@@ -30,7 +30,7 @@ public class CarMovement : MonoBehaviour
             if (t >= 1f)
             {
                 _isMoving = false;
-                _cloudManager.GenerateCloud(componentManager.GetTotalFootPrint(), UIManager.GetMaxFootprint());
+                _cloudManager.GenerateCloud(componentManager.GetTotalFootPrint(), UIManager.GetMaxCarFootprint());
             }
         }
     }
