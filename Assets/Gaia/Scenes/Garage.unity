@@ -1523,7 +1523,7 @@ MonoBehaviour:
   _endPoint: {fileID: 204711672}
   _duration: 5
   _cloudManager: {fileID: 1250672424}
-  UIManager: {fileID: 0}
+  UIManager: {fileID: 1560197962}
   componentManager: {fileID: 1560197959}
 --- !u!1 &199164233
 GameObject:
@@ -2427,7 +2427,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &303805491
 GameObject:
@@ -3411,7 +3411,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &416526831
 GameObject:
@@ -4491,7 +4491,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &550598985
 GameObject:
@@ -4827,7 +4827,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &588608302
 GameObject:
@@ -6652,7 +6652,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &827202330
 GameObject:
@@ -10281,7 +10281,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1342795965
 GameObject:
@@ -11592,7 +11592,7 @@ MonoBehaviour:
   _componentPage: {fileID: 610680040}
   _warningPage: {fileID: 1718587684}
   _overviewPage: {fileID: 510087031}
-  _componentsValues: {fileID: 0}
+  _componentsValues: {fileID: 1560197958}
   _footprintBudget: 40000
   _priceBudget: 30000
 --- !u!1 &1582885057
@@ -11736,7 +11736,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1611976779
 GameObject:
@@ -13524,7 +13524,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1919205190
 GameObject:
@@ -13838,7 +13838,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1928666038
 GameObject:

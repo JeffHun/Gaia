@@ -18,7 +18,6 @@ public class SliderGradient : MonoBehaviour
         if (value > 0)
         {
             maxValue = Mathf.Abs(maxValue);
-            Debug.Log(value + " / " + maxValue + " = " + value / maxValue);
             _rightSide.GetComponent<Image>().fillAmount = value / maxValue;
             _rightSide.color = _redGradiant.Evaluate(_rightSide.fillAmount);
         }
@@ -26,7 +25,6 @@ public class SliderGradient : MonoBehaviour
         {
             value = Mathf.Abs(value);
             maxValue = Mathf.Abs(maxValue);
-            Debug.Log(value + " / " + maxValue + " = " + value / maxValue);
             _leftSide.GetComponent<Image>().fillAmount = value / maxValue;
             _leftSide.color = _greenGradient.Evaluate(_leftSide.fillAmount);
         }
