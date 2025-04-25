@@ -18,7 +18,7 @@ MonoBehaviour:
   _price: 15550
   _manufactureFootprint: 9000
   _useFootprint: 3500
-  _recycleFootprint: 0
+  _recycleFootprint: -1200
   _image: {fileID: 21300000, guid: 9759fcc2212b0da49ae6c64037db5da2, type: 3}
   _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
   _useScale: {x: 1, y: 1, z: 1}
