@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cbf31a7d1616d40bb5058ebb4c8bf2, type: 3}
+  m_Name: OptionComfortComponent
+  m_EditorClassIdentifier: 
+  _componentId: 31
+  _category: 2
+  _name: Confort
+  _price: 550
+  _manufactureFootprint: 200
+  _useFootprint: 10
+  _recycleFootprint: 0
+  _image: {fileID: 21300000, guid: 0e68a0150072b4242ac2f568b3da67d1, type: 3}
+  _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
+  _useScale: {x: 1, y: 1, z: 1}
+  _storedScale: {x: 0.3, y: 0.3, z: 0.3}
+  _colliderScale: {x: 0.3, y: 0.3, z: 0.3}
