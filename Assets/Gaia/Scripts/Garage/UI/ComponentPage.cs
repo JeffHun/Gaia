@@ -21,14 +21,14 @@ public class ComponentPage : MonoBehaviour
     [SerializeField]
     SliderGradient _manufactureSlider, _useSlider, _recycleSlider;
 
-    ComponentData[] components;
+    ComponentData[] _components;
 
     [SerializeField]
     Sprite _unknowImg;
 
     private void Awake()
     {
-        components = new ComponentData[3];
+        _components = new ComponentData[3];
     }
 
     private void Start()
@@ -43,15 +43,15 @@ public class ComponentPage : MonoBehaviour
         switch(comp.GetCategory())
         {
             case Category.Type:
-                components[0] = comp;
+                _components[0] = comp;
                 isUpdate = true;
                 break;
             case Category.Moteur:
-                components[1] = comp;
+                _components[1] = comp;
                 isUpdate = true;
                 break;
             case Category.Options:
-                components[2] = comp;
+                _components[2] = comp;
                 isUpdate = true;
                 break;
         }
@@ -64,13 +64,13 @@ public class ComponentPage : MonoBehaviour
 
     public void UIRemoveComponent(ComponentData comp)
     {
-        for (int i = 0; i < components.Length; i++)
+        for (int i = 0; i < _components.Length; i++)
         {
-            if (components[i] != null)
+            if (_components[i] != null)
             {
-                if(components[i].GetId() == comp.GetId())
+                if(_components[i].GetId() == comp.GetId())
                 {
-                    components[i] = null;
+                    _components[i] = null;
                     UpdateComponentsPart();
                     return;
                 }
@@ -83,24 +83,24 @@ public class ComponentPage : MonoBehaviour
         int totalFootprint = 0;
         int totalPrice = 0;
 
-        for(int i = 0; i < components.Length; i++)
+        for(int i = 0; i < _components.Length; i++)
         {
-            if(components[i] != null)
+            if(_components[i] != null)
             {
-                totalFootprint += components[i].GetManufactureFootprint();
-                totalFootprint += components[i].GetUseFootprint();
-                totalFootprint += components[i].GetRecycleFootprint();
-                totalPrice += components[i].GetPrice();
+                totalFootprint += _components[i].GetManufactureFootprint();
+                totalFootprint += _components[i].GetUseFootprint();
+                totalFootprint += _components[i].GetRecycleFootprint();
+                totalPrice += _components[i].GetPrice();
             }
         }
 
         _totalFootprint.text = totalFootprint.ToString();
         _totalPrice.text = totalPrice.ToString();
 
-        if (components[0] != null)
+        if (_components[0] != null)
         {
-            _typeTxt.text = "Type -" + components[0].GetName();
-            _typeImg.sprite = components[0].GetImg();
+            _typeTxt.text = "Type -" + _components[0].GetName();
+            _typeImg.sprite = _components[0].GetImg();
         }
         else
         {
@@ -108,10 +108,10 @@ public class ComponentPage : MonoBehaviour
             _typeImg.sprite = _unknowImg;
         }
 
-        if (components[1] != null)
+        if (_components[1] != null)
         {
-            _engineTxt.text = "Moteur -" + components[1].GetName();
-            _engineImg.sprite = components[1].GetImg();
+            _engineTxt.text = "Moteur -" + _components[1].GetName();
+            _engineImg.sprite = _components[1].GetImg();
         }
         else
         {
@@ -119,10 +119,10 @@ public class ComponentPage : MonoBehaviour
             _engineImg.sprite = _unknowImg;
         }
 
-        if (components[2] != null)
+        if (_components[2] != null)
         {
-            _optionTxt.text = "Options -" + components[2].GetName();
-            _optionImg.sprite = components[2].GetImg();
+            _optionTxt.text = "Options -" + _components[2].GetName();
+            _optionImg.sprite = _components[2].GetImg();
         }
         else
         {

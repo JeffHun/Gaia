@@ -1523,8 +1523,8 @@ MonoBehaviour:
   _endPoint: {fileID: 204711672}
   _duration: 5
   _cloudManager: {fileID: 1250672424}
-  UIManager: {fileID: 1560197962}
-  componentManager: {fileID: 1560197959}
+  _UIManager: {fileID: 1560197962}
+  _componentManager: {fileID: 1560197959}
 --- !u!1 &199164233
 GameObject:
   m_ObjectHideFlags: 0
@@ -11562,7 +11562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b65f13d950564cbc5fe4192a014f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataComponents:
+  _dataComponents:
   - {fileID: 11400000, guid: d712f09ac02c478409c02d75630e562e, type: 2}
   - {fileID: 11400000, guid: 703ff06709ddea3459f26247f623e48a, type: 2}
   - {fileID: 11400000, guid: 51dd96bc8dace944d9003e5ac9417862, type: 2}

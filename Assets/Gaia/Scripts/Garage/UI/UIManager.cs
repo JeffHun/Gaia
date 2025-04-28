@@ -13,8 +13,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     int _footprintBudget = 50000, _priceBudget = 10000;
 
-    private UIState _currentState;
-
 
     void Start()
     {
@@ -72,7 +70,5 @@ public class UIManager : MonoBehaviour
                 _overviewPage.SetActive(true);
                 break;
         }
-
-        _currentState = newState;
     }
 }

@@ -7,8 +7,8 @@ public class CarMovement : MonoBehaviour
     [SerializeField] Transform _startPoint, _endPoint;
     [SerializeField] float _duration = 5f;
     [SerializeField] CloudManager _cloudManager;
-    [SerializeField] UIManager UIManager;
-    [SerializeField] ComponentManager componentManager;
+    [SerializeField] UIManager _UIManager;
+    [SerializeField] ComponentManager _componentManager;
     bool _isMoving = false;
     float _elapsedTime = 0f;
 
@@ -30,7 +30,7 @@ public class CarMovement : MonoBehaviour
             if (t >= 1f)
             {
                 _isMoving = false;
-                _cloudManager.GenerateCloud(componentManager.GetTotalFootPrint(), UIManager.GetMaxCarFootprint());
+                _cloudManager.GenerateCloud(_componentManager.GetTotalFootPrint(), _UIManager.GetMaxCarFootprint());
             }
         }
     }
