@@ -1355,8 +1355,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 178497613}
-  - component: {fileID: 178497617}
-  - component: {fileID: 178497616}
   - component: {fileID: 178497615}
   - component: {fileID: 178497614}
   - component: {fileID: 178497618}
@@ -1451,62 +1449,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7379873, y: 1.3075252, z: 3.9531107}
-  m_Center: {x: 0.011391878, y: 0.6537626, z: 0.04302311}
---- !u!33 &178497616
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178497612}
-  m_Mesh: {fileID: 434708465524022508, guid: 9a0109ed7f404d843b05a75230b05167, type: 3}
---- !u!23 &178497617
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178497612}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: c9a9ea72630d6d842a143e74839a7b71, type: 2}
-  - {fileID: 2100000, guid: c9a9ea72630d6d842a143e74839a7b71, type: 2}
-  - {fileID: 2100000, guid: c9a9ea72630d6d842a143e74839a7b71, type: 2}
-  - {fileID: 2100000, guid: c9a9ea72630d6d842a143e74839a7b71, type: 2}
-  - {fileID: 2100000, guid: c9a9ea72630d6d842a143e74839a7b71, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+  m_Size: {x: 1.7379873, y: 1.1869664, z: 3.9531107}
+  m_Center: {x: 0.011391878, y: 0.71404195, z: 0.04302311}
 --- !u!114 &178497618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3928,8 +3872,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.6571319, z: 1}
+  m_Center: {x: 0, y: -0.17143483, z: 0}
 --- !u!23 &462618139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6612,13 +6556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824538096}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.089999914, y: 1.319, z: -0.026999243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1735193947}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &824538098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7790,7 +7734,7 @@ Transform:
   m_GameObject: {fileID: 969972076}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.306, z: 0}
+  m_LocalPosition: {x: 0, y: 0.088, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11572,10 +11516,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ea27eed1fc3c9545a1e06450359959c, type: 2}
   - {fileID: 11400000, guid: 65438d59dabb6e2418ebfeade9aad2d0, type: 2}
   - {fileID: 11400000, guid: 27b959418e6f035468e8e17e6c4467d3, type: 2}
-  _maxCarFootrint: 0
-  _maxEngineFootprint: 0
-  _maxTypeFootprint: 0
-  _maxOptionFootprint: 0
 --- !u!114 &1560197962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12677,6 +12617,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7908237796828487775, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 919132149155446097, guid: 25228c76e2f22b944a7c7c24387864e4, type: 3}
       propertyPath: m_Name
       value: Garage

@@ -26,23 +26,25 @@ public class ComponentRelocation : MonoBehaviour
     {
         if(_isLerping)
         {
+            GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
             GetComponent<XRGrabInteractable>().enabled = false;
             _timer += Time.deltaTime / 2f;
-            transform.position = Vector3.Lerp(_startPos, this.GetComponent<ComponentData>().getAnchor().transform.position, _timer);
-            transform.rotation = Quaternion.Lerp(_startRot, this.GetComponent<ComponentData>().getAnchor().transform.rotation, _timer);
+            transform.position = Vector3.Lerp(_startPos, GetComponent<ComponentData>().GetAnchor().transform.position, _timer);
+            transform.rotation = Quaternion.Lerp(_startRot, GetComponent<ComponentData>().GetAnchor().transform.rotation, _timer);
             if(_timer >= 1)
             {
                 _timer = 0;
                 _isLerping = false;
                 GetComponent<XRGrabInteractable>().enabled = true;
+                transform.parent = GetComponent<ComponentData>().GetAnchor().transform;
             }
         }
 
         if(transform.position.y <= -1f)
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-            transform.position = this.GetComponent<ComponentData>().getAnchor().transform.position;
-            transform.rotation = this.GetComponent<ComponentData>().getAnchor().transform.rotation;
+            transform.position = GetComponent<ComponentData>().GetAnchor().transform.position;
+            transform.rotation = GetComponent<ComponentData>().GetAnchor().transform.rotation;
         }
     }
 

@@ -1,3 +1,4 @@
+using Components;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class CollisionCallback : MonoBehaviour
         if (_tags.Contains(other.transform.tag))
         {
             CollisionEvent.Invoke();
+            other.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Use);
         }
     }
 

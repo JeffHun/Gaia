@@ -20,7 +20,6 @@ MonoBehaviour:
   _useFootprint: 3500
   _recycleFootprint: -1200
   _image: {fileID: 21300000, guid: 9759fcc2212b0da49ae6c64037db5da2, type: 3}
-  _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
-  _useScale: {x: 1, y: 1, z: 1}
-  _storedScale: {x: 0.3, y: 0.3, z: 0.3}
-  _colliderScale: {x: 0.3, y: 0.3, z: 0.3}
+  _model: {fileID: 3401819144432266560, guid: 2ca44bb8e17bbc342aa48ec23737c812, type: 3}
+  _shelfScale: {x: 0.1, y: 0.1, z: 0.1}
+  _handScale: {x: 0.01, y: 0.01, z: 0.01}

@@ -12,7 +12,6 @@ public class ComponentsValues : MonoBehaviour
     [SerializeField]
     List<ComponentDataSO> _dataComponents = new List<ComponentDataSO>();
 
-    [SerializeField]
     private int _maxCarFootrint = 0, _maxEngineFootprint = 0, _maxTypeFootprint = 0, _maxOptionFootprint = 0;
 
     void Start()

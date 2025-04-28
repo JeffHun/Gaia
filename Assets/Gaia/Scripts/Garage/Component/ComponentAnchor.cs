@@ -37,6 +37,8 @@ public class ComponentAnchor : MonoBehaviour
             {
                 other.gameObject.transform.position = transform.position;
                 other.gameObject.transform.rotation = transform.rotation;
+                other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
+                other.gameObject.transform.parent = transform;
             }
         }
     }

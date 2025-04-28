@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UIStates;
 using Components;
 using categories;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ComponentManager : MonoBehaviour
 {
@@ -64,9 +65,9 @@ public class ComponentManager : MonoBehaviour
                 comp.transform.parent = _socketSettings.transform;
                 break;
         }
-        body.useGravity = false;
-        body.velocity = Vector3.zero;
-        body.angularVelocity = Vector3.zero;
+        //body.useGravity = false;
+        //body.velocity = Vector3.zero;
+        //body.angularVelocity = Vector3.zero;
 
         if (_components[0] != null && _components[1] != null && _components[2] != null)
         {
@@ -75,7 +76,6 @@ public class ComponentManager : MonoBehaviour
             _car.StartCarMovement();
         }
     }
-
 
     public void RemoveCarComponent(ComponentData comp)
     {
@@ -130,6 +130,26 @@ public class ComponentManager : MonoBehaviour
         if (_rightComponent && _leftComponent)
         {
             _uiManager.ChangeState(UIState.warning);
+        }
+
+        Transform[] sockets = { _socketType.transform, _socketEngine.transform, _socketSettings.transform };
+
+        for (int i = 0; i < _components.Length && i < sockets.Length; i++)
+        {
+            if (_components[i] != null)
+            {
+                Transform compTransform = _components[i].transform;
+                Rigidbody compRb = _components[i].GetComponent<Rigidbody>();
+
+                compTransform.position = sockets[i].position;
+                compTransform.rotation = sockets[i].rotation;
+
+                if (compRb != null)
+                {
+                    compRb.velocity = Vector3.zero;
+                    compRb.angularVelocity = Vector3.zero;
+                }
+            }
         }
     }
 

@@ -6,6 +6,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Components
 {
+    public enum ComponentStatus
+    {
+        Use,
+        Shelf,
+        Hand
+    }
+
     public class ComponentData : MonoBehaviour
     {
         [SerializeField] private ComponentDataSO _componentData;
@@ -22,7 +29,6 @@ namespace Components
 
         XRGrabInteractable _xrGrabInteractable;
         BoxCollider _collider;
-        Vector3 _resizedCollider;
 
         public void SetComponentDataSO(ComponentDataSO compDataSO)
         {
@@ -35,7 +41,7 @@ namespace Components
             _anchor = anchor;
         }
 
-        public ComponentAnchor getAnchor()
+        public ComponentAnchor GetAnchor()
         {
             return _anchor;
         }
@@ -52,10 +58,8 @@ namespace Components
             _img = _componentData.GetImage();
             Instantiate(_componentData.GetModel(), gameObject.transform, false);
             _collider = GetComponent<BoxCollider>();
-            _collider.size = _componentData.GetColliderScale();
-            _resizedCollider = new Vector3(_collider.size.x* _componentData.GetStoredScale().x,
-                    _collider.size.y* _componentData.GetStoredScale().y,
-                    _collider.size.z* _componentData.GetStoredScale().z);
+            _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
+            _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
 
             _xrGrabInteractable = GetComponent<XRGrabInteractable>();
             if (_xrGrabInteractable)
@@ -64,35 +68,22 @@ namespace Components
             }
         }
 
-
-        /*public ComponentData(int id, Category category, string name, int price, int manufactureFootprint, int useFootprint, int recycleFootprint, Sprite img)
+        public void SetCompStatus(ComponentStatus status)
         {
-            _id = id;
-            _category = category;
-            _name = name;
-            _price = price;
-            _manufactureFootprint = manufactureFootprint;
-            _useFootprint = useFootprint;
-            _recycleFootprint = recycleFootprint;
-            _img = img;
-        }*/
-
-        private void Update()
-        {
-            if (_xrGrabInteractable.isSelected)
-            {
-                transform.localScale = _componentData.GetStoredScale();
-                _collider.size = _resizedCollider;
-                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetStoredScale();
-            }
-            else
-            {
+            if(status == ComponentStatus.Use)
                 transform.localScale = Vector3.one;
-                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = Vector3.one;
-                _collider.size = _componentData.GetColliderScale();
-            }
+
+            if (status == ComponentStatus.Hand)
+                transform.localScale = _componentData.GetHandScale();
+
+            if (status == ComponentStatus.Shelf)
+                transform.localScale = _componentData.GetShelfScale();
         }
 
+        public void SetCompStatusHand()
+        {
+            SetCompStatus(ComponentStatus.Hand);
+        }
 
         public int GetId()
         {
@@ -132,6 +123,21 @@ namespace Components
         public Sprite GetImg()
         {
             return _img;
+        }
+
+        public GameObject GetModel()
+        {
+            return _componentData.GetModel();
+        }
+
+        public Vector3 GetShelfScale()
+        {
+            return _componentData.GetShelfScale();
+        }
+
+        public Vector3 GetHandScale()
+        {
+            return _componentData.GetHandScale();
         }
     }
 }

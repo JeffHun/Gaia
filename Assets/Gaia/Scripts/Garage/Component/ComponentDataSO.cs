@@ -25,9 +25,8 @@ namespace Components
         [SerializeField] private int _recycleFootprint;
         [SerializeField] private Sprite _image;
         [SerializeField] private GameObject _model;
-        [SerializeField] private Vector3 _useScale;         // When in the car model preview
-        [SerializeField] private Vector3 _storedScale;      // When in hands or on shelf
-        [SerializeField] private Vector3 _colliderScale;
+        [SerializeField] private Vector3 _shelfScale;      // When on shelf
+        [SerializeField] private Vector3 _handScale;      // When in hands
 
         public int GetCompId()
         {
@@ -74,19 +73,14 @@ namespace Components
             return _model;
         }
 
-        public Vector3 GetUseScale()
+        public Vector3 GetShelfScale()
         {
-            return _useScale;
+            return _shelfScale;
         }
 
-        public Vector3 GetStoredScale()
+        public Vector3 GetHandScale()
         {
-            return _storedScale;
-        }
-
-        public Vector3 GetColliderScale()
-        {
-            return _colliderScale;
+            return _handScale;
         }
     }
 }
