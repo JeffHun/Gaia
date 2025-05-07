@@ -2039,6 +2039,7 @@ GameObject:
   - component: {fileID: 5483713822066734489}
   - component: {fileID: 2298019869534554711}
   - component: {fileID: 533554150115852206}
+  - component: {fileID: 8394653199584880799}
   m_Layer: 6
   m_Name: Right Direct Interactor
   m_TagString: Right hand
@@ -2204,6 +2205,21 @@ MonoBehaviour:
   m_MoveObjectOut: 15
   m_DirectionalAnchorRotation: 1
   m_PoseProvider: {fileID: 0}
+--- !u!114 &8394653199584880799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5562302540749997035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gripAction: {fileID: 5667446173830999989, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  triggerAction: {fileID: -2439264783773714294, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  directInteractor: {fileID: 5483713822066734489}
 --- !u!1 &5652331157508628172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,6 +3002,7 @@ GameObject:
   - component: {fileID: 5853420914507829216}
   - component: {fileID: 3211646138605234816}
   - component: {fileID: 4149122578304650307}
+  - component: {fileID: 8544977898119398365}
   m_Layer: 6
   m_Name: Left Direct Interactor
   m_TagString: Left hand
@@ -3025,7 +3042,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -3151,6 +3168,21 @@ MonoBehaviour:
   m_MoveObjectOut: 15
   m_DirectionalAnchorRotation: 1
   m_PoseProvider: {fileID: 0}
+--- !u!114 &8544977898119398365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8218340248209413806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gripAction: {fileID: 5667446173830999989, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  triggerAction: {fileID: -2439264783773714294, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  directInteractor: {fileID: 5853420914507829216}
 --- !u!1 &8324674474386616485
 GameObject:
   m_ObjectHideFlags: 0
