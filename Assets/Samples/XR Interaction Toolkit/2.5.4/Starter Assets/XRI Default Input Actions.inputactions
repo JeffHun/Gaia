@@ -2600,6 +2600,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "CustomGrip",
+            "id": "e3a0049e-992c-4c29-ad5e-54663b2236b6",
+            "actions": [
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "3719da24-3dea-4142-8be8-cec180e9d7a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "42fabc53-4a24-4cfb-899f-c88391851b59",
+                    "path": "*/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10ff0b56-ccfb-49ed-9b78-6d9b8bf7aab4",
+                    "path": "*/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
