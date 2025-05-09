@@ -15,20 +15,21 @@ public class CustomGrabHandler : MonoBehaviour
 
     private void Update()
     {
-        // Check input values from the XRController
+        // Check input values from the Controllers
         bool gripPressed = xrController.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue) && gripValue > 0.5f;
         bool triggerPressed = xrController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue) && triggerValue > 0.5f;
-
-        Debug.Log($"{gripPressed}, {triggerPressed}, {_currentInteractable}, {_selected}, {_needInteractable}");
 
         if (_currentInteractable == null)
             _needInteractable = true;
         else
             _needInteractable = false;
+
+
         if (gripPressed || triggerPressed)
         {
             if (_currentInteractable != null && !_selected)
             {
+                //Start grab interaction
                 directInteractor.StartManualInteraction(_currentInteractable);
                 _selected = true;
             }
@@ -37,7 +38,7 @@ public class CustomGrabHandler : MonoBehaviour
         {
             if (_currentInteractable != null && _selected)
             {
-                //_currentInteractable = null;
+                //End grab interaction
                 directInteractor.EndManualInteraction();
                 _selected = false;
             }
