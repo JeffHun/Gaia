@@ -14,8 +14,13 @@ public class CarMovement : MonoBehaviour
 
     public void StartCarMovement()
     {
-        _elapsedTime = 0f;
-        _isMoving = true;
+        if (_componentManager.GetComponents()[0] &&
+            _componentManager.GetComponents()[1] &&
+            _componentManager.GetComponents()[2])
+        {
+            _elapsedTime = 0f;
+            _isMoving = true;
+        }
     }
 
     

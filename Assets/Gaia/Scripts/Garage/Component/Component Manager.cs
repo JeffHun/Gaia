@@ -73,7 +73,7 @@ public class ComponentManager : MonoBehaviour
         {
             _uiManager.ChangeState(UIState.overview);
             _overviewPage.UpdatePage(_components);
-            _car.StartCarMovement();
+            //_car.StartCarMovement();
         }
     }
 
@@ -167,4 +167,10 @@ public class ComponentManager : MonoBehaviour
         RemoveCarComponent(comp);
         _componentPage.UIRemoveComponent(comp);
     }
+
+    public ComponentData[] GetComponents()
+    {
+        return _components;
+    }
+
 }
