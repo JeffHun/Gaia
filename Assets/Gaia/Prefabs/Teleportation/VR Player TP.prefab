@@ -2217,8 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gripAction: {fileID: 5667446173830999989, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  triggerAction: {fileID: -2439264783773714294, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  xrController: {fileID: 0}
   directInteractor: {fileID: 5483713822066734489}
 --- !u!1 &5652331157508628172
 GameObject:
@@ -3180,8 +3179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gripAction: {fileID: 5667446173830999989, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
-  triggerAction: {fileID: -2439264783773714294, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  xrController: {fileID: 0}
   directInteractor: {fileID: 5853420914507829216}
 --- !u!1 &8324674474386616485
 GameObject:
@@ -3747,6 +3745,10 @@ PrefabInstance:
       propertyPath: m_Reticle
       value: 
       objectReference: {fileID: 9043388454308637661, guid: eac4cea10c65a2b4c984be71f7daaab4, type: 3}
+    - target: {fileID: 2761784063978902505, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LineBendRatio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3865,6 +3867,10 @@ PrefabInstance:
       propertyPath: m_Reticle
       value: 
       objectReference: {fileID: 9043388454308637661, guid: eac4cea10c65a2b4c984be71f7daaab4, type: 3}
+    - target: {fileID: 2761784063978902505, guid: c1800acf6366418a9b5f610249000331, type: 3}
+      propertyPath: m_LineBendRatio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2761784063978902506, guid: c1800acf6366418a9b5f610249000331, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
