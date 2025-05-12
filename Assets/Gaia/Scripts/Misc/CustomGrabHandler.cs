@@ -8,7 +8,6 @@ public class CustomGrabHandler : MonoBehaviour
 {
     public XRController xrController; // Reference to the XRController component
     public XRDirectInteractor directInteractor; // Reference to the XRDirectInteractor component
-    public Collider directCollider;
 
     private IXRSelectInteractable _currentInteractable = null;
     private bool _selected = false;
