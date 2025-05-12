@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 804947359358219406}
   - component: {fileID: 883934016394137082}
   - component: {fileID: 3065020909182058140}
-  - component: {fileID: 3958777297428368515}
   - component: {fileID: 6724432912655777075}
+  - component: {fileID: 2901975319943861455}
   m_Layer: 6
   m_Name: Teleportation Anchor
   m_TagString: Untagged
@@ -86,28 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3958777297428368515
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989428509367655364}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8321685774571456786, guid: 9e1dc1c14313460d872de39e35129b39, type: 3}
 --- !u!114 &6724432912655777075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +198,29 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_TeleportAnchorTransform: {fileID: 5859788257921104419}
+--- !u!136 &2901975319943861455
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989428509367655364}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.49999982
+  m_Height: 3.0957744
+  m_Direction: 1
+  m_Center: {x: -0.00000017881393, y: 1.1478873, z: 0.00000017881393}
 --- !u!1 &8590761590162301718
 GameObject:
   m_ObjectHideFlags: 0
