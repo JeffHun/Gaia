@@ -23,3 +23,4 @@ MonoBehaviour:
   _model: {fileID: 3401819144432266560, guid: 2ca44bb8e17bbc342aa48ec23737c812, type: 3}
   _shelfScale: {x: 0.1, y: 0.1, z: 0.1}
   _handScale: {x: 0.01, y: 0.01, z: 0.01}
+  _carScale: {x: 1, y: 1, z: 1}

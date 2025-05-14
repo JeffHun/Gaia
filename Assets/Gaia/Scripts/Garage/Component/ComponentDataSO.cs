@@ -27,6 +27,7 @@ namespace Components
         [SerializeField] private GameObject _model;
         [SerializeField] private Vector3 _shelfScale;      // When on shelf
         [SerializeField] private Vector3 _handScale;      // When in hands
+        [SerializeField] private Vector3 _carScale;
 
         public int GetCompId()
         {
@@ -81,6 +82,11 @@ namespace Components
         public Vector3 GetHandScale()
         {
             return _handScale;
+        }
+
+        public Vector3 GetCarScale()
+        {
+            return _carScale;
         }
     }
 }

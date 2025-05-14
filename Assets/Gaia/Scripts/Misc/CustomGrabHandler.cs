@@ -1,3 +1,4 @@
+using Components;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -30,6 +31,8 @@ public class CustomGrabHandler : MonoBehaviour
             if (_currentInteractable != null && !_selected)
             {
                 //Start grab interaction
+                if (directInteractor.interactablesSelected.Count >= 1)
+                    directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
                 directInteractor.StartManualInteraction(_currentInteractable);
                 _selected = true;
             }

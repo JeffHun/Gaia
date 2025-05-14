@@ -60,6 +60,7 @@ namespace Components
             _collider = GetComponent<BoxCollider>();
             _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
             _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
+            //transform.localScale = _componentData.GetShelfScale();
 
             _xrGrabInteractable = GetComponent<XRGrabInteractable>();
             if (_xrGrabInteractable)
@@ -71,13 +72,26 @@ namespace Components
         public void SetCompStatus(ComponentStatus status)
         {
             if(status == ComponentStatus.Use)
-                transform.localScale = Vector3.one;
-
+            {
+                Debug.Log("Applying car scale for " + transform.name);
+                //transform.localScale = _componentData.GetCarScale();
+                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetCarScale();
+            }
             if (status == ComponentStatus.Hand)
-                transform.localScale = _componentData.GetHandScale();
+            {
+                Debug.Log("Applying hand scale for " + transform.name);
+                //transform.localScale = _componentData.GetHandScale();
+                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetHandScale();
+            }
 
             if (status == ComponentStatus.Shelf)
-                transform.localScale = _componentData.GetShelfScale();
+            {
+                Debug.Log("Applying shelf scale for " + transform.name);
+                //transform.localScale = _componentData.GetShelfScale();
+                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetShelfScale();
+            }
+
+            Debug.Log("scale : " + transform.localScale);
         }
 
         public void SetCompStatusHand()
@@ -138,6 +152,11 @@ namespace Components
         public Vector3 GetHandScale()
         {
             return _componentData.GetHandScale();
+        }
+
+        public Vector3 GetCarScale()
+        {
+            return _componentData.GetCarScale();
         }
     }
 }

@@ -21,5 +21,6 @@ MonoBehaviour:
   _recycleFootprint: -800
   _image: {fileID: 21300000, guid: d69501e90ea02104cb02a9e9d0174842, type: 3}
   _model: {fileID: 2858624336757826449, guid: b500bb6fd2a225844878bb2102369838, type: 3}
-  _shelfScale: {x: 1, y: 1, z: 1}
+  _shelfScale: {x: 0.5, y: 0.5, z: 0.5}
   _handScale: {x: 0.3, y: 0.3, z: 0.3}
+  _carScale: {x: 1, y: 1, z: 1}

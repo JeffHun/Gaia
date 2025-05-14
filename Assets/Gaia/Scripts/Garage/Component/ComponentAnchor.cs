@@ -48,9 +48,20 @@ public class ComponentAnchor : MonoBehaviour
             {
                 other.gameObject.transform.position = transform.position;
                 other.gameObject.transform.rotation = transform.rotation;
-                other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
                 other.gameObject.transform.parent = transform;
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Component")
+            other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Component")
+            other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
     }
 }
