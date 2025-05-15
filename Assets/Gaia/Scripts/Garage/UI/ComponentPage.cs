@@ -130,6 +130,18 @@ public class ComponentPage : MonoBehaviour
             _optionImg.sprite = _unknowImg;
         }
 
+        int remainingPriceBudget = _UImanager.GetPriceBudget() - totalPrice;
+        int remainingFootprintBudget = _UImanager.GetFootprintBudget() - totalFootprint;
+
+        if (remainingPriceBudget > 0)
+            _priceBudget.text = remainingPriceBudget.ToString();
+        else
+            _priceBudget.text = "0";
+
+        if (remainingFootprintBudget > 0)
+            _footprintBudget.text = remainingFootprintBudget.ToString();
+        else
+            _footprintBudget.text = "0";
     }
 
     public void UpdateCurrentComponent(ComponentData comp)

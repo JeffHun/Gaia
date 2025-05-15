@@ -12035,7 +12035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mon budget
+  m_text: Budget restant
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53de40072c53a1c4f9a9f310a70e8484, type: 2}
   m_sharedMaterial: {fileID: -58118644541039279, guid: 53de40072c53a1c4f9a9f310a70e8484, type: 2}
