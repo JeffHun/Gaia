@@ -58,6 +58,7 @@ namespace Components
             _recycleFootprint = _componentData.GetRecycleFootprint();
             _img = _componentData.GetImage();
             Instantiate(_componentData.GetModel(), gameObject.transform, false);
+            transform.GetChild(0).localScale = _componentData.GetShelfScale();
             _collider = transform.GetComponent<BoxCollider>();
             _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
             _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
@@ -74,15 +75,21 @@ namespace Components
             if(status == ComponentStatus.Use)
             {
                 transform.GetChild(0).localScale = _componentData.GetCarScale();
+                _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
+                _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
             }
             if (status == ComponentStatus.Hand)
             {
                 transform.GetChild(0).localScale = _componentData.GetHandScale();
+                _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
+                _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
             }
 
             if (status == ComponentStatus.Shelf)
             {
                 transform.GetChild(0).localScale = _componentData.GetShelfScale();
+                _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
+                _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
             }
         }
 
