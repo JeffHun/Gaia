@@ -31,11 +31,11 @@ public class CustomGrabHandler : MonoBehaviour
             if (_currentInteractable != null && !_selected)
             {
                 //Start grab interaction
-                if (directInteractor.interactablesSelected.Count >= 1)
-                    directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
                 directInteractor.StartManualInteraction(_currentInteractable);
                 _selected = true;
             }
+            if (directInteractor.interactablesSelected.Count >= 1)
+                directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
         }
         else
         {
@@ -52,7 +52,7 @@ public class CustomGrabHandler : MonoBehaviour
     {
         if(other.tag == "Component" && _currentInteractable == null && _needInteractable)
         {
-            other.TryGetComponent<XRGrabInteractable>(out var grabInteractable);
+            other.transform.TryGetComponent<XRGrabInteractable>(out var grabInteractable);
             _currentInteractable = grabInteractable;
             _needInteractable = false;
         }

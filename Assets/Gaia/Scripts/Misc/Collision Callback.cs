@@ -29,8 +29,6 @@ public class CollisionCallback : MonoBehaviour
         if (_tags.Contains(other.transform.tag))
         {
             CollisionExit.Invoke(other);
-            if (other.transform.tag == "Component")
-                other.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
         }
     }
 

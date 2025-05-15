@@ -15217,6 +15217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Component Template
       objectReference: {fileID: 0}
+    - target: {fileID: 8242629515914199131, guid: a609cd5413e10cf4f83640077c3ca445, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9053459987195503800, guid: a609cd5413e10cf4f83640077c3ca445, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

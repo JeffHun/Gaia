@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 namespace Components
 {
@@ -57,12 +58,11 @@ namespace Components
             _recycleFootprint = _componentData.GetRecycleFootprint();
             _img = _componentData.GetImage();
             Instantiate(_componentData.GetModel(), gameObject.transform, false);
-            _collider = GetComponent<BoxCollider>();
+            _collider = transform.GetComponent<BoxCollider>();
             _collider.center = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.center - transform.position;
             _collider.size = transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size;
-            //transform.localScale = _componentData.GetShelfScale();
 
-            _xrGrabInteractable = GetComponent<XRGrabInteractable>();
+            _xrGrabInteractable = transform.GetComponent<XRGrabInteractable>();
             if (_xrGrabInteractable)
             {
                 _xrGrabInteractable.colliders.Add(GetComponentInChildren<Collider>());
@@ -73,28 +73,25 @@ namespace Components
         {
             if(status == ComponentStatus.Use)
             {
-                Debug.Log("Applying car scale for " + transform.name);
-                //transform.localScale = _componentData.GetCarScale();
-                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetCarScale();
+                transform.GetChild(0).localScale = _componentData.GetCarScale();
             }
             if (status == ComponentStatus.Hand)
             {
-                Debug.Log("Applying hand scale for " + transform.name);
-                //transform.localScale = _componentData.GetHandScale();
-                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetHandScale();
+                transform.GetChild(0).localScale = _componentData.GetHandScale();
             }
 
             if (status == ComponentStatus.Shelf)
             {
-                Debug.Log("Applying shelf scale for " + transform.name);
-                //transform.localScale = _componentData.GetShelfScale();
-                transform.Find(_componentData.GetModel().name + "(Clone)").localScale = _componentData.GetShelfScale();
+                transform.GetChild(0).localScale = _componentData.GetShelfScale();
             }
-
-            Debug.Log("scale : " + transform.localScale);
         }
 
         public void SetCompStatusHand()
+        {
+            SetCompStatus(ComponentStatus.Hand);
+        }
+
+        public void OnBeginGrab()
         {
             SetCompStatus(ComponentStatus.Hand);
         }

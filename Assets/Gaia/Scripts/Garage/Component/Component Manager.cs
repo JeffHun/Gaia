@@ -139,7 +139,7 @@ public class ComponentManager : MonoBehaviour
             if (_components[i] != null)
             {
                 Transform compTransform = _components[i].transform;
-                Rigidbody compRb = _components[i].GetComponent<Rigidbody>();
+                Rigidbody compRb = _components[i].transform.GetComponent<Rigidbody>();
 
                 compTransform.position = sockets[i].position;
                 compTransform.rotation = sockets[i].rotation;

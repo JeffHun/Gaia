@@ -58,10 +58,4 @@ public class ComponentAnchor : MonoBehaviour
         if (other.gameObject.tag == "Component")
             other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Component")
-            other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
-    }
 }

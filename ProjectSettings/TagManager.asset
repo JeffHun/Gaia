@@ -12,6 +12,7 @@ TagManager:
   - Left hand
   - Floor
   - Component
+  - GarageCar
   layers:
   - Default
   - TransparentFX
