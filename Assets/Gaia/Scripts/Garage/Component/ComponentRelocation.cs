@@ -26,7 +26,6 @@ public class ComponentRelocation : MonoBehaviour
     {
         if(_isLerping)
         {
-            Debug.Log("Is Lerping");
             GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
             GetComponent<XRGrabInteractable>().enabled = false;
             _timer += Time.deltaTime / 2f;
