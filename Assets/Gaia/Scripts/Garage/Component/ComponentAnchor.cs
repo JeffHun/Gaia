@@ -46,6 +46,7 @@ public class ComponentAnchor : MonoBehaviour
         {
             if(other.transform.parent.GetComponent<ComponentData>().GetId() == _compId)
             {
+                Debug.Log("Positionned to anchor");
                 other.transform.parent.gameObject.transform.position = transform.position;
                 other.transform.parent.gameObject.transform.rotation = transform.rotation;
                 other.transform.parent.gameObject.transform.parent = transform;
