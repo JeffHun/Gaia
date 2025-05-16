@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2747514319815939095}
   - component: {fileID: 9027368936216519748}
   - component: {fileID: 5616309400833228702}
+  - component: {fileID: -6236566034214991523}
   m_Layer: 0
   m_Name: BerlineCar
   m_TagString: Vehicle
@@ -87,3 +88,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-6236566034214991523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3272693177997184685}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8564552, y: 1.3693931, z: 3.0011768}
+  m_Center: {x: 0, y: 0.6896038, z: -0.82213163}

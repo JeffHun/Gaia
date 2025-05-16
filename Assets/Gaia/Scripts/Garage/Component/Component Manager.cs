@@ -156,14 +156,14 @@ public class ComponentManager : MonoBehaviour
 
     public void OnColliderEntered(Collider collider)
     {
-        ComponentData comp = collider.GetComponent<ComponentData>();
+        ComponentData comp = collider.transform.parent.GetComponent<ComponentData>();
         AddCarComponent(comp);
         _componentPage.UIAddComponent(comp);
     }
 
     public void OnColliderExited(Collider collider)
     {
-        ComponentData comp = collider.GetComponent<ComponentData>();
+        ComponentData comp = collider.transform.parent.GetComponent<ComponentData>();
         RemoveCarComponent(comp);
         _componentPage.UIRemoveComponent(comp);
     }

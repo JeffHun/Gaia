@@ -42,20 +42,20 @@ public class ComponentAnchor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Component")
+        if(other.transform.parent.gameObject.tag == "Component")
         {
-            if(other.GetComponent<ComponentData>().GetId() == _compId)
+            if(other.transform.parent.GetComponent<ComponentData>().GetId() == _compId)
             {
-                other.gameObject.transform.position = transform.position;
-                other.gameObject.transform.rotation = transform.rotation;
-                other.gameObject.transform.parent = transform;
+                other.transform.parent.gameObject.transform.position = transform.position;
+                other.transform.parent.gameObject.transform.rotation = transform.rotation;
+                other.transform.parent.gameObject.transform.parent = transform;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Component")
-            other.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
+        if (other.transform.parent.gameObject.tag == "Component")
+            other.transform.parent.gameObject.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Shelf);
     }
 }
