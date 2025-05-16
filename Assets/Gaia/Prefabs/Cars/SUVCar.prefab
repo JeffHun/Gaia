@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2629645680589830138}
   - component: {fileID: 3299281237523334551}
   - component: {fileID: 6478741704334433643}
+  - component: {fileID: 3423415817398116111}
   m_Layer: 0
   m_Name: SUVCar
   m_TagString: Vehicle
@@ -88,3 +89,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3423415817398116111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401819144432266560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.741847, y: 1.4721857, z: 3.0707054}
+  m_Center: {x: 0.0033581257, y: 0.71357685, z: -0.8633561}

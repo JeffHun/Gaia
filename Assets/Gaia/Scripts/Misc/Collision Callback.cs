@@ -26,7 +26,7 @@ public class CollisionCallback : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (_tags.Contains(other.transform.tag))
+        if (_tags.Contains(other.transform.tag) || _tags.Contains(other.transform.parent.tag))
         {
             CollisionExit.Invoke(other);
         }
@@ -34,11 +34,11 @@ public class CollisionCallback : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_tags.Contains(other.transform.tag))
+        if (_tags.Contains(other.transform.tag) || _tags.Contains(other.transform.parent.tag))
         {
             CollisionEnter.Invoke(other);
-            if (other.transform.tag == "Component")
-                other.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Use);
+            if (other.transform.parent.transform.tag == "Component")
+                other.transform.parent.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Use);
         }
     }
 }
