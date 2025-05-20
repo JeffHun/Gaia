@@ -21,6 +21,7 @@ public class ComponentManager : MonoBehaviour
     private ComponentData _leftComponent;
     private ComponentData _rightComponent;
 
+    [SerializeField]
     private ComponentData[] _components;
 
     private void Awake()
@@ -47,12 +48,15 @@ public class ComponentManager : MonoBehaviour
         switch (comp.GetCategory())
         {
             case Category.Type:
+                _components[0] = comp;
                 AssignSocket(_components[0], _socketType);
                 break;
             case Category.Moteur:
+                _components[1] = comp;
                 AssignSocket(_components[1], _socketEngine);
                 break;
             case Category.Options:
+                _components[2] = comp;
                 AssignSocket(_components[2], _socketSettings);
                 break;
         }
