@@ -18,7 +18,36 @@ public class ComponentsValues : MonoBehaviour
     {
         for(int i = 0; i < _dataComponents.Count; i++)
         {
-            if (_dataComponents[i].GetCategory() == Category.Moteur && Mathf.Abs(_dataComponents[i].GetManufactureFootprint()) > Mathf.Abs(_maxEngineFootprint))
+            switch (_dataComponents[i].GetCategory())
+            {
+                case Category.Moteur:
+                    _maxEngineFootprint = Mathf.Max(
+                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()), 
+                        Mathf.Abs(_dataComponents[i].GetUseFootprint()), 
+                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()), 
+                        Mathf.Abs(_maxEngineFootprint)
+                        );
+                    break;
+                case Category.Options:
+                    _maxEngineFootprint = Mathf.Max(
+                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()),
+                        Mathf.Abs(_dataComponents[i].GetUseFootprint()),
+                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()),
+                        Mathf.Abs(_maxOptionFootprint)
+                        );
+                    break;
+                case Category.Type:
+                    _maxEngineFootprint = Mathf.Max(
+                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()),
+                        Mathf.Abs(_dataComponents[i].GetUseFootprint()),
+                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()),
+                        Mathf.Abs(_maxTypeFootprint)
+                        );
+                    break;
+            }
+
+
+            /*if (_dataComponents[i].GetCategory() == Category.Moteur && Mathf.Abs(_dataComponents[i].GetManufactureFootprint()) > Mathf.Abs(_maxEngineFootprint))
                 _maxEngineFootprint = _dataComponents[i].GetManufactureFootprint();
             if (_dataComponents[i].GetCategory() == Category.Moteur && Mathf.Abs(_dataComponents[i].GetUseFootprint()) > Mathf.Abs(_maxEngineFootprint))
                 _maxEngineFootprint = _dataComponents[i].GetUseFootprint();
@@ -37,7 +66,7 @@ public class ComponentsValues : MonoBehaviour
             if (_dataComponents[i].GetCategory() == Category.Options && Mathf.Abs(_dataComponents[i].GetUseFootprint()) > Mathf.Abs(_maxOptionFootprint))
                 _maxOptionFootprint = _dataComponents[i].GetUseFootprint();
             if (_dataComponents[i].GetCategory() == Category.Options && Mathf.Abs(_dataComponents[i].GetRecycleFootprint()) > Mathf.Abs(_maxOptionFootprint))
-                _maxOptionFootprint = _dataComponents[i].GetRecycleFootprint();
+                _maxOptionFootprint = _dataComponents[i].GetRecycleFootprint();*/
         }
 
         _maxCarFootrint = _maxEngineFootprint + _maxTypeFootprint + _maxOptionFootprint;
@@ -62,4 +91,5 @@ public class ComponentsValues : MonoBehaviour
     {
         return _maxCarFootrint;
     }
+
 }

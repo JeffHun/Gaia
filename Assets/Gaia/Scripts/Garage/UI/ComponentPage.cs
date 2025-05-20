@@ -146,15 +146,24 @@ public class ComponentPage : MonoBehaviour
 
     public void UpdateCurrentComponent(ComponentData comp)
     {
-        _currentCategoryTxt.text = comp.GetCategory().ToString() + "-";
-        _currentNameTxt.text = comp.GetName().ToString();
-
-        int footprint = comp.GetManufactureFootprint() + comp.GetUseFootprint() + comp.GetRecycleFootprint();
-        _currentFootprintTxt.text = footprint.ToString();
-        _currentPriceTxt.text = comp.GetPrice().ToString();
-
         _currentImg.sprite = comp.GetImg();
 
+        switch (comp.GetCategory())
+        {
+            case Category.Moteur:
+                SetBars(comp, _componentsValues.GetMaxEngineFootprint());
+                break;
+            case Category.Type:
+                SetBars(comp, _componentsValues.GetMaxTypeFootprint());
+                break;
+            case Category.Options:
+                SetBars(comp, _componentsValues.GetMaxOptionFootprint());
+                break;
+        }
+
+        SetTexts(comp);
+
+        /*
         if(comp.GetCategory() == Category.Moteur)
         {
             _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
@@ -175,6 +184,24 @@ public class ComponentPage : MonoBehaviour
             _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
             _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
         }
+        */
+    }
+
+    private void SetBars(ComponentData comp, float footprint)
+    {
+        _manufactureSlider.SetBar(comp.GetManufactureFootprint(), footprint);
+        _useSlider.SetBar(comp.GetUseFootprint(), footprint);
+        _recycleSlider.SetBar(comp.GetRecycleFootprint(), footprint);
+    }
+
+    private void SetTexts(ComponentData comp)
+    {
+        _currentCategoryTxt.text = comp.GetCategory().ToString() + "-";
+        _currentNameTxt.text = comp.GetName().ToString();
+
+        int footprint = comp.GetManufactureFootprint() + comp.GetUseFootprint() + comp.GetRecycleFootprint();
+        _currentFootprintTxt.text = footprint.ToString();
+        _currentPriceTxt.text = comp.GetPrice().ToString();
 
         _currentManufactureTxt.text = comp.GetManufactureFootprint().ToString();
         _currentUseTxt.text = comp.GetUseFootprint().ToString();

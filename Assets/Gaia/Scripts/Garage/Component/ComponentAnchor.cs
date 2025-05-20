@@ -42,13 +42,14 @@ public class ComponentAnchor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.transform.parent.gameObject.tag == "Component")
+        GameObject obj = other.transform.parent.gameObject;
+        if (obj.tag == "Component")
         {
             if(other.transform.parent.GetComponent<ComponentData>().GetId() == _compId)
             {
-                other.transform.parent.gameObject.transform.position = transform.position;
-                other.transform.parent.gameObject.transform.rotation = transform.rotation;
-                other.transform.parent.gameObject.transform.parent = transform;
+                obj.transform.position = transform.position;
+                obj.transform.rotation = transform.rotation;
+                obj.transform.parent = transform;
             }
         }
     }

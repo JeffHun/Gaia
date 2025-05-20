@@ -47,33 +47,20 @@ public class ComponentManager : MonoBehaviour
         switch (comp.GetCategory())
         {
             case Category.Type:
-                _components[0] = comp;
-                comp.transform.position = _socketType.transform.position;
-                comp.transform.rotation = _socketType.transform.rotation;
-                comp.transform.parent = _socketType.transform;
+                AssignSocket(_components[0], _socketType);
                 break;
             case Category.Moteur:
-                _components[1] = comp;
-                comp.transform.position = _socketEngine.transform.position;
-                comp.transform.rotation = _socketEngine.transform.rotation;
-                comp.transform.parent = _socketEngine.transform;
+                AssignSocket(_components[1], _socketEngine);
                 break;
             case Category.Options:
-                _components[2] = comp;
-                comp.transform.position = _socketSettings.transform.position;
-                comp.transform.rotation = _socketSettings.transform.rotation;
-                comp.transform.parent = _socketSettings.transform;
+                AssignSocket(_components[2], _socketSettings);
                 break;
         }
-        //body.useGravity = false;
-        //body.velocity = Vector3.zero;
-        //body.angularVelocity = Vector3.zero;
 
         if (_components[0] != null && _components[1] != null && _components[2] != null)
         {
             _uiManager.ChangeState(UIState.overview);
             _overviewPage.UpdatePage(_components);
-            //_car.StartCarMovement();
         }
     }
 
@@ -106,7 +93,6 @@ public class ComponentManager : MonoBehaviour
             _componentPage.UpdateCurrentComponent(_leftComponent);
             _uiManager.ChangeState(UIState.component);
         }
-
 
         if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
@@ -153,7 +139,6 @@ public class ComponentManager : MonoBehaviour
         }
     }
 
-
     public void OnColliderEntered(Collider collider)
     {
         ComponentData comp = collider.transform.parent.GetComponent<ComponentData>();
@@ -173,4 +158,10 @@ public class ComponentManager : MonoBehaviour
         return _components;
     }
 
+    private void AssignSocket(ComponentData comp, Socket socket)
+    {
+        comp.transform.position = socket.transform.position;
+        comp.transform.rotation = socket.transform.rotation;
+        comp.transform.parent = socket.transform;
+    }
 }
