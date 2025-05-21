@@ -162,29 +162,6 @@ public class ComponentPage : MonoBehaviour
         }
 
         SetTexts(comp);
-
-        /*
-        if(comp.GetCategory() == Category.Moteur)
-        {
-            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
-            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
-            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxEngineFootprint());
-        }
-
-        if (comp.GetCategory() == Category.Options)
-        {
-            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
-            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
-            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxOptionFootprint());
-        }
-
-        if (comp.GetCategory() == Category.Type)
-        {
-            _manufactureSlider.SetBar(comp.GetManufactureFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
-            _useSlider.SetBar(comp.GetUseFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
-            _recycleSlider.SetBar(comp.GetRecycleFootprint(), (float)_componentsValues.GetMaxTypeFootprint());
-        }
-        */
     }
 
     private void SetBars(ComponentData comp, float footprint)
