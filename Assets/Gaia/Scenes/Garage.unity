@@ -12550,6 +12550,7 @@ MonoBehaviour:
   _socketType: {fileID: 969972078}
   _socketEngine: {fileID: 1262575886}
   _socketSettings: {fileID: 654234631}
+  _components: []
 --- !u!4 &1560197960
 Transform:
   m_ObjectHideFlags: 0
