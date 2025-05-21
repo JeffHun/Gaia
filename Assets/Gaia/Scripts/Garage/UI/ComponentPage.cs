@@ -151,13 +151,13 @@ public class ComponentPage : MonoBehaviour
         switch (comp.GetCategory())
         {
             case Category.Moteur:
-                SetBars(comp, _componentsValues.GetMaxEngineFootprint());
+                SetBars(comp, (float)_componentsValues.GetMaxEngineFootprint());
                 break;
             case Category.Type:
-                SetBars(comp, _componentsValues.GetMaxTypeFootprint());
+                SetBars(comp, (float)_componentsValues.GetMaxTypeFootprint());
                 break;
             case Category.Options:
-                SetBars(comp, _componentsValues.GetMaxOptionFootprint());
+                SetBars(comp, (float)_componentsValues.GetMaxOptionFootprint());
                 break;
         }
 
