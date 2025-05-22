@@ -17,9 +17,14 @@ public class ComponentRelocation : MonoBehaviour
     {
         if (other.gameObject.tag == "Floor")
         {
-            _isTouchingFloor = true;
-            StartCoroutine(Wait(_delay));
+            StartLerpingRoute(_delay);
         }
+    }
+
+    public void StartLerpingRoute(float delay)
+    {
+        _isTouchingFloor = true;
+        StartCoroutine(Wait(delay));
     }
 
     private void Update()

@@ -47,18 +47,39 @@ public class ComponentManager : MonoBehaviour
         switch (comp.GetCategory())
         {
             case Category.Type:
+                if (_components[0])
+                {
+                    var curr_comp = _components[0];
+                    _components[0] = null;
+                    curr_comp.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+
+                }
                 _components[0] = comp;
                 comp.transform.position = _socketType.transform.position;
                 comp.transform.rotation = _socketType.transform.rotation;
                 comp.transform.parent = _socketType.transform;
                 break;
             case Category.Moteur:
+                if (_components[1])
+                {
+                    var curr_comp = _components[1];
+                    _components[1] = null;
+                    curr_comp.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+
+                }
                 _components[1] = comp;
                 comp.transform.position = _socketEngine.transform.position;
                 comp.transform.rotation = _socketEngine.transform.rotation;
                 comp.transform.parent = _socketEngine.transform;
                 break;
             case Category.Options:
+                if (_components[2])
+                {
+                    var curr_comp = _components[2];
+                    _components[2] = null;
+                    curr_comp.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+
+                }
                 _components[2] = comp;
                 comp.transform.position = _socketSettings.transform.position;
                 comp.transform.rotation = _socketSettings.transform.rotation;
