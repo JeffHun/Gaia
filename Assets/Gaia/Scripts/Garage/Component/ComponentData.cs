@@ -18,18 +18,19 @@ namespace Components
     {
         [SerializeField] private ComponentDataSO _componentData;
 
-        int _id;
-        Category _category;
-        string _name;
-        int _price;
-        int _manufactureFootprint;
-        int _useFootprint;
-        int _recycleFootprint;
-        Sprite _img;
-        ComponentAnchor _anchor;
+        public int ID { get; private set; }
+        public Category Category { get; private set; }
+        public string Name { get; private set; }
+        public int Price { get; private set; }
+        public int ManufactureFootprint { get; private set; }
+        public int UseFootprint { get; private set; }
+        public int RecycleFootprint { get; private set; }
+        public Sprite ImageSprite { get; private set; }
+        public ComponentAnchor Anchor { get; private set; }
+        public Transform _modelTransform { get; private set; }
 
-        XRGrabInteractable _xrGrabInteractable;
-        BoxCollider _collider;
+        private XRGrabInteractable _xrGrabInteractable;
+        private BoxCollider _collider;
 
         public void SetComponentDataSO(ComponentDataSO compDataSO)
         {
@@ -39,27 +40,28 @@ namespace Components
 
         public void SetAnchor(ComponentAnchor anchor)
         {
-            _anchor = anchor;
+            Anchor = anchor;
         }
 
         public ComponentAnchor GetAnchor()
         {
-            return _anchor;
+            return Anchor;
         }
 
         private void Init()
         {
-            _id = _componentData.GetCompId();
-            _category = _componentData.GetCategory();
-            _name = _componentData.GetName();
-            _price = _componentData.GetPrice();
-            _manufactureFootprint = _componentData.GetManufactureFootprint();
-            _useFootprint = _componentData.GetUseFootprint();
-            _recycleFootprint = _componentData.GetRecycleFootprint();
-            _img = _componentData.GetImage();
-            Instantiate(_componentData.GetModel(), gameObject.transform, false);
-            transform.GetChild(0).localScale = _componentData.GetShelfScale();
-            _collider = transform.GetChild(0).GetComponent<BoxCollider>();
+            ID = _componentData.ComponentID;
+            Category = _componentData.Category;
+            Name = _componentData.Name;
+            Price = _componentData.Price;
+            ManufactureFootprint = _componentData.ManufactureFootprint;
+            UseFootprint = _componentData.UseFootprint;
+            RecycleFootprint = _componentData.RecycleFootprint;
+            ImageSprite = _componentData.Image;
+            Instantiate(_componentData.Model, gameObject.transform, false);
+            _modelTransform = transform.GetChild(0);
+            _modelTransform.localScale = _componentData.ShelfScale;
+            _collider = _modelTransform.GetComponent<BoxCollider>();
 
             _xrGrabInteractable = transform.GetComponent<XRGrabInteractable>();
             if (_xrGrabInteractable)
@@ -72,16 +74,16 @@ namespace Components
         {
             if(status == ComponentStatus.Use)
             {
-                transform.GetChild(0).localScale = _componentData.GetCarScale();
+                _modelTransform.localScale = _componentData.CarScale;
             }
             if (status == ComponentStatus.Hand)
             {
-                transform.GetChild(0).localScale = _componentData.GetHandScale();
+                _modelTransform.localScale = _componentData.HandScale;
             }
 
             if (status == ComponentStatus.Shelf)
             {
-                transform.GetChild(0).localScale = _componentData.GetShelfScale();
+                _modelTransform.localScale = _componentData.ShelfScale;
             }
         }
 
@@ -95,64 +97,29 @@ namespace Components
             SetCompStatus(ComponentStatus.Hand);
         }
 
-        public int GetId()
+        public int GetComponentTotalFootprint()
         {
-            return _id;
-        }
-
-        public Category GetCategory()
-        {
-            return _category;
-        }
-
-        public string GetName()
-        {
-            return _name;
-        }
-
-        public int GetPrice()
-        {
-            return _price;
-        }
-
-        public int GetManufactureFootprint()
-        {
-            return _manufactureFootprint;
-        }
-
-        public int GetUseFootprint()
-        {
-            return _useFootprint;
-        }
-
-        public int GetRecycleFootprint()
-        {
-            return _recycleFootprint;
-        }
-
-        public Sprite GetImg()
-        {
-            return _img;
+            return ManufactureFootprint + UseFootprint + RecycleFootprint;
         }
 
         public GameObject GetModel()
         {
-            return _componentData.GetModel();
+            return _componentData.Model;
         }
 
         public Vector3 GetShelfScale()
         {
-            return _componentData.GetShelfScale();
+            return _componentData.ShelfScale;
         }
 
         public Vector3 GetHandScale()
         {
-            return _componentData.GetHandScale();
+            return _componentData.HandScale;
         }
 
         public Vector3 GetCarScale()
         {
-            return _componentData.GetCarScale();
+            return _componentData.CarScale;
         }
     }
 }

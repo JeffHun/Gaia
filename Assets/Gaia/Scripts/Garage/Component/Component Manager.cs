@@ -1,10 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UIStates;
 using Components;
 using categories;
-using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class ComponentManager : MonoBehaviour
 {
@@ -14,54 +12,53 @@ public class ComponentManager : MonoBehaviour
     [SerializeField] private ComponentPage _componentPage;
     [SerializeField] private OverviewPage _overviewPage;
     [SerializeField] private CarMovement _car;
-    [SerializeField] private Socket _socketType;
-    [SerializeField] private Socket _socketEngine;
-    [SerializeField] private Socket _socketSettings;
+    [SerializeField] private Socket _typeSocket;
+    [SerializeField] private Socket _engineSocket;
+    [SerializeField] private Socket _settingSocket;
 
     private ComponentData _leftComponent;
     private ComponentData _rightComponent;
 
-    [SerializeField]
     private ComponentData[] _components;
+
+    public ComponentData TypeComponent { get => _components[0]; private set { _components[0] = value; } }
+    public ComponentData EngineComponent { get => _components[1]; private set { _components[1] = value; } }
+    public ComponentData SettingComponent { get => _components[2]; private set { _components[2] = value; } }
+
+    public bool IsCarComplete => _components[0] != null && _components[1] != null && _components[2] != null;
 
     private void Awake()
     {
         _components = new ComponentData[3];
     }
 
-    public float GetTotalFootPrint()
+    public float GetTotalFootprint()
     {
-        return _components[0].GetManufactureFootprint() +
-                    _components[0].GetUseFootprint() +
-                    _components[0].GetRecycleFootprint() +
-                    _components[1].GetManufactureFootprint() +
-                    _components[1].GetUseFootprint() +
-                    _components[1].GetRecycleFootprint() +
-                    _components[2].GetManufactureFootprint() +
-                    _components[2].GetUseFootprint() +
-                    _components[2].GetRecycleFootprint(); ;
+        return TypeComponent.GetComponentTotalFootprint() +
+                EngineComponent.GetComponentTotalFootprint() +
+                SettingComponent.GetComponentTotalFootprint();
     }
 
     public void AddCarComponent(ComponentData comp)
     {
         Rigidbody body = comp.GetComponent<Rigidbody>();
-        switch (comp.GetCategory())
+        switch (comp.Category)
         {
             case Category.Type:
-                _components[0] = comp;
-                AssignSocket(_components[0], _socketType);
+                TypeComponent = comp;
+                AssignSocket(TypeComponent, _typeSocket);
                 break;
             case Category.Moteur:
-                _components[1] = comp;
-                AssignSocket(_components[1], _socketEngine);
+                EngineComponent = comp;
+                AssignSocket(EngineComponent, _engineSocket);
                 break;
             case Category.Options:
-                _components[2] = comp;
-                AssignSocket(_components[2], _socketSettings);
+                SettingComponent = comp;
+                AssignSocket(SettingComponent, _settingSocket);
                 break;
         }
 
-        if (_components[0] != null && _components[1] != null && _components[2] != null)
+        if (IsCarComplete)
         {
             _uiManager.ChangeState(UIState.overview);
             _overviewPage.UpdatePage(_components);
@@ -76,7 +73,7 @@ public class ComponentManager : MonoBehaviour
         {
             if (_components[i] != null)
             {
-                if (_components[i].GetId() == comp.GetId())
+                if (_components[i].ID == comp.ID)
                 {
                     _components[i] = null;
                     return;
@@ -100,8 +97,6 @@ public class ComponentManager : MonoBehaviour
 
         if (_leftInteractor.interactablesSelected.Count == 0 && _leftComponent)
         {
-            // Show idle page at the beginning only
-            //_uiManager.ChangeState(UIState.idle);
             _leftComponent = null;
         }
 
@@ -112,8 +107,6 @@ public class ComponentManager : MonoBehaviour
         }
         if (_rightInteractor.interactablesSelected.Count == 0 && _rightComponent)
         {
-            // Show idle page at the beginning only
-            //_uiManager.ChangeState(UIState.idle);
             _rightComponent = null;
         }
 
@@ -122,7 +115,7 @@ public class ComponentManager : MonoBehaviour
             _uiManager.ChangeState(UIState.warning);
         }
 
-        Transform[] sockets = { _socketType.transform, _socketEngine.transform, _socketSettings.transform };
+        Transform[] sockets = { _typeSocket.transform, _engineSocket.transform, _settingSocket.transform };
 
         for (int i = 0; i < _components.Length && i < sockets.Length; i++)
         {

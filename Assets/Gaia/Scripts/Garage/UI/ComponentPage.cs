@@ -40,7 +40,7 @@ public class ComponentPage : MonoBehaviour
     public void UIAddComponent(ComponentData comp)
     {
         bool isUpdate = false;
-        switch(comp.GetCategory())
+        switch(comp.Category)
         {
             case Category.Type:
                 _components[0] = comp;
@@ -68,7 +68,7 @@ public class ComponentPage : MonoBehaviour
         {
             if (_components[i] != null)
             {
-                if(_components[i].GetId() == comp.GetId())
+                if(_components[i].ID == comp.ID)
                 {
                     _components[i] = null;
                     UpdateComponentsPart();
@@ -87,10 +87,10 @@ public class ComponentPage : MonoBehaviour
         {
             if(_components[i] != null)
             {
-                totalFootprint += _components[i].GetManufactureFootprint();
-                totalFootprint += _components[i].GetUseFootprint();
-                totalFootprint += _components[i].GetRecycleFootprint();
-                totalPrice += _components[i].GetPrice();
+                totalFootprint += _components[i].ManufactureFootprint;
+                totalFootprint += _components[i].UseFootprint;
+                totalFootprint += _components[i].RecycleFootprint;
+                totalPrice += _components[i].Price;
             }
         }
 
@@ -99,8 +99,8 @@ public class ComponentPage : MonoBehaviour
 
         if (_components[0] != null)
         {
-            _typeTxt.text = "Type -" + _components[0].GetName();
-            _typeImg.sprite = _components[0].GetImg();
+            _typeTxt.text = "Type -" + _components[0].Name;
+            _typeImg.sprite = _components[0].ImageSprite;
         }
         else
         {
@@ -110,8 +110,8 @@ public class ComponentPage : MonoBehaviour
 
         if (_components[1] != null)
         {
-            _engineTxt.text = "Moteur -" + _components[1].GetName();
-            _engineImg.sprite = _components[1].GetImg();
+            _engineTxt.text = "Moteur -" + _components[1].Name;
+            _engineImg.sprite = _components[1].ImageSprite;
         }
         else
         {
@@ -121,8 +121,8 @@ public class ComponentPage : MonoBehaviour
 
         if (_components[2] != null)
         {
-            _optionTxt.text = "Options -" + _components[2].GetName();
-            _optionImg.sprite = _components[2].GetImg();
+            _optionTxt.text = "Options -" + _components[2].Name;
+            _optionImg.sprite = _components[2].ImageSprite;
         }
         else
         {
@@ -146,9 +146,9 @@ public class ComponentPage : MonoBehaviour
 
     public void UpdateCurrentComponent(ComponentData comp)
     {
-        _currentImg.sprite = comp.GetImg();
+        _currentImg.sprite = comp.ImageSprite;
 
-        switch (comp.GetCategory())
+        switch (comp.Category)
         {
             case Category.Moteur:
                 SetBars(comp, (float)_componentsValues.GetMaxEngineFootprint());
@@ -166,22 +166,22 @@ public class ComponentPage : MonoBehaviour
 
     private void SetBars(ComponentData comp, float footprint)
     {
-        _manufactureSlider.SetBar(comp.GetManufactureFootprint(), footprint);
-        _useSlider.SetBar(comp.GetUseFootprint(), footprint);
-        _recycleSlider.SetBar(comp.GetRecycleFootprint(), footprint);
+        _manufactureSlider.SetBar(comp.ManufactureFootprint, footprint);
+        _useSlider.SetBar(comp.UseFootprint, footprint);
+        _recycleSlider.SetBar(comp.RecycleFootprint, footprint);
     }
 
     private void SetTexts(ComponentData comp)
     {
-        _currentCategoryTxt.text = comp.GetCategory().ToString() + "-";
-        _currentNameTxt.text = comp.GetName().ToString();
+        _currentCategoryTxt.text = comp.Category.ToString() + "-";
+        _currentNameTxt.text = comp.Name.ToString();
 
-        int footprint = comp.GetManufactureFootprint() + comp.GetUseFootprint() + comp.GetRecycleFootprint();
+        int footprint = comp.ManufactureFootprint + comp.UseFootprint + comp.RecycleFootprint;
         _currentFootprintTxt.text = footprint.ToString();
-        _currentPriceTxt.text = comp.GetPrice().ToString();
+        _currentPriceTxt.text = comp.Price.ToString();
 
-        _currentManufactureTxt.text = comp.GetManufactureFootprint().ToString();
-        _currentUseTxt.text = comp.GetUseFootprint().ToString();
-        _currentRecycleTxt.text = comp.GetRecycleFootprint().ToString();
+        _currentManufactureTxt.text = comp.ManufactureFootprint.ToString();
+        _currentUseTxt.text = comp.UseFootprint.ToString();
+        _currentRecycleTxt.text = comp.RecycleFootprint.ToString();
     }
 }

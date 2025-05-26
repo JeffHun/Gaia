@@ -9,12 +9,15 @@ using Components;
 public class OverviewPage : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI _typeNameTxt, _engineNameTxt, _optionsNameTxt, _typeFootprintTxt, _engineFootprintTxt, _optionsFootprintTxt, _typePriceTxt, _enginePriceTxt, _optionsPriceTxt, _footprintTxt, _footprintBudgetTxt, _priceTxt, _priceBudgetTxt;
+    TextMeshProUGUI _typeNameText, _engineNameText, _optionsNameText, 
+        _typeFootprintText, _engineFootprintText, _optionsFootprintText, 
+        _typePriceText, _enginePriceText, _optionsPriceText, _footprintText, 
+        _footprintBudgetText, _priceText, _priceBudgetText;
 
     [SerializeField]
-    Image _typeImg, _engineImg, _optionsImg;
+    Image _typeImage, _engineImage, _optionsImage;
     [SerializeField]
-    Sprite _defaultImg;
+    Sprite _defaultImage;
 
     [SerializeField]
     Bar _footprintBar, _priceBar;
@@ -22,53 +25,62 @@ public class OverviewPage : MonoBehaviour
     [SerializeField]
     UIManager _UIManager;
 
-    public void UpdatePage(ComponentData[] components)
+    private bool AreComponentsValid(ComponentData[] components)
     {
-        if(components.Length != 3)
+        if (components.Length != 3)
         {
             Debug.LogWarning("There is no 3 components");
-            return;
+            return false;
         }
 
-        foreach(ComponentData comp in components)
+        foreach (ComponentData comp in components)
         {
-            if(comp == null)
+            if (comp == null)
             {
                 Debug.LogWarning("There is a null ComponentData");
-                return;
+                return false;
             }
         }
+        return true;
+    }
 
-        _typeNameTxt.text = components[0].GetName();
-        _engineNameTxt.text = components[1].GetName();
-        _optionsNameTxt.text = components[2].GetName();
+    public void UpdatePage(ComponentData[] components)
+    {
+        if (AreComponentsValid(components))
+        {
+            _typeNameText.text = components[0].Name;
+            _engineNameText.text = components[1].Name;
+            _optionsNameText.text = components[2].Name;
 
-        _typeImg.sprite = components[0].GetImg();
-        _engineImg.sprite = components[1].GetImg();
-        _optionsImg.sprite = components[2].GetImg();
+            _typeImage.sprite = components[0].ImageSprite;
+            _engineImage.sprite = components[1].ImageSprite;
+            _optionsImage.sprite = components[2].ImageSprite;
+        
+            int typeTotal= components[0].GetComponentTotalFootprint();
+            int engineTotal= components[1].GetComponentTotalFootprint();
+            int optionsTotal = components[2].GetComponentTotalFootprint();
 
-        int typeTotal= components[0].GetManufactureFootprint() + components[0].GetUseFootprint() + components[0].GetRecycleFootprint();
-        _typeFootprintTxt.text = typeTotal.ToString();
-        int engineTotal= components[1].GetManufactureFootprint() + components[1].GetUseFootprint() + components[1].GetRecycleFootprint();
-        _engineFootprintTxt.text = engineTotal.ToString();
-        int optionsTotal= components[2].GetManufactureFootprint() + components[2].GetUseFootprint() + components[2].GetRecycleFootprint();
-        _optionsFootprintTxt.text = optionsTotal.ToString();
+            _typeFootprintText.text = typeTotal.ToString();
+            _engineFootprintText.text = engineTotal.ToString();
+            _optionsFootprintText.text = optionsTotal.ToString();
 
-        _footprintBar.SetValues(typeTotal, engineTotal, optionsTotal);
+            _footprintBar.SetValues(typeTotal, engineTotal, optionsTotal);
 
-        _footprintTxt.text = (typeTotal + engineTotal + optionsTotal).ToString();
-        _footprintBudgetTxt.text = _UIManager.GetFootprintBudget().ToString();
+            _footprintText.text = (typeTotal + engineTotal + optionsTotal).ToString();
+            _footprintBudgetText.text = _UIManager.GetFootprintBudget().ToString();
 
-        typeTotal = components[0].GetPrice();
-        _typePriceTxt.text = typeTotal.ToString();
-        engineTotal = components[1].GetPrice();
-        _enginePriceTxt.text = engineTotal.ToString();
-        optionsTotal = components[2].GetPrice();
-        _optionsPriceTxt.text = optionsTotal.ToString();
+            typeTotal = components[0].Price;
+            engineTotal = components[1].Price;
+            optionsTotal = components[2].Price;
 
-        _priceBar.SetValues(typeTotal, engineTotal, optionsTotal);
+            _typePriceText.text = typeTotal.ToString();
+            _enginePriceText.text = engineTotal.ToString();
+            _optionsPriceText.text = optionsTotal.ToString();
 
-        _priceTxt.text = (typeTotal + engineTotal + optionsTotal).ToString();
-        _priceBudgetTxt.text = _UIManager.GetPriceBudget().ToString();
+            _priceBar.SetValues(typeTotal, engineTotal, optionsTotal);
+
+            _priceText.text = (typeTotal + engineTotal + optionsTotal).ToString();
+            _priceBudgetText.text = _UIManager.GetPriceBudget().ToString();
+        }
     }
 }

@@ -18,29 +18,29 @@ public class ComponentsValues : MonoBehaviour
     {
         for(int i = 0; i < _dataComponents.Count; i++)
         {
-            switch (_dataComponents[i].GetCategory())
+            switch (_dataComponents[i].Category)
             {
                 case Category.Moteur:
                     _maxEngineFootprint = Mathf.Max(
-                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()), 
-                        Mathf.Abs(_dataComponents[i].GetUseFootprint()), 
-                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()), 
+                        Mathf.Abs(_dataComponents[i].ManufactureFootprint), 
+                        Mathf.Abs(_dataComponents[i].UseFootprint), 
+                        Mathf.Abs(_dataComponents[i].RecycleFootprint), 
                         Mathf.Abs(_maxEngineFootprint)
                         );
                     break;
                 case Category.Options:
                     _maxOptionFootprint = Mathf.Max(
-                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()),
-                        Mathf.Abs(_dataComponents[i].GetUseFootprint()),
-                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()),
+                        Mathf.Abs(_dataComponents[i].ManufactureFootprint),
+                        Mathf.Abs(_dataComponents[i].UseFootprint),
+                        Mathf.Abs(_dataComponents[i].RecycleFootprint),
                         Mathf.Abs(_maxOptionFootprint)
                         );
                     break;
                 case Category.Type:
                     _maxTypeFootprint = Mathf.Max(
-                        Mathf.Abs(_dataComponents[i].GetManufactureFootprint()),
-                        Mathf.Abs(_dataComponents[i].GetUseFootprint()),
-                        Mathf.Abs(_dataComponents[i].GetRecycleFootprint()),
+                        Mathf.Abs(_dataComponents[i].ManufactureFootprint),
+                        Mathf.Abs(_dataComponents[i].UseFootprint),
+                        Mathf.Abs(_dataComponents[i].RecycleFootprint),
                         Mathf.Abs(_maxTypeFootprint)
                         );
                     break;

@@ -30,13 +30,13 @@ public class ComponentAnchor : MonoBehaviour
         _component = Instantiate(_componentTemplate, transform.position, transform.rotation);
         _component.GetComponent<ComponentData>().SetComponentDataSO(_componentDataSo);
         _component.GetComponent<ComponentData>().SetAnchor(this);
-        _compId = _component.GetComponent<ComponentData>().GetId();
+        _compId = _component.GetComponent<ComponentData>().ID;
 
-        if (_component.GetComponent<ComponentData>().GetCategory() == Category.Type)
+        if (_component.GetComponent<ComponentData>().Category == Category.Type)
             _component.layer = LayerMask.NameToLayer(_layerType);
-        if (_component.GetComponent<ComponentData>().GetCategory() == Category.Moteur)
+        if (_component.GetComponent<ComponentData>().Category == Category.Moteur)
             _component.layer = LayerMask.NameToLayer(_layerEngine);
-        if (_component.GetComponent<ComponentData>().GetCategory() == Category.Options)
+        if (_component.GetComponent<ComponentData>().Category == Category.Options)
             _component.layer = LayerMask.NameToLayer(_layerOptions);
     }
 
@@ -45,7 +45,7 @@ public class ComponentAnchor : MonoBehaviour
         GameObject obj = other.transform.parent.gameObject;
         if (obj.tag == "Component")
         {
-            if(other.transform.parent.GetComponent<ComponentData>().GetId() == _compId)
+            if(other.transform.parent.GetComponent<ComponentData>().ID == _compId)
             {
                 obj.transform.position = transform.position;
                 obj.transform.rotation = transform.rotation;

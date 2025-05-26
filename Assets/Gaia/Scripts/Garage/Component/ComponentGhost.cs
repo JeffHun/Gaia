@@ -18,7 +18,7 @@ public class ComponentGhost : MonoBehaviour
         GameObject[] sockets = FindObjectsOfType<Socket>().Select(socket => socket.gameObject).ToArray();
 
         ComponentData componentData = GetComponent<ComponentData>();
-        Category category = componentData.GetCategory();
+        Category category = componentData.Category;
 
         foreach (GameObject socket in sockets)
         {

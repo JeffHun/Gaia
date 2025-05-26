@@ -25,68 +25,32 @@ namespace Components
         [SerializeField] private int _recycleFootprint;
         [SerializeField] private Sprite _image;
         [SerializeField] private GameObject _model;
-        [SerializeField] private Vector3 _shelfScale;      // When on shelf
-        [SerializeField] private Vector3 _handScale;      // When in hands
+        [SerializeField] private Vector3 _shelfScale;
+        [SerializeField] private Vector3 _handScale;
         [SerializeField] private Vector3 _carScale;
 
-        public int GetCompId()
-        {
-            return _componentId;
-        }
+        public int ComponentID => _componentId;
 
-        public Category GetCategory()
-        {
-            return _category;
-        }
+        public Category Category => _category;
 
-        public string GetName()
-        {
-            return _name;
-        }
+        public string Name => _name;
 
-        public int GetPrice()
-        {
-            return _price;
-        }
+        public int Price => _price;
 
-        public int GetManufactureFootprint()
-        {
-            return _manufactureFootprint;
-        }
+        public int ManufactureFootprint => _manufactureFootprint;
 
-        public int GetUseFootprint()
-        {
-            return _useFootprint;
-        }
+        public int UseFootprint => _useFootprint;
 
-        public int GetRecycleFootprint()
-        {
-            return _recycleFootprint;
-        }
+        public int RecycleFootprint => _recycleFootprint;
 
-        public Sprite GetImage()
-        {
-            return _image;
-        }
+        public Sprite Image => _image;
 
-        public GameObject GetModel()
-        {
-            return _model;
-        }
+        public GameObject Model => _model;
 
-        public Vector3 GetShelfScale()
-        {
-            return _shelfScale;
-        }
+        public Vector3 ShelfScale => _shelfScale;
 
-        public Vector3 GetHandScale()
-        {
-            return _handScale;
-        }
+        public Vector3 HandScale => _handScale;
 
-        public Vector3 GetCarScale()
-        {
-            return _carScale;
-        }
+        public Vector3 CarScale => _carScale;
     }
 }

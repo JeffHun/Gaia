@@ -4412,23 +4412,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e13afdfc80791c4d82b1a02be5bcc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeNameTxt: {fileID: 84338997}
-  _engineNameTxt: {fileID: 1611976781}
-  _optionsNameTxt: {fileID: 739215597}
-  _typeFootprintTxt: {fileID: 2046125382}
-  _engineFootprintTxt: {fileID: 40518443}
-  _optionsFootprintTxt: {fileID: 1521629497}
-  _typePriceTxt: {fileID: 867096291}
-  _enginePriceTxt: {fileID: 827202332}
-  _optionsPriceTxt: {fileID: 1313535130}
-  _footprintTxt: {fileID: 1344421952}
-  _footprintBudgetTxt: {fileID: 344973333}
-  _priceTxt: {fileID: 1411851536}
-  _priceBudgetTxt: {fileID: 872361405}
-  _typeImg: {fileID: 629081672}
-  _engineImg: {fileID: 840522763}
-  _optionsImg: {fileID: 2091712350}
-  _defaultImg: {fileID: 21300000, guid: 74a24d9c8dbf0f94296aea007e07c1c3, type: 3}
+  _typeNameText: {fileID: 0}
+  _engineNameText: {fileID: 0}
+  _optionsNameText: {fileID: 0}
+  _typeFootprintText: {fileID: 0}
+  _engineFootprintText: {fileID: 0}
+  _optionsFootprintText: {fileID: 0}
+  _typePriceText: {fileID: 0}
+  _enginePriceText: {fileID: 0}
+  _optionsPriceText: {fileID: 0}
+  _footprintText: {fileID: 0}
+  _footprintBudgetText: {fileID: 0}
+  _priceText: {fileID: 0}
+  _priceBudgetText: {fileID: 0}
+  _typeImage: {fileID: 0}
+  _engineImage: {fileID: 0}
+  _optionsImage: {fileID: 0}
+  _defaultImage: {fileID: 0}
   _footprintBar: {fileID: 1544453161}
   _priceBar: {fileID: 1539598863}
   _UIManager: {fileID: 1560197962}
@@ -12547,10 +12547,9 @@ MonoBehaviour:
   _componentPage: {fileID: 610680042}
   _overviewPage: {fileID: 510087033}
   _car: {fileID: 178497618}
-  _socketType: {fileID: 969972078}
-  _socketEngine: {fileID: 1262575886}
-  _socketSettings: {fileID: 654234631}
-  _components: []
+  _typeSocket: {fileID: 0}
+  _engineSocket: {fileID: 0}
+  _settingSocket: {fileID: 0}
 --- !u!4 &1560197960
 Transform:
   m_ObjectHideFlags: 0
