@@ -60,7 +60,7 @@ public class ComponentManager : MonoBehaviour
 
         if (IsCarComplete)
         {
-            _uiManager.ChangeState(UIState.overview);
+            _uiManager.ChangeState(UIState.result);
             _overviewPage.UpdatePage(_components);
         }
     }

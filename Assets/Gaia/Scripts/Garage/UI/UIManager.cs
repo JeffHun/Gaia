@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UIStates;
 using categories;
-using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject _idlePage, _componentPage, _warningPage, _overviewPage, _componentsValues;
+    GameObject _idlePage, _componentPage, _warningPage, _overviewPage, _resultPage, _componentsValues;
 
     [SerializeField]
     int _footprintBudget = 50000, _priceBudget = 10000;
@@ -53,7 +50,7 @@ public class UIManager : MonoBehaviour
         _idlePage.SetActive(false);
         _componentPage.SetActive(false);
         _warningPage.SetActive(false);
-        _overviewPage.SetActive(false);
+        _resultPage.SetActive(false);
 
         switch (newState)
         {
@@ -66,8 +63,8 @@ public class UIManager : MonoBehaviour
             case UIState.warning:
                 _warningPage.SetActive(true);
                 break;
-            case UIState.overview:
-                _overviewPage.SetActive(true);
+            case UIState.result:
+                _resultPage.SetActive(true);
                 break;
         }
     }

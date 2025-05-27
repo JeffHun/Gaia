@@ -8,6 +8,6 @@ namespace UIStates{
         idle,
         component,
         warning,
-        overview
+        result
     }
 }
