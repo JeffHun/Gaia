@@ -15,9 +15,9 @@ MonoBehaviour:
   _componentId: 12
   _category: 1
   _name: Thermique
-  _price: 3250
-  _manufactureFootprint: 7000
-  _useFootprint: 30000
+  _price: 4000
+  _manufactureFootprint: 3840
+  _useFootprint: 28800
   _recycleFootprint: -800
   _image: {fileID: 21300000, guid: d69501e90ea02104cb02a9e9d0174842, type: 3}
   _model: {fileID: 2858624336757826449, guid: b500bb6fd2a225844878bb2102369838, type: 3}

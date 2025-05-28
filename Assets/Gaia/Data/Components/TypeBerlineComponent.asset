@@ -15,10 +15,10 @@ MonoBehaviour:
   _componentId: 21
   _category: 0
   _name: Berline
-  _price: 20000
-  _manufactureFootprint: 7000
-  _useFootprint: 2500
-  _recycleFootprint: -1000
+  _price: 30000
+  _manufactureFootprint: 9000
+  _useFootprint: 30000
+  _recycleFootprint: -1700
   _image: {fileID: 21300000, guid: 3d7d6aadb79e96543b323b787458688e, type: 3}
   _model: {fileID: 3272693177997184685, guid: 6e2ec8b2070945f4393f1c62ff0d28ee, type: 3}
   _shelfScale: {x: 0.1, y: 0.1, z: 0.1}

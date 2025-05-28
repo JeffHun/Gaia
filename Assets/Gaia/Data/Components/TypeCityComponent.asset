@@ -15,10 +15,10 @@ MonoBehaviour:
   _componentId: 22
   _category: 0
   _name: Citadine
-  _price: 11250
-  _manufactureFootprint: 5000
-  _useFootprint: 2000
-  _recycleFootprint: -800
+  _price: 19500
+  _manufactureFootprint: 6700
+  _useFootprint: 2100
+  _recycleFootprint: -1300
   _image: {fileID: 21300000, guid: 647601b7aa076f645870ca15f3239eb2, type: 3}
   _model: {fileID: 871015510611720156, guid: 3f04cc63cbabf7c46808801ed0a3dc91, type: 3}
   _shelfScale: {x: 0.1, y: 0.1, z: 0.1}

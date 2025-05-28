@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 84338998}
   - component: {fileID: 84338997}
   m_Layer: 5
-  m_Name: Text (TMP) (38)
+  m_Name: Type Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1561,8 +1561,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7379873, y: 1.1869664, z: 3.9531107}
-  m_Center: {x: 0.011391878, y: 0.71404195, z: 0.04302311}
+  m_Size: {x: 1.7379873, y: 1.8504125, z: 3.9531107}
+  m_Center: {x: 0.011391878, y: 1.0457649, z: 0.04302311}
 --- !u!114 &178497618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4458,23 +4458,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e13afdfc80791c4d82b1a02be5bcc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeNameText: {fileID: 0}
-  _engineNameText: {fileID: 0}
-  _optionsNameText: {fileID: 0}
-  _typeFootprintText: {fileID: 0}
-  _engineFootprintText: {fileID: 0}
-  _optionsFootprintText: {fileID: 0}
-  _typePriceText: {fileID: 0}
-  _enginePriceText: {fileID: 0}
-  _optionsPriceText: {fileID: 0}
-  _footprintText: {fileID: 0}
-  _footprintBudgetText: {fileID: 0}
-  _priceText: {fileID: 0}
-  _priceBudgetText: {fileID: 0}
-  _typeImage: {fileID: 0}
-  _engineImage: {fileID: 0}
-  _optionsImage: {fileID: 0}
-  _defaultImage: {fileID: 0}
+  _typeNameText: {fileID: 84338997}
+  _engineNameText: {fileID: 1611976781}
+  _optionsNameText: {fileID: 739215597}
+  _typeFootprintText: {fileID: 2046125382}
+  _engineFootprintText: {fileID: 40518443}
+  _optionsFootprintText: {fileID: 1521629497}
+  _typePriceText: {fileID: 867096291}
+  _enginePriceText: {fileID: 827202332}
+  _optionsPriceText: {fileID: 1313535130}
+  _footprintText: {fileID: 1344421952}
+  _footprintBudgetText: {fileID: 344973333}
+  _priceText: {fileID: 1411851536}
+  _priceBudgetText: {fileID: 872361405}
+  _typeImage: {fileID: 629081672}
+  _engineImage: {fileID: 840522763}
+  _optionsImage: {fileID: 2091712350}
+  _defaultImage: {fileID: 21300000, guid: 6220ccff7f2457e44805f6d3d5d55edd, type: 3}
   _footprintBar: {fileID: 1544453161}
   _priceBar: {fileID: 1539598863}
   _UIManager: {fileID: 1560197962}
@@ -5325,7 +5325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &610680041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5573,7 +5573,7 @@ GameObject:
   - component: {fileID: 629081673}
   - component: {fileID: 629081672}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Icon Type Comp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6047,7 +6047,7 @@ Transform:
   m_GameObject: {fileID: 686420269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: -2.134, y: 1.339, z: -2.99}
+  m_LocalPosition: {x: -2.218, y: 1.376, z: -2.99}
   m_LocalScale: {x: 1, y: 0.64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12631,6 +12631,7 @@ MonoBehaviour:
   _uiManager: {fileID: 1560197962}
   _componentPage: {fileID: 610680042}
   _overviewPage: {fileID: 510087033}
+  _resultPage: {fileID: 1715000909}
   _car: {fileID: 178497618}
   _typeSocket: {fileID: 969972078}
   _engineSocket: {fileID: 1262575886}
@@ -13448,7 +13449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1715000908
 RectTransform:
   m_ObjectHideFlags: 0

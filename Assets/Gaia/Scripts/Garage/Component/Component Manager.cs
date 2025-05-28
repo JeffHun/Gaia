@@ -11,6 +11,7 @@ public class ComponentManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private ComponentPage _componentPage;
     [SerializeField] private OverviewPage _overviewPage;
+    [SerializeField] private ScatterPlotChart _resultPage;
     [SerializeField] private CarMovement _car;
     [SerializeField] private Socket _typeSocket;
     [SerializeField] private Socket _engineSocket;
@@ -39,6 +40,11 @@ public class ComponentManager : MonoBehaviour
                 SettingComponent.GetComponentTotalFootprint();
     }
 
+    public float GetTotalPrice()
+    {
+        return TypeComponent.Price + EngineComponent.Price + SettingComponent.Price;
+    }
+
     public void AddCarComponent(ComponentData comp)
     {
         Rigidbody body = comp.GetComponent<Rigidbody>();
@@ -62,6 +68,7 @@ public class ComponentManager : MonoBehaviour
         {
             _uiManager.ChangeState(UIState.result);
             _overviewPage.UpdatePage(_components);
+            _resultPage.AddPoint(GetTotalFootprint(), GetTotalPrice());
         }
     }
 
