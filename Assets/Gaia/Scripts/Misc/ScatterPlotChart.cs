@@ -107,6 +107,9 @@ public class ScatterPlotChart : MonoBehaviour
 
         foreach (Point point in _points)
         {
+            // CHECK THIS METHOD, MAY BE CREATING DUPLICATES
+            Debug.Log(point);
+
             GameObject tempObject = Instantiate(_pointPrefab, _main);
             RectTransform rectangleTransform = tempObject.GetComponent<RectTransform>();
             rectangleTransform.anchorMax = Vector2.zero;
@@ -120,6 +123,7 @@ public class ScatterPlotChart : MonoBehaviour
 
     private void InitiatePoints()
     {
+        ClearPoints();
         _points = new List<Point>();
         Point cheapestPoint = new Point(36340, 23750, "O", Color.red);
         Point mostExpensivePoint = new Point(58410, 46000, "O", Color.magenta);
@@ -136,9 +140,9 @@ public class ScatterPlotChart : MonoBehaviour
 
     private void ClearPoints()
     {
-        while (_main.childCount > 0)
+        for (int i = _main.childCount; i > 0; i--) 
         {
-            Destroy(_main.GetChild(0));
+            Destroy(_main.GetChild(i-1).gameObject);
         }
     }
 
