@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 40518444}
   - component: {fileID: 40518443}
   m_Layer: 5
-  m_Name: Text (TMP) (45)
+  m_Name: Engine Footprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 84338998}
   - component: {fileID: 84338997}
   m_Layer: 5
-  m_Name: Type Component
+  m_Name: Type Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 142019870}
   - component: {fileID: 142019869}
   m_Layer: 5
-  m_Name: Text (TMP) (43)
+  m_Name: =
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3172,7 +3172,7 @@ GameObject:
   - component: {fileID: 416526834}
   - component: {fileID: 416526833}
   m_Layer: 5
-  m_Name: Text (TMP) (42)
+  m_Name: +
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3807,20 +3807,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _typeNameText: {fileID: 84338997}
   _engineNameText: {fileID: 1611976781}
-  _optionsNameText: {fileID: 739215597}
+  _settingsNameText: {fileID: 739215597}
   _typeFootprintText: {fileID: 2046125382}
   _engineFootprintText: {fileID: 40518443}
-  _optionsFootprintText: {fileID: 1521629497}
+  _settingsFootprintText: {fileID: 1521629497}
   _typePriceText: {fileID: 867096291}
   _enginePriceText: {fileID: 827202332}
-  _optionsPriceText: {fileID: 1313535130}
+  _settingsPriceText: {fileID: 1313535130}
   _footprintText: {fileID: 1344421952}
   _footprintBudgetText: {fileID: 344973333}
   _priceText: {fileID: 1411851536}
   _priceBudgetText: {fileID: 872361405}
   _typeImage: {fileID: 629081672}
   _engineImage: {fileID: 840522763}
-  _optionsImage: {fileID: 2091712350}
+  _settingsImage: {fileID: 2091712350}
   _defaultImage: {fileID: 21300000, guid: 6220ccff7f2457e44805f6d3d5d55edd, type: 3}
   _footprintBar: {fileID: 1544453161}
   _priceBar: {fileID: 1539598863}
@@ -4324,7 +4324,7 @@ GameObject:
   - component: {fileID: 589870861}
   - component: {fileID: 589870860}
   m_Layer: 5
-  m_Name: Text (TMP) (50)
+  m_Name: +
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4580,17 +4580,7 @@ MonoBehaviour:
   _currentManufactureTxt: {fileID: 1799118116}
   _currentUseTxt: {fileID: 948733914}
   _currentRecycleTxt: {fileID: 10294451}
-  _typeTxt: {fileID: 0}
-  _engineTxt: {fileID: 0}
-  _optionTxt: {fileID: 0}
-  _totalFootprint: {fileID: 0}
-  _totalPrice: {fileID: 0}
-  _footprintBudget: {fileID: 0}
-  _priceBudget: {fileID: 0}
   _currentImg: {fileID: 1205399978}
-  _typeImg: {fileID: 0}
-  _engineImg: {fileID: 0}
-  _optionImg: {fileID: 0}
   _manufactureSlider: {fileID: 1144115070}
   _useSlider: {fileID: 1919205192}
   _recycleSlider: {fileID: 1265407173}
@@ -4742,7 +4732,7 @@ GameObject:
   - component: {fileID: 629081673}
   - component: {fileID: 629081672}
   m_Layer: 5
-  m_Name: Icon Type Comp
+  m_Name: Type Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5449,7 +5439,7 @@ GameObject:
   - component: {fileID: 718870809}
   - component: {fileID: 718870808}
   m_Layer: 5
-  m_Name: Text (TMP) (48)
+  m_Name: +
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5733,7 +5723,7 @@ GameObject:
   - component: {fileID: 739215598}
   - component: {fileID: 739215597}
   m_Layer: 5
-  m_Name: Text (TMP) (40)
+  m_Name: Settings Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6180,7 +6170,7 @@ GameObject:
   - component: {fileID: 827202333}
   - component: {fileID: 827202332}
   m_Layer: 5
-  m_Name: Text (TMP) (49)
+  m_Name: Engine Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6314,7 +6304,7 @@ GameObject:
   - component: {fileID: 840522764}
   - component: {fileID: 840522763}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Engine Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6389,7 +6379,7 @@ GameObject:
   - component: {fileID: 851810733}
   - component: {fileID: 851810732}
   m_Layer: 5
-  m_Name: Text (TMP) (41)
+  m_Name: +
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6598,7 +6588,7 @@ GameObject:
   - component: {fileID: 867096292}
   - component: {fileID: 867096291}
   m_Layer: 5
-  m_Name: Text (TMP) (47)
+  m_Name: Type Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9601,7 +9591,7 @@ GameObject:
   - component: {fileID: 1313535131}
   - component: {fileID: 1313535130}
   m_Layer: 5
-  m_Name: Text (TMP) (51)
+  m_Name: Settings Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9803,7 +9793,7 @@ GameObject:
   - component: {fileID: 1342795968}
   - component: {fileID: 1342795967}
   m_Layer: 5
-  m_Name: Text (TMP) (52)
+  m_Name: =
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9937,7 +9927,7 @@ GameObject:
   - component: {fileID: 1344421953}
   - component: {fileID: 1344421952}
   m_Layer: 5
-  m_Name: Text (TMP) (7)
+  m_Name: Footprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10109,7 +10099,7 @@ GameObject:
   - component: {fileID: 1411851537}
   - component: {fileID: 1411851536}
   m_Layer: 5
-  m_Name: Text (TMP) (53)
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10892,7 +10882,7 @@ GameObject:
   - component: {fileID: 1521629498}
   - component: {fileID: 1521629497}
   m_Layer: 5
-  m_Name: Text (TMP) (46)
+  m_Name: Settings Footprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11532,7 +11522,7 @@ GameObject:
   - component: {fileID: 1611976782}
   - component: {fileID: 1611976781}
   m_Layer: 5
-  m_Name: Text (TMP) (39)
+  m_Name: Engine Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12360,7 +12350,7 @@ GameObject:
   - component: {fileID: 1795629571}
   - component: {fileID: 1795629570}
   m_Layer: 5
-  m_Name: Text (TMP) (8)
+  m_Name: Footprint Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14016,7 +14006,7 @@ GameObject:
   - component: {fileID: 2046125383}
   - component: {fileID: 2046125382}
   m_Layer: 5
-  m_Name: Text (TMP) (44)
+  m_Name: Type Footprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14256,7 +14246,7 @@ GameObject:
   - component: {fileID: 2091712351}
   - component: {fileID: 2091712350}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Settings Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
