@@ -71,10 +71,6 @@ public class ScatterPlotChart : MonoBehaviour
         _mainWidth = rectangle.width;
         _mainHeight = rectangle.height;
 
-        //InitiatePoints();
-
-        //DrawPoints();
-        
         DrawAxis(_xLabelCount, _yLabelCount);
     }
 
@@ -124,6 +120,7 @@ public class ScatterPlotChart : MonoBehaviour
 
     private void InitiatePoints()
     {
+        _points = new List<Point>();
         Point cheapestPoint = new Point(36340, 23750, "O", Color.red);
         Point mostExpensivePoint = new Point(58410, 46000, "O", Color.magenta);
         Point lessPollutingPoint = new Point(17610, 32250, "O", Color.blue);
