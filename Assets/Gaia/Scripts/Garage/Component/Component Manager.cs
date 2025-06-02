@@ -64,6 +64,8 @@ public class ComponentManager : MonoBehaviour
                 break;
         }
 
+        _overviewPage.UIAddComponent(comp);
+
         if (IsCarComplete)
         {
             _uiManager.ChangeState(UIState.result);
@@ -130,6 +132,9 @@ public class ComponentManager : MonoBehaviour
             {
                 Transform compTransform = _components[i].transform;
                 Rigidbody compRb = _components[i].transform.GetComponent<Rigidbody>();
+
+                if(!_rightComponent && !_leftComponent)
+                    _components[i].SetCompStatus(ComponentStatus.Use);
 
                 compTransform.position = sockets[i].position;
                 compTransform.rotation = sockets[i].rotation;

@@ -13,10 +13,10 @@ public class ComponentPage : MonoBehaviour
     ComponentsValues _componentsValues;
 
     [SerializeField]
-    TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt, _typeTxt, _engineTxt, _optionTxt, _totalFootprint, _totalPrice, _footprintBudget, _priceBudget;
+    TextMeshProUGUI _currentCategoryTxt, _currentNameTxt, _currentFootprintTxt, _currentPriceTxt, _currentManufactureTxt, _currentUseTxt, _currentRecycleTxt;
 
     [SerializeField]
-    Image _currentImg, _typeImg, _engineImg, _optionImg;
+    Image _currentImg;
 
     [SerializeField]
     SliderGradient _manufactureSlider, _useSlider, _recycleSlider;
@@ -33,8 +33,6 @@ public class ComponentPage : MonoBehaviour
 
     private void Start()
     {
-        _priceBudget.text = _UImanager.GetPriceBudget().ToString();
-        _footprintBudget.text = _UImanager.GetFootprintBudget().ToString();
     }
 
     public void UIAddComponent(ComponentData comp)
@@ -93,55 +91,6 @@ public class ComponentPage : MonoBehaviour
                 totalPrice += _components[i].Price;
             }
         }
-
-        _totalFootprint.text = totalFootprint.ToString();
-        _totalPrice.text = totalPrice.ToString();
-
-        if (_components[0] != null)
-        {
-            _typeTxt.text = "Type -" + _components[0].Name;
-            _typeImg.sprite = _components[0].ImageSprite;
-        }
-        else
-        {
-            _typeTxt.text = "Type";
-            _typeImg.sprite = _unknowImg;
-        }
-
-        if (_components[1] != null)
-        {
-            _engineTxt.text = "Moteur -" + _components[1].Name;
-            _engineImg.sprite = _components[1].ImageSprite;
-        }
-        else
-        {
-            _engineTxt.text = "Moteur";
-            _engineImg.sprite = _unknowImg;
-        }
-
-        if (_components[2] != null)
-        {
-            _optionTxt.text = "Options -" + _components[2].Name;
-            _optionImg.sprite = _components[2].ImageSprite;
-        }
-        else
-        {
-            _optionTxt.text = "Options";
-            _optionImg.sprite = _unknowImg;
-        }
-
-        int remainingPriceBudget = _UImanager.GetPriceBudget() - totalPrice;
-        int remainingFootprintBudget = _UImanager.GetFootprintBudget() - totalFootprint;
-
-        if (remainingPriceBudget > 0)
-            _priceBudget.text = remainingPriceBudget.ToString();
-        else
-            _priceBudget.text = "0";
-
-        if (remainingFootprintBudget > 0)
-            _footprintBudget.text = remainingFootprintBudget.ToString();
-        else
-            _footprintBudget.text = "0";
     }
 
     public void UpdateCurrentComponent(ComponentData comp)

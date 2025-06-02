@@ -38,7 +38,9 @@ public class CollisionCallback : MonoBehaviour
         {
             CollisionEnter.Invoke(other);
             if (other.transform.parent.transform.tag == "Component")
+            {
                 other.transform.parent.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Use);
+            }
         }
     }
 }

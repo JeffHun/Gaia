@@ -48,13 +48,13 @@ public class OverviewPage : MonoBehaviour
     {
         if (AreComponentsValid(components))
         {
-            _typeNameText.text = components[0].Name;
+            /*_typeNameText.text = components[0].Name;
             _engineNameText.text = components[1].Name;
             _optionsNameText.text = components[2].Name;
 
             _typeImage.sprite = components[0].ImageSprite;
             _engineImage.sprite = components[1].ImageSprite;
-            _optionsImage.sprite = components[2].ImageSprite;
+            _optionsImage.sprite = components[2].ImageSprite;*/
         
             int typeTotal= components[0].GetComponentTotalFootprint();
             int engineTotal= components[1].GetComponentTotalFootprint();
@@ -81,6 +81,25 @@ public class OverviewPage : MonoBehaviour
 
             _priceText.text = (typeTotal + engineTotal + optionsTotal).ToString();
             _priceBudgetText.text = _UIManager.GetPriceBudget().ToString();
+        }
+    }
+
+    public void UIAddComponent(ComponentData component)
+    {
+        switch(component.Category)
+        {
+            case Category.Type:
+                _typeNameText.text = component.Name;
+                _typeImage.sprite = component.ImageSprite;
+                break;
+            case Category.Moteur:
+                _engineNameText.text = component.Name;
+                _engineImage.sprite = component.ImageSprite;
+                break;
+            case Category.Options:
+                _optionsNameText.text = component.Name;
+                _optionsImage.sprite = component.ImageSprite;
+                break;
         }
     }
 }
