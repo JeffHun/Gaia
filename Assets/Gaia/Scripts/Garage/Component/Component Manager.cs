@@ -85,6 +85,7 @@ public class ComponentManager : MonoBehaviour
                 if (_components[i].ID == comp.ID)
                 {
                     _components[i] = null;
+                    _overviewPage.UIRemoveComponent(comp);
                     return;
                 }
             }

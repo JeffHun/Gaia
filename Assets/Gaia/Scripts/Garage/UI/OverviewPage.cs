@@ -28,6 +28,9 @@ public class OverviewPage : MonoBehaviour
     private int _typePrice = 0, _enginePrice = 0, _settingsPrice = 0;
     private int _typeFootprint = 0, _engineFootprint = 0, _settingsFootprint = 0;
 
+    private string _noName = "???";
+    private string _noValue = "??????";
+    private string _noTotal = "?? ???";
 
     private bool AreComponentsValid(ComponentData[] components)
     {
@@ -106,6 +109,32 @@ public class OverviewPage : MonoBehaviour
                 _settingsImage.sprite = component.ImageSprite;
                 _settingsFootprint = component.GetComponentTotalFootprint();
                 _settingsPrice = component.Price;
+                break;
+        }
+        UpdateUI();
+    }
+
+    public void UIRemoveComponent(ComponentData component)
+    {
+        switch (component.Category)
+        {
+            case Category.Type:
+                _typeNameText.text = _noName;
+                _typeImage.sprite = _defaultImage;
+                _typeFootprint = 0;
+                _typePrice = 0;
+                break;
+            case Category.Moteur:
+                _engineNameText.text = _noName;
+                _engineImage.sprite = _defaultImage;
+                _engineFootprint = 0;
+                _enginePrice = 0;
+                break;
+            case Category.Options:
+                _settingsNameText.text = _noName;
+                _settingsImage.sprite = _defaultImage;
+                _settingsFootprint = 0;
+                _settingsPrice = 0;
                 break;
         }
         UpdateUI();

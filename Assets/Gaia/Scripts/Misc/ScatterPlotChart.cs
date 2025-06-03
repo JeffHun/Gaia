@@ -36,6 +36,8 @@ public class ScatterPlotChart : MonoBehaviour
     private Transform _yAxis;
     [SerializeField]
     private Transform _main;
+    [SerializeField]
+    private Transform _panel;
 
     [SerializeField]
     private int _xIncrement = 100;
@@ -58,18 +60,28 @@ public class ScatterPlotChart : MonoBehaviour
     [SerializeField]
     private GameObject _yValPrefab;
 
-    private float _mainWidth;
-    private float _mainHeight;
+    [SerializeField]
+    private float _mainWidth = 1400;
+    [SerializeField]
+    private float _mainHeight = 800;
 
     private List<Point> _points = new List<Point>();
 
     private void Start()
     {
         //Get the size of the Canva
-        Rect rectangle = RectTransformUtility.PixelAdjustRect(_main.GetComponent<RectTransform>(), _canvas);
+        Rect rectangle = RectTransformUtility.PixelAdjustRect(_panel.GetComponent<RectTransform>(), _canvas);
 
-        _mainWidth = rectangle.width;
-        _mainHeight = rectangle.height;
+        rectangle.width = _mainWidth;
+        rectangle.height = _mainHeight;
+
+        _panel.GetComponent<RectTransform>().sizeDelta = new Vector2(_mainWidth, _mainHeight);
+
+        _xAxis.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, -100, 100);
+        _xAxis.GetComponent<RectTransform>().sizeDelta = new Vector2(_mainWidth, 100);
+
+        _yAxis.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, -100, 100);
+        _yAxis.GetComponent<RectTransform>().sizeDelta = new Vector2(100, _mainHeight);
 
         DrawAxis(_xLabelCount, _yLabelCount);
     }
@@ -99,22 +111,19 @@ public class ScatterPlotChart : MonoBehaviour
 
     private void DrawPoints()
     {
-        float xOffset = _mainWidth / (_xLabelCount + 1);
-        float yOffset = _mainHeight / (_yLabelCount + 1);
+        float xFactor = _mainWidth / (_xIncrement * (_xLabelCount + 1));
+        float yFactor = _mainHeight / (_yIncrement * (_yLabelCount + 1));
 
-        float xFactor = _mainWidth / ((_xIncrement + 2) * _xLabelCount);
-        float yFactor = _mainHeight / ((_yIncrement + 2) * _yLabelCount);
+        float xOffset = (_minXValue - (_xIncrement / 2)) * xFactor;
+        float yOffset = (_minYValue - (_yIncrement / 2)) * yFactor;
 
         foreach (Point point in _points)
         {
-            // CHECK THIS METHOD, MAY BE CREATING DUPLICATES
-            Debug.Log(point);
-
             GameObject tempObject = Instantiate(_pointPrefab, _main);
             RectTransform rectangleTransform = tempObject.GetComponent<RectTransform>();
             rectangleTransform.anchorMax = Vector2.zero;
             rectangleTransform.anchorMin = Vector2.zero;
-            rectangleTransform.anchoredPosition3D = new Vector3(point.x * xFactor - xOffset , point.y * yFactor - _mainHeight - yOffset ,0);
+            rectangleTransform.anchoredPosition3D = new Vector3((point.x * xFactor) - xOffset, (point.y * yFactor) - yOffset, 0);
             point.pointObject = tempObject;
             tempObject.GetComponentInChildren<Text>().text = point.glyph;
             tempObject.GetComponentInChildren<Text>().color = point.color;
