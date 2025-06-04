@@ -60,14 +60,32 @@ public class ComponentManager : MonoBehaviour
         switch (comp.Category)
         {
             case Category.Type:
+                if (TypeComponent)
+                {
+                    var currentComponent = TypeComponent;
+                    TypeComponent = null;
+                    currentComponent.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+                }
                 TypeComponent = comp;
                 AssignSocket(TypeComponent, _typeSocket);
                 break;
             case Category.Moteur:
+                if (EngineComponent)
+                {
+                    var currentComponent = EngineComponent;
+                    EngineComponent = null;
+                    currentComponent.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+                }
                 EngineComponent = comp;
                 AssignSocket(EngineComponent, _engineSocket);
                 break;
             case Category.Options:
+                if (SettingComponent)
+                {
+                    var currentComponent = SettingComponent;
+                    SettingComponent = null;
+                    currentComponent.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+                }
                 SettingComponent = comp;
                 AssignSocket(SettingComponent, _settingSocket);
                 break;
