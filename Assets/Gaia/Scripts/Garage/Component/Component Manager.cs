@@ -47,6 +47,15 @@ public class ComponentManager : MonoBehaviour
 
     public void AddCarComponent(ComponentData comp)
     {
+        /*
+        if (_components[0])
+                {
+                    var curr_comp = _components[0];
+                    _components[0] = null;
+                    curr_comp.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
+
+                }
+        */
         Rigidbody body = comp.GetComponent<Rigidbody>();
         switch (comp.Category)
         {
