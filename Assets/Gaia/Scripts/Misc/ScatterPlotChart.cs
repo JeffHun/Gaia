@@ -135,7 +135,7 @@ public class ScatterPlotChart : MonoBehaviour
         ClearPoints();
         _points = new List<Point>();
         Point cheapestPoint = new Point(36340, 23750, "O", Color.red);
-        Point mostExpensivePoint = new Point(58410, 46000, "O", Color.magenta);
+        Point mostExpensivePoint = new Point(58320, 47000, "O", Color.magenta);
         Point lessPollutingPoint = new Point(17610, 32250, "O", Color.blue);
         Point mostPollutingPoint = new Point(77140, 37500, "O", Color.cyan);
         Point carPoint = new Point(0, 0, "X", Color.green);
