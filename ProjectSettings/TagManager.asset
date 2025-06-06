@@ -13,6 +13,14 @@ TagManager:
   - Floor
   - Component
   - GarageCar
+  - WeighScalePlateHandle
+  - WeighScalePlate
+  - Porc
+  - Saumon
+  - Beef
+  - Knife
+  - Chicken
+  - Veget
   layers:
   - Default
   - TransparentFX

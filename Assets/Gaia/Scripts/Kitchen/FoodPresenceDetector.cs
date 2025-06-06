@@ -16,7 +16,7 @@ public class FoodPresenceDetector : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Beef") || other.CompareTag("Saumon") || other.CompareTag("Chicken") || other.CompareTag("Porc"))
+        if (other.CompareTag("Beef") || other.CompareTag("Saumon") || other.CompareTag("Chicken") || other.CompareTag("Porc") || other.CompareTag("Veget"))
         {
             needSpawn = true;
         }
@@ -36,6 +36,7 @@ public class FoodPresenceDetector : MonoBehaviour
         beef,
         saumon,
         porc,
-        chicken
+        chicken,
+        veget
     }
 }

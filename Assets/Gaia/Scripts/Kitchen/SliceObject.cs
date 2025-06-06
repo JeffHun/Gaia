@@ -58,6 +58,10 @@ public class SliceObject : MonoBehaviour
                     meatsManager.AddChicken(upperHull);
                     meatsManager.AddChicken(lowerHull);
                     break;
+                case Meat.MeatType.Veget:
+                    meatsManager.AddVeget(upperHull);
+                    meatsManager.AddVeget(lowerHull);
+                    break;
             }
             Destroy(target);
         }

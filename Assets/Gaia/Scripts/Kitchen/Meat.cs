@@ -32,6 +32,7 @@ public class Meat : MonoBehaviour
     {
         Mesh mesh = GetComponent<MeshFilter>().sharedMesh;
         float volume = VolumeOfMesh(mesh);
+        Debug.Log(gameObject.name + volume);
         weigh = volume * GetCoefVolume();
     }
     public float VolumeOfMesh(Mesh mesh)
@@ -74,6 +75,8 @@ public class Meat : MonoBehaviour
                 return GameManager.Instance.GetVolWeighPorcCoef();
             case MeatType.Chicken:
                 return GameManager.Instance.GetVolWeighChickenCoef();
+            case MeatType.Veget:
+                return GameManager.Instance.GetVolWeighVegetCoef();
         }
         return 0;
     }
@@ -90,6 +93,8 @@ public class Meat : MonoBehaviour
                 return GameManager.Instance.GetPriceWeighPorcCoef();
             case MeatType.Chicken:
                 return GameManager.Instance.GetPriceWeighChickenCoef();
+            case MeatType.Veget:
+                return GameManager.Instance.GetPriceWeighVegetCoef();
         }
         return 0;
     }
@@ -109,6 +114,9 @@ public class Meat : MonoBehaviour
                 break;
             case MeatType.Chicken:
                 footPrint = weigh * GameManager.Instance.GetCO2WeighChickenCoef();
+                break;
+            case MeatType.Veget:
+                footPrint = weigh * GameManager.Instance.GetCO2WeighVegetCoef();
                 break;
         }
     }
@@ -150,6 +158,7 @@ public class Meat : MonoBehaviour
         Beef,
         Saumon,
         Porc,
-        Chicken
+        Chicken,
+        Veget
     }
 }
