@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Gaia/Scenes/Start.unity
+    guid: 92dec3724ccd68446a9756dcce10c487
+  - enabled: 1
+    path: Assets/Gaia/Scenes/Garage.unity
+    guid: dc27e48b64ea52e448bfb318af00a5b8
+  - enabled: 1
+    path: Assets/Gaia/Scenes/Kitchen.unity
+    guid: 0e3c9f6a26fd1b64595e8f4169cf872b
+  - enabled: 1
+    path: Assets/Gaia/Scenes/Town.unity
+    guid: 731878994d0286744a9cd1b2a03fe2e2
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9d9525ef687657e42b187c5e6a10ab83, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9c19b445337331643a4a9eb80184d917, type: 2}
