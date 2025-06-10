@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,11 +23,12 @@ public class ScenesManager : MonoBehaviour
     private string _garageSceneName = "Garage";
     private string _townSceneName = "Town";
 
+    private List<string> _scenes = new List<string>();
+
     // PROPERTIES
     public float Score { get { return _score; } private set { _score = value;  } }
 
     // METHODS
-
     private void Awake()
     {
         if (Instance != null)
@@ -39,8 +41,34 @@ public class ScenesManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void UpdateScore(float score)
+    {
+        _score += score;
+    }
+
     public void SwitchScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        _scenes.Add(sceneName);
+    }
+
+    public void SwitchSceneAuto()
+    {
+        if (_scenes.Count == 1)
+        {
+            switch(_scenes[0])
+            {
+                case "Kitchen":
+                    SwitchScene(_garageSceneName); 
+                    break;
+                case "Garage":
+                    SwitchScene(_kitchenSceneName);
+                    break;
+            }
+        }
+        if (_scenes.Count == 2)
+        {
+            SwitchScene(_townSceneName);
+        }
     }
 }
