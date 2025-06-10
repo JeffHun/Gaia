@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 using System.Collections;
+=======
+>>>>>>> f8410dd ([Feat] Added the starting scene with choice between scenes to start with. Added some methods to the scenes manager to be able to handle scene switching depending on the user's progress)
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,8 +28,11 @@ public class ScenesManager : MonoBehaviour
 
     private List<string> _scenes = new List<string>();
 
+<<<<<<< HEAD
     private AsyncOperation _asyncOperation;
 
+=======
+>>>>>>> f8410dd ([Feat] Added the starting scene with choice between scenes to start with. Added some methods to the scenes manager to be able to handle scene switching depending on the user's progress)
     // PROPERTIES
     public float Score { get { return _score; } private set { _score = value;  } }
     public float MaxScore { get { return _maxScore; } private set { _maxScore = value; } }
@@ -54,6 +60,27 @@ public class ScenesManager : MonoBehaviour
         Debug.Log(sceneName);
         _scenes.Add(sceneName);
         SceneManager.LoadScene(sceneName);
+        _scenes.Add(sceneName);
+    }
+
+    public void SwitchSceneAuto()
+    {
+        if (_scenes.Count == 1)
+        {
+            switch(_scenes[0])
+            {
+                case "Kitchen":
+                    SwitchScene(_garageSceneName); 
+                    break;
+                case "Garage":
+                    SwitchScene(_kitchenSceneName);
+                    break;
+            }
+        }
+        if (_scenes.Count == 2)
+        {
+            SwitchScene(_townSceneName);
+        }
     }
 
     private void Update()
