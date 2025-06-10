@@ -51,6 +51,27 @@ public class ScenesManager : MonoBehaviour
         Debug.Log(sceneName);
         _scenes.Add(sceneName);
         SceneManager.LoadScene(sceneName);
+        _scenes.Add(sceneName);
+    }
+
+    public void SwitchSceneAuto()
+    {
+        if (_scenes.Count == 1)
+        {
+            switch(_scenes[0])
+            {
+                case "Kitchen":
+                    SwitchScene(_garageSceneName); 
+                    break;
+                case "Garage":
+                    SwitchScene(_kitchenSceneName);
+                    break;
+            }
+        }
+        if (_scenes.Count == 2)
+        {
+            SwitchScene(_townSceneName);
+        }
     }
 
     private void Update()
