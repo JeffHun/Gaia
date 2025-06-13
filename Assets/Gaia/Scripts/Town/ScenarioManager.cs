@@ -13,6 +13,8 @@ public class ScenarioManager : MonoBehaviour
     public Scenario scenario;
     private Scenario _previousScenario;
 
+    private float _score = 0;
+
     //Boolean used to avoid calling ApplyScenarioLook if the enum's Unity UI does not match the default scenario value
     private bool _isDynamicEnvItemsFund = false; 
 
@@ -52,6 +54,9 @@ public class ScenarioManager : MonoBehaviour
         StartCoroutine(Wait(.1f));
         _dynamicEnvItems = new List<DynamicEnvItem>(FindObjectsOfType<DynamicEnvItem>());
         _isDynamicEnvItemsFund = true;
+
+        _score = ScenesManager.Instance.Score / ScenesManager.Instance.MaxScore;
+
     }
 
     private IEnumerator Wait(float waitTime)
@@ -75,5 +80,31 @@ public class ScenarioManager : MonoBehaviour
         {
             item.ChangeLook(scenario);
         }
+    }
+
+    private void PickScenario(float score)
+    {
+        if(score >= 0.8f)
+        {
+            scenario = Scenario.scenarioE;
+        }
+        else if(score >= 0.6f)
+        {
+            scenario = Scenario.scenarioD;
+        }
+        else if (score >= 0.4f)
+        {
+            scenario = Scenario.scenarioC;
+        }
+        else if (score >= 0.2f)
+        {
+            scenario = Scenario.scenarioB;
+        }
+        else
+        {
+            scenario = Scenario.scenarioA;
+        }
+
+        ApplyScenarioLook();
     }
 }

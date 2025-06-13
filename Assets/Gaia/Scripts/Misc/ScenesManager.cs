@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 public class ScenesManager : MonoBehaviour
 {
     /*
-     * Manage scene transitions
-     * When launching at first, ask which scene to start with
      * Keep track of the score for final scene
      * Keep track of the scenes order of the user
      * 
      * Prepare Scenario Manager to handle scores
     */
-
+    
     // SINGLETON
     public static ScenesManager Instance;
 
     // ATTRIBUTES
     private float _score = 0;
+    private float _maxScore = 100;
 
     private string _kitchenSceneName = "Kitchen";
     private string _garageSceneName = "Garage";
@@ -27,6 +26,7 @@ public class ScenesManager : MonoBehaviour
 
     // PROPERTIES
     public float Score { get { return _score; } private set { _score = value;  } }
+    public float MaxScore { get { return _maxScore; } private set { _maxScore = value; } }
 
     // METHODS
     private void Awake()
@@ -48,8 +48,17 @@ public class ScenesManager : MonoBehaviour
 
     public void SwitchScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        Debug.Log(sceneName);
         _scenes.Add(sceneName);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SwitchSceneAuto();
+        }
     }
 
     public void SwitchSceneAuto()
@@ -60,10 +69,10 @@ public class ScenesManager : MonoBehaviour
             {
                 case "Kitchen":
                     SwitchScene(_garageSceneName); 
-                    break;
+                    return;
                 case "Garage":
                     SwitchScene(_kitchenSceneName);
-                    break;
+                    return;
             }
         }
         if (_scenes.Count == 2)
