@@ -51,7 +51,14 @@ public class ScenesManager : MonoBehaviour
         Debug.Log(sceneName);
         _scenes.Add(sceneName);
         SceneManager.LoadScene(sceneName);
-        _scenes.Add(sceneName);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SwitchSceneAuto();
+        }
     }
 
     public void SwitchSceneAuto()
@@ -62,10 +69,10 @@ public class ScenesManager : MonoBehaviour
             {
                 case "Kitchen":
                     SwitchScene(_garageSceneName); 
-                    break;
+                    return;
                 case "Garage":
                     SwitchScene(_kitchenSceneName);
-                    break;
+                    return;
             }
         }
         if (_scenes.Count == 2)
