@@ -8,6 +8,8 @@ public class FoodPresenceDetector : MonoBehaviour
     public Food food;
     public GameObject foodPrefab;
     bool needSpawn;
+    [SerializeField]
+    GameObject _fridge;
 
     private void Start()
     {
@@ -26,7 +28,8 @@ public class FoodPresenceDetector : MonoBehaviour
     {
         if(needSpawn)
         {
-            Instantiate(foodPrefab, transform.position, Quaternion.identity);
+            GameObject meat = Instantiate(foodPrefab, transform.position, Quaternion.identity);
+            meat.transform.parent = _fridge.transform;
             needSpawn = false;
         }
     }

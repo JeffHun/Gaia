@@ -32,7 +32,6 @@ public class Meat : MonoBehaviour
     {
         Mesh mesh = GetComponent<MeshFilter>().sharedMesh;
         float volume = VolumeOfMesh(mesh);
-        Debug.Log(gameObject.name + volume);
         weigh = volume * GetCoefVolume();
     }
     public float VolumeOfMesh(Mesh mesh)

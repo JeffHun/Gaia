@@ -64,12 +64,12 @@ public class WeightScale : MonoBehaviour
             if (totalWeigh < 0)
                 weighTxt.text = "Poids : 0g";
             else
-                weighTxt.text = "Poids : " + (Mathf.Floor(totalWeigh * 100) / 100).ToString() + "g";
+                weighTxt.text = "Poids : " + Mathf.Round(totalWeigh).ToString() + "g";
 
             if (totalFootprint < 0)
                 footprintTxt.text = "CO² : 0g";
             else
-                footprintTxt.text = "CO² : " + (Mathf.Floor(totalFootprint * 100) / 100).ToString() + "g";
+                footprintTxt.text = "CO² : " + Mathf.Round(totalFootprint).ToString() + "g";
 
             if (totalPrice < 0)
                 priceTxt.text = "Prix : 0€";

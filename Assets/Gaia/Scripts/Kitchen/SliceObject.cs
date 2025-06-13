@@ -34,11 +34,11 @@ public class SliceObject : MonoBehaviour
         {
             GameObject upperHull = hull.CreateUpperHull(target, target.GetComponent<Meat>().GetCrossSectionMat());
             upperHull.name = target.name;
-            SetUpSlicedComponent(upperHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat());
+            SetUpSlicedComponent(upperHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag);
 
             GameObject lowerHull = hull.CreateLowerHull(target, target.GetComponent<Meat>().GetCrossSectionMat());
             lowerHull.name = target.name;
-            SetUpSlicedComponent(lowerHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat());
+            SetUpSlicedComponent(lowerHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag);
 
             switch (target.GetComponent<Meat>().GetMeatType())
             {
@@ -67,7 +67,7 @@ public class SliceObject : MonoBehaviour
         }
     }
 
-    private void SetUpSlicedComponent(GameObject slicedObj, Meat.MeatType aMeatType, Material aCrossSectionMat)
+    private void SetUpSlicedComponent(GameObject slicedObj, Meat.MeatType aMeatType, Material aCrossSectionMat, string aTag)
     {
         Rigidbody rb = slicedObj.AddComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -77,6 +77,7 @@ public class SliceObject : MonoBehaviour
         slicedObj.AddComponent<Meat>();
         slicedObj.GetComponent<Meat>().SetMeatType(aMeatType);
         slicedObj.GetComponent<Meat>().SetCrossSection(aCrossSectionMat);
+        slicedObj.tag = aTag;
 
         XRGrabInteractable grabInteractable = slicedObj.AddComponent<XRGrabInteractable>();
         grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;

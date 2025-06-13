@@ -2079,7 +2079,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 23
   m_InteractionLayers:
-    m_Bits: 4294967295
+    m_Bits: 1
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_PlayHapticsOnSelectEntered: 1
   m_HapticSelectEnterIntensity: 0.5
   m_HapticSelectEnterDuration: 0.1
-  m_PlayHapticsOnSelectExited: 1
+  m_PlayHapticsOnSelectExited: 0
   m_HapticSelectExitIntensity: 0.5
   m_HapticSelectExitDuration: 0.1
   m_PlayHapticsOnSelectCanceled: 0
@@ -2140,7 +2140,7 @@ MonoBehaviour:
   m_PlayHapticsOnHoverEntered: 1
   m_HapticHoverEnterIntensity: 0.25
   m_HapticHoverEnterDuration: 0.1
-  m_PlayHapticsOnHoverExited: 1
+  m_PlayHapticsOnHoverExited: 0
   m_HapticHoverExitIntensity: 0.25
   m_HapticHoverExitDuration: 0.1
   m_PlayHapticsOnHoverCanceled: 0
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
-  m_EnableInputTracking: 1
+  m_EnableInputTracking: 0
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
@@ -2195,9 +2195,9 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 5
-  m_SelectUsage: 3
-  m_ActivateUsage: 2
-  m_UIPressUsage: 2
+  m_SelectUsage: 0
+  m_ActivateUsage: 0
+  m_UIPressUsage: 0
   m_AxisToPressThreshold: 0.1
   m_RotateAnchorLeft: 16
   m_RotateAnchorRight: 17
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrController: {fileID: 0}
+  xrController: {fileID: 533554150115852206}
   directInteractor: {fileID: 5483713822066734489}
 --- !u!1 &5652331157508628172
 GameObject:
@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UpdateTrackingType: 0
-  m_EnableInputTracking: 1
+  m_EnableInputTracking: 0
   m_EnableInputActions: 1
   m_ModelPrefab: {fileID: 0}
   m_ModelParent: {fileID: 0}
@@ -3157,9 +3157,9 @@ MonoBehaviour:
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
   m_ControllerNode: 4
-  m_SelectUsage: 3
-  m_ActivateUsage: 2
-  m_UIPressUsage: 2
+  m_SelectUsage: 0
+  m_ActivateUsage: 0
+  m_UIPressUsage: 0
   m_AxisToPressThreshold: 0.1
   m_RotateAnchorLeft: 16
   m_RotateAnchorRight: 17
@@ -3179,7 +3179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f559599d9c3bc54780e9cbd9be6575d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrController: {fileID: 0}
+  xrController: {fileID: 4149122578304650307}
   directInteractor: {fileID: 5853420914507829216}
 --- !u!1 &8324674474386616485
 GameObject:

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class DoorClossing : MonoBehaviour
 {
@@ -9,6 +11,11 @@ public class DoorClossing : MonoBehaviour
 
     public List<FoodPresenceDetector> foodPresenceDetectors = new List<FoodPresenceDetector>();
 
+    [SerializeField]
+    GameObject _fridge;
+    int _nbrCurrentMeat = 0;
+    int _nbrMaxMeat = 15;
+
     public void IsHeld(bool status)
     {
         isHeld = status;
@@ -16,6 +23,8 @@ public class DoorClossing : MonoBehaviour
 
     void Update()
     {
+        _nbrCurrentMeat = _fridge.transform.childCount;
+
         if(!isHeld)
         {
             float currentYAngle = transform.eulerAngles.y;
@@ -31,9 +40,12 @@ public class DoorClossing : MonoBehaviour
             else
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
-                foreach(FoodPresenceDetector detector in foodPresenceDetectors)
+                if(_nbrCurrentMeat < _nbrMaxMeat)
                 {
-                    detector.SpawnFood();
+                    foreach(FoodPresenceDetector detector in foodPresenceDetectors)
+                    {
+                        detector.SpawnFood();
+                    }
                 }
             }
         }
