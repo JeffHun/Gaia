@@ -43,7 +43,7 @@ public class Parking : DynamicEnvItem
 
         for(int i = 0; i < _cars.Count; ++i)
         {
-            int rand = Random.RandomRange(0,100);
+            int rand = Random.Range(0,100);
             if(rand < carsRatio)
                 _cars[i].SetActive(true);
             else
