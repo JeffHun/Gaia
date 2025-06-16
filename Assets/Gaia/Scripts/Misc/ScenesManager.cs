@@ -83,34 +83,6 @@ public class ScenesManager : MonoBehaviour
             SwitchScene(_townSceneName);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            SwitchSceneAuto();
-        }
-    }
-
-    public void SwitchSceneAuto()
-    {
-        if (_scenes.Count == 1)
-        {
-            switch(_scenes[0])
-            {
-                case "Kitchen":
-                    SwitchScene(_garageSceneName); 
-                    return;
-                case "Garage":
-                    SwitchScene(_kitchenSceneName);
-                    return;
-            }
-        }
-        if (_scenes.Count == 2)
-        {
-            SwitchScene(_townSceneName);
-        }
-    }
     
     public void SwitchAsyncSceneAuto()
     {
