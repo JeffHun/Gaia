@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using UnityEngine.Events;
 
 public class Door : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Door : MonoBehaviour
         _isOpen = true;
         _startRotation = Quaternion.identity;
         _endRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
+        ScenesManager.Instance.SwitchAsyncSceneAuto();
     }
 
     public void StartCountDown()
@@ -53,7 +55,7 @@ public class Door : MonoBehaviour
             if (_timer <= 0)
             {
                 _isCount = false;
-                // change scene here
+                ScenesManager.Instance.LaunchScene();
             }
         }
     }
