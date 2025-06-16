@@ -1,3 +1,4 @@
+using Scenarios;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 namespace Traffic
 {
 
-    public class TrafficManager : MonoBehaviour
+    public class TrafficManager : DynamicEnvItem
     {
         // Waypoints inputs for all circuits
         [SerializeField] private List<Waypoint> _roadInputWaypoints = new List<Waypoint>();
@@ -134,6 +135,23 @@ namespace Traffic
                     return;
             }
 
+        }
+
+        public override void ChangeLook(Scenario scenario)
+        {
+            switch (scenario)
+            {
+                case Scenario.scenarioA:
+                    break;
+                case Scenario.scenarioB:
+                    break;
+                case Scenario.scenarioC:
+                    break;
+                case Scenario.scenarioD:
+                    break;
+                case Scenario.scenarioE:
+                    break;
+            }
         }
     }
 
