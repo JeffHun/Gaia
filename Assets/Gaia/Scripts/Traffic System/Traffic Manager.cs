@@ -134,11 +134,43 @@ namespace Traffic
                 default:
                     return;
             }
+        }
 
+        public void DespawnAll()
+        {
+            for(int i = _pedestrianQueue.transform.childCount; i > 0; i--)
+            {
+                Transform pedestrian = _pedestrianQueue.transform.GetChild(0);
+                pedestrian.SetParent(_pedestrianPool.transform);
+                pedestrian.position = _pedestrianPool.transform.position;
+                pedestrian.GetComponent<WaypointNavigator>().ExitCircuit();
+            }
+            for(int i = _bikeQueue.transform.childCount; i > 0; i--)
+            {
+                Transform bike = _bikeQueue.transform.GetChild(0);
+                bike.SetParent(_bikePool.transform);
+                bike.position = _bikePool.transform.position;
+                bike.GetComponent<WaypointNavigator>().ExitCircuit();
+            }
+            for(int i = _roadQueue.transform.childCount; i > 0; i--)
+            {
+                Transform car = _roadQueue.transform.GetChild(0);
+                car.SetParent(_roadPool.transform);
+                car.position = _roadPool.transform.position;
+                car.GetComponent<WaypointNavigator>().ExitCircuit();
+            }
+            for(int i = _transportQueue.transform.childCount; i > 0; i--)
+            {
+                Transform transport = _transportQueue.transform.GetChild(0);
+                transport.SetParent(_transportPool.transform);
+                transport.position = _transportPool.transform.position;
+                transport.GetComponent<WaypointNavigator>().ExitCircuit();
+            }
         }
 
         public override void ChangeLook(Scenario scenario)
         {
+            DespawnAll();
             switch (scenario)
             {
                 case Scenario.scenarioA:

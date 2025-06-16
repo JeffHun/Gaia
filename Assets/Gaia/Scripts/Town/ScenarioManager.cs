@@ -55,7 +55,8 @@ public class ScenarioManager : MonoBehaviour
         _dynamicEnvItems = new List<DynamicEnvItem>(FindObjectsOfType<DynamicEnvItem>());
         _isDynamicEnvItemsFund = true;
 
-        _score = ScenesManager.Instance.Score / ScenesManager.Instance.MaxScore;
+        if(ScenesManager.Instance)
+            _score = ScenesManager.Instance.Score / ScenesManager.Instance.MaxScore;
 
     }
 
