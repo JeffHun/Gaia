@@ -211,14 +211,34 @@ namespace Traffic
             switch (scenario)
             {
                 case Scenario.scenarioA:
+                    _pedestrianRatio = 1;
+                    _bikeRatio = 1;
+                    _roadRatio = .4f;
+                    _transportRatio = .3f;
                     break;
                 case Scenario.scenarioB:
+                    _pedestrianRatio = .8f;
+                    _bikeRatio = .7f;
+                    _roadRatio = .5f;
+                    _transportRatio = .3f;
                     break;
                 case Scenario.scenarioC:
+                    _pedestrianRatio = .5f;
+                    _bikeRatio = 0;
+                    _roadRatio = .65f;
+                    _transportRatio = .2f;
                     break;
                 case Scenario.scenarioD:
+                    _pedestrianRatio = .3f;
+                    _bikeRatio = 0;
+                    _roadRatio = .8f;
+                    _transportRatio = .2f;
                     break;
                 case Scenario.scenarioE:
+                    _pedestrianRatio = .1f;
+                    _bikeRatio = 0;
+                    _roadRatio = 1;
+                    _transportRatio = .15f;
                     break;
             }
         }
