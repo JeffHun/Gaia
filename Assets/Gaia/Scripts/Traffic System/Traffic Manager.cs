@@ -205,6 +205,23 @@ namespace Traffic
                     break;
             }
         }
+
+        public override void ChangeLook(Scenario scenario)
+        {
+            switch (scenario)
+            {
+                case Scenario.scenarioA:
+                    break;
+                case Scenario.scenarioB:
+                    break;
+                case Scenario.scenarioC:
+                    break;
+                case Scenario.scenarioD:
+                    break;
+                case Scenario.scenarioE:
+                    break;
+            }
+        }
     }
 
 }
