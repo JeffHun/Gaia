@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,6 +24,8 @@ public class ScenesManager : MonoBehaviour
     private string _townSceneName = "Town";
 
     private List<string> _scenes = new List<string>();
+
+    private AsyncOperation _asyncOperation;
 
     // PROPERTIES
     public float Score { get { return _score; } private set { _score = value;  } }
@@ -80,4 +83,41 @@ public class ScenesManager : MonoBehaviour
             SwitchScene(_townSceneName);
         }
     }
+
+    public void SwitchAsyncSceneAuto()
+    {
+        if (_scenes.Count == 1)
+        {
+            switch (_scenes[0])
+            {
+                case "Kitchen":
+                    StartCoroutine(AsyncSceneSwitch(_garageSceneName));
+                    return;
+                case "Garage":
+                    StartCoroutine(AsyncSceneSwitch(_kitchenSceneName));
+                    return;
+            }
+        }
+        if (_scenes.Count == 2)
+        {
+            StartCoroutine(AsyncSceneSwitch(_townSceneName));
+        }
+    }
+
+    public void LaunchScene()
+    {
+        _asyncOperation.allowSceneActivation = true;
+    }
+
+    IEnumerator AsyncSceneSwitch(string sceneName)
+    {
+        _asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+        _asyncOperation.allowSceneActivation = false;
+
+        while (!_asyncOperation.isDone)
+        {
+            yield return null;
+        }
+    }
+
 }
