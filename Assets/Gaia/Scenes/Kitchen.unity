@@ -4345,19 +4345,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394653199584880799, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
       propertyPath: TagsList.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8394653199584880799, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
       propertyPath: TagsList.Array.data[6]
       value: Veget
       objectReference: {fileID: 0}
+    - target: {fileID: 8394653199584880799, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
+      propertyPath: TagsList.Array.data[7]
+      value: WeighScalePlateHandle
+      objectReference: {fileID: 0}
     - target: {fileID: 8544977898119398365, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
       propertyPath: TagsList.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8544977898119398365, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
       propertyPath: TagsList.Array.data[6]
       value: Veget
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544977898119398365, guid: 96e86bdda075b0a4b8cb420a3ee814da, type: 3}
+      propertyPath: TagsList.Array.data[7]
+      value: WeighScalePlateHandle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
