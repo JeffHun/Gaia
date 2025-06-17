@@ -24,13 +24,13 @@ public class Transport : DynamicEnvItem
                 transport = Instantiate(_tram, transform.position, transform.rotation);
                 break;
             case Scenario.scenarioC:
-                transport = Instantiate(_bus, transform.position, transform.rotation);
+                transport = Instantiate(_bus, transform.position, _bus.transform.rotation);
                 break;
             case Scenario.scenarioD:
-                transport = Instantiate(_bus, transform.position, transform.rotation);
+                transport = Instantiate(_bus, transform.position, _bus.transform.rotation);
                 break;
             case Scenario.scenarioE:
-                transport = Instantiate(_bus, transform.position, transform.rotation);
+                transport = Instantiate(_bus, transform.position, _bus.transform.rotation);
                 break;
         }
 
