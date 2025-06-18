@@ -1,9 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "com.guciodevs.simple-min-max-slider": "https://github.com/GucioDevs/SimpleMinMAxSlider.git#upm",
->>>>>>> dac1a0b710acd212d96de624eab42bdaf101d46a
     "com.unity.animation.rigging": "1.2.1",
     "com.unity.collab-proxy": "2.6.0",
     "com.unity.feature.development": "1.0.1",
