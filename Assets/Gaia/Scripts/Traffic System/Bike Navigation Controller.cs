@@ -22,7 +22,7 @@ namespace Traffic
                     _animator.speed = _movementSpeed / _maxMovementSpeed;
                 }
 
-                if (_movementSpeed <= Mathf.Epsilon)
+                if (_movementSpeed < Mathf.Epsilon)
                 {
                     _animator.SetFloat("Velocity", 0f);
                 }
