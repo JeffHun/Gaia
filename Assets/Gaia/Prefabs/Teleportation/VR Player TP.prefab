@@ -437,7 +437,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 1921715725612625731}
   m_CameraFloorOffsetObject: {fileID: 5652331157508628172}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1.1176
+  m_CameraYOffset: 1.75
 --- !u!114 &9180920324294067498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,6 +2219,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xrController: {fileID: 533554150115852206}
   directInteractor: {fileID: 5483713822066734489}
+  TagsList:
+  - Component
+  - Beef
+  - Chicken
+  - Porc
+  - Saumon
+  - Knife
+  - Veget
 --- !u!1 &5652331157508628172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3189,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xrController: {fileID: 4149122578304650307}
   directInteractor: {fileID: 5853420914507829216}
+  TagsList:
+  - Component
+  - Beef
+  - Chicken
+  - Porc
+  - Saumon
+  - Knife
+  - Veget
 --- !u!1 &8324674474386616485
 GameObject:
   m_ObjectHideFlags: 0

@@ -379,7 +379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53de40072c53a1c4f9a9f310a70e8484, type: 2}
   m_sharedMaterial: {fileID: -58118644541039279, guid: 53de40072c53a1c4f9a9f310a70e8484, type: 2}
@@ -829,21 +829,6 @@ MonoBehaviour:
   _doorSpeed: 1
   _delayDoor: 2
   _door: {fileID: 6265345128669443432}
-  OnDoorOpen:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8102519721607667714, guid: 6599981226178594fb2adcbf0d8d411a, type: 3}
-        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: LaunchScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6265345128669443432
 GameObject:
   m_ObjectHideFlags: 0

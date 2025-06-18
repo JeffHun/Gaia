@@ -98,9 +98,10 @@ public class ScenesManager : MonoBehaviour
                     return;
             }
         }
-        if (_scenes.Count == 2)
+        else
         {
             StartCoroutine(AsyncSceneSwitch(_townSceneName));
+            return;
         }
     }
 
@@ -113,6 +114,7 @@ public class ScenesManager : MonoBehaviour
     {
         _asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         _asyncOperation.allowSceneActivation = false;
+        _scenes.Add(sceneName);
 
         while (!_asyncOperation.isDone)
         {

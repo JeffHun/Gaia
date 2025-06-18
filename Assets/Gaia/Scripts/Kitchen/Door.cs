@@ -33,7 +33,8 @@ public class Door : MonoBehaviour
 
     public void StartCountDown()
     {
-        _isCount = true;
+        if (_isOpen)
+            _isCount = true;
     }
 
     private void Update()
