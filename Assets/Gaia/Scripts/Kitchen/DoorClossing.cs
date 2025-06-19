@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,7 @@ using UnityEngine.PlayerLoop;
 public class DoorClossing : MonoBehaviour
 {
     public float rotationSpeed = 100f;
-    bool isHeld = false;
+    bool isHeld = true;
 
     public List<FoodPresenceDetector> foodPresenceDetectors = new List<FoodPresenceDetector>();
 
