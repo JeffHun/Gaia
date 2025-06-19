@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<<< HEAD:Assets/Gaia/Models/Vasistas/White.mat
 --- !u!114 &-6530705058759932203
-========
---- !u!114 &-7928148722344928386
->>>>>>>> dac1a0b710acd212d96de624eab42bdaf101d46a:Assets/Gaia/Materials/Leaves/Leaf01_Mat.mat
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,23 +20,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/Gaia/Models/Vasistas/White.mat
   m_Name: White
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-========
-  m_Name: Leaf01_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: ffbd4e0c690e94a4fa8b9e0e0d10c8f8, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _SHAPENORMAL_VERTEXCOLOR
-  - _WINDANCHOR_TEXCOORD3
-  - _WINDSTRENGTH_UV_Y
-  - _WINDTYPE_TYPE_2
->>>>>>>> dac1a0b710acd212d96de624eab42bdaf101d46a:Assets/Gaia/Materials/Leaves/Leaf01_Mat.mat
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -62,13 +46,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
-<<<<<<<< HEAD:Assets/Gaia/Models/Vasistas/White.mat
-========
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DataMap:
-        m_Texture: {fileID: 2800000, guid: 8003eb25cab51c8449f74398298c1a55, type: 3}
->>>>>>>> dac1a0b710acd212d96de624eab42bdaf101d46a:Assets/Gaia/Materials/Leaves/Leaf01_Mat.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -181,15 +158,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-<<<<<<<< HEAD:Assets/Gaia/Models/Vasistas/White.mat
     - _BaseColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
     - _Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
-========
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
->>>>>>>> dac1a0b710acd212d96de624eab42bdaf101d46a:Assets/Gaia/Materials/Leaves/Leaf01_Mat.mat
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SubSurfaceColor: {r: 0, g: 0, b: 0, a: 0}
     - _WindDirection: {r: 0.15, g: 0.15, b: -0.1, a: 0}
