@@ -64,15 +64,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxMovementSpeed: 7
   _movementSpeed: 0
-  _acceleration: 1
   _rotationSpeed: 0
+  acceleration: 1
   _stopDistance: 20
   _reachDistance: 5
   _destination: {x: 0, y: 0, z: 0}
   _reachedDestination: 0
-  _offset: {x: 0, y: 0, z: 0}
+  _curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _breakDistance: 30
+  defaultBreakForce: 1.2
+  maxBreakForce: 1.2
   _breakForce: 1.6
+  _tags: []
+  _easing: 0
+  _breaking: 0
+  _isAllowedToCross: 1
   _exhaustParticles: {fileID: 0}
   _parked: 1
 --- !u!54 &7490244574604271899
@@ -136,4 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tram: {fileID: 4130519794368278672, guid: b77ec7f39d8fc5440b9b5cf1d53dd30f, type: 3}
-  _bus: {fileID: 7713802076104534972, guid: ad6c6d4070940a4498258d816ddb7199, type: 3}
+  _bus: {fileID: 4064805483157719039, guid: c9b628ceb6df5714caf48fd60a0ea213, type: 3}
