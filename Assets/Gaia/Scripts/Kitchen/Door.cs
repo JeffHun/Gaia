@@ -28,7 +28,8 @@ public class Door : MonoBehaviour
         _isOpen = true;
         _startRotation = Quaternion.identity;
         _endRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
-        ScenesManager.Instance.SwitchAsyncSceneAuto();
+        if(ScenesManager.Instance)
+            ScenesManager.Instance.SwitchAsyncSceneAuto();
     }
 
     public void StartCountDown()
@@ -56,7 +57,8 @@ public class Door : MonoBehaviour
             if (_timer <= 0)
             {
                 _isCount = false;
-                ScenesManager.Instance.LaunchScene();
+                if (ScenesManager.Instance)
+                    ScenesManager.Instance.LaunchScene();
             }
         }
     }
