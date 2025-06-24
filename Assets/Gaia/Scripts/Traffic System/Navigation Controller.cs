@@ -61,7 +61,7 @@ namespace Traffic
         {
             _lerpT = 0f;
             _offset.y = transform.position.y;
-            _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 3;
+            _maxMovementSpeed += Random.Range(_maxMovementSpeed * -1, _maxMovementSpeed) / 10;
             _movementSpeed = _maxMovementSpeed;
             _breakForce = defaultBreakForce;
         }

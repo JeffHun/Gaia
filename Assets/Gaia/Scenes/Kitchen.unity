@@ -3480,7 +3480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19783,7 +19783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24593,7 +24593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39963,7 +39963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63971,7 +63971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65240,6 +65240,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1731347718768258576, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465520124543973683, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586097051125435878, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
+      propertyPath: m_Radius
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 5000496264561353161, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
       propertyPath: meatManager
       value: 
