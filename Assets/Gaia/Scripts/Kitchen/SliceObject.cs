@@ -11,6 +11,7 @@ public class SliceObject : MonoBehaviour
     [SerializeField] Transform endSlicePtn;
     [SerializeField] VelocityEstimator velocityEstimator;
     [SerializeField] MeatsManager meatsManager;
+    [SerializeField] float sliceOffsetDistance;
 
     void FixedUpdate()
     {
@@ -34,11 +35,11 @@ public class SliceObject : MonoBehaviour
         {
             GameObject upperHull = hull.CreateUpperHull(target, target.GetComponent<Meat>().GetCrossSectionMat());
             upperHull.name = target.name;
-            SetUpSlicedComponent(upperHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag);
+            SetUpSlicedComponent(upperHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag, planeNormal);
 
             GameObject lowerHull = hull.CreateLowerHull(target, target.GetComponent<Meat>().GetCrossSectionMat());
             lowerHull.name = target.name;
-            SetUpSlicedComponent(lowerHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag);
+            SetUpSlicedComponent(lowerHull, target.GetComponent<Meat>().GetMeatType(), target.GetComponent<Meat>().GetCrossSectionMat(), target.tag, -planeNormal);
 
             switch (target.GetComponent<Meat>().GetMeatType())
             {
@@ -67,13 +68,16 @@ public class SliceObject : MonoBehaviour
         }
     }
 
-    private void SetUpSlicedComponent(GameObject slicedObj, Meat.MeatType aMeatType, Material aCrossSectionMat, string aTag)
+    private void SetUpSlicedComponent(GameObject slicedObj, Meat.MeatType aMeatType, Material aCrossSectionMat, string aTag, Vector3 planeNormal)
     {
         Rigidbody rb = slicedObj.AddComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
         MeshCollider col = slicedObj.AddComponent<MeshCollider>();
         col.convex = true;
+
+        slicedObj.transform.position += planeNormal * sliceOffsetDistance;
+
         slicedObj.AddComponent<Meat>();
         slicedObj.GetComponent<Meat>().SetMeatType(aMeatType);
         slicedObj.GetComponent<Meat>().SetCrossSection(aCrossSectionMat);

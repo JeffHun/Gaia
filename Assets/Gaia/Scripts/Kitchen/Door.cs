@@ -16,7 +16,8 @@ public class Door : MonoBehaviour
     [SerializeField]
     GameObject _door;
 
-    bool _isOpen;
+    bool _isMoving;
+    bool _isOpen = false;
     bool _isCount;
     float _timer;
 
@@ -25,10 +26,28 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
-        _isOpen = true;
-        _startRotation = Quaternion.identity;
-        _endRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
-        ScenesManager.Instance.SwitchAsyncSceneAuto();
+        if(!_isOpen)
+        {
+            _isMoving = true;
+            _isOpen = true;
+            _timer = 0;
+            _startRotation = Quaternion.identity;
+            _endRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
+            //ScenesManager.Instance.SwitchAsyncSceneAuto();
+        }
+    }
+
+    public void CloseDoor()
+    {
+        if(_isOpen)
+        {
+            _isMoving = true;
+            _isOpen = false;
+            _timer = 0;
+            _endRotation = Quaternion.identity;
+            _startRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
+            //ScenesManager.Instance.SwitchAsyncSceneAuto();
+        }
     }
 
     public void StartCountDown()
@@ -39,13 +58,14 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        if(_isOpen && !_isCount)
+        if(_isMoving)
         {
             _timer += Time.deltaTime;
             float t = _timer / _delayDoor;
             _door.transform.rotation = Quaternion.Slerp(_startRotation, _endRotation, t);
             if (t >= 1f)
             {
+                _isMoving = false;
                 _timer = _delayTP;
             }
         }
@@ -55,7 +75,6 @@ public class Door : MonoBehaviour
             _counterTxt.text = Mathf.Round(_timer).ToString();
             if (_timer <= 0)
             {
-                _isCount = false;
                 ScenesManager.Instance.LaunchScene();
             }
         }

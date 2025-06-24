@@ -27,6 +27,14 @@ public class MeatReconstitution : MonoBehaviour
         _reconstitutionBtn.SetActive(false);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<Meat>(out Meat aMeat))
+        {
+            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<Meat>(out Meat aMeat))
@@ -59,7 +67,9 @@ public class MeatReconstitution : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.TryGetComponent<Meat>(out Meat aMeat))
+        {
             _meats.Remove(other.gameObject);
+        }
     }
 
     void ChangeIcon(Meat.MeatType aType)

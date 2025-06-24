@@ -10,6 +10,16 @@ public class Plate : MonoBehaviour
 
     float _weight, _footprint, _price;
 
+    List<string> _meats = new List<string>();
+
+    [SerializeField]
+    PlatesManager _plateManager;
+
+    public List<string> GetMeats()
+    {
+        return _meats;
+    }
+
     public float GetWeight()
     {
         return _weight;
@@ -33,8 +43,10 @@ public class Plate : MonoBehaviour
             _weight += _meat.GetWeigh();
             _footprint += _meat.GetFootprint();
             _price += _meat.GetPrice();
+            _meats.Add(other.gameObject.tag);
+            UpdateUI();
+            _plateManager.CheckPlate();
         }
-        UpdateUI();
     }
 
     private void OnTriggerExit(Collider other)
@@ -45,8 +57,10 @@ public class Plate : MonoBehaviour
             _weight -= _meat.GetWeigh();
             _footprint -= _meat.GetFootprint();
             _price -= _meat.GetPrice();
+            _meats.Remove(other.gameObject.tag);
+            UpdateUI();
+            _plateManager.CheckPlate();
         }
-        UpdateUI();
     }
 
     void UpdateUI()
