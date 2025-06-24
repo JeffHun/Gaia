@@ -17,7 +17,7 @@ public class ScenesManager : MonoBehaviour
 
     // ATTRIBUTES
     private float _score = 0;
-    private float _maxScore = 100;
+    private float _maxScore = 2;
 
     private string _kitchenSceneName = "Kitchen";
     private string _garageSceneName = "Garage";

@@ -22,9 +22,12 @@ public class ComponentManager : MonoBehaviour
 
     private ComponentData[] _components;
 
+    private string _composition = "XXX";
+
     public ComponentData TypeComponent { get => _components[0]; private set { _components[0] = value; } }
     public ComponentData EngineComponent { get => _components[1]; private set { _components[1] = value; } }
     public ComponentData SettingComponent { get => _components[2]; private set { _components[2] = value; } }
+    public string CompositionChars { get { return _composition; } private set { } }
 
     public bool IsCarComplete => _components[0] != null && _components[1] != null && _components[2] != null;
 
@@ -47,16 +50,8 @@ public class ComponentManager : MonoBehaviour
 
     public void AddCarComponent(ComponentData comp)
     {
-        /*
-        if (_components[0])
-                {
-                    var curr_comp = _components[0];
-                    _components[0] = null;
-                    curr_comp.GetComponent<ComponentRelocation>().StartLerpingRoute(0f);
-
-                }
-        */
         Rigidbody body = comp.GetComponent<Rigidbody>();
+        var compChars = _composition.ToCharArray();
         switch (comp.Category)
         {
             case Category.Type:
@@ -68,6 +63,7 @@ public class ComponentManager : MonoBehaviour
                 }
                 TypeComponent = comp;
                 AssignSocket(TypeComponent, _typeSocket);
+                compChars[1] = TypeComponent.Name[0];
                 break;
             case Category.Moteur:
                 if (EngineComponent)
@@ -78,6 +74,7 @@ public class ComponentManager : MonoBehaviour
                 }
                 EngineComponent = comp;
                 AssignSocket(EngineComponent, _engineSocket);
+                compChars[0] = EngineComponent.Name[0];
                 break;
             case Category.Options:
                 if (SettingComponent)
@@ -88,8 +85,11 @@ public class ComponentManager : MonoBehaviour
                 }
                 SettingComponent = comp;
                 AssignSocket(SettingComponent, _settingSocket);
+                compChars[2] = SettingComponent.Name[0];
                 break;
         }
+        _composition = new string(compChars);
+        _composition.ToUpper();
 
         _overviewPage.UIAddComponent(comp);
 
