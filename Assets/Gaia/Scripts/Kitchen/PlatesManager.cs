@@ -48,4 +48,27 @@ public class PlatesManager : MonoBehaviour
 
         _isMeat = _targetMeats.All(target => foundMeats.Contains(target));
     }
+
+    void ScoreManage()
+    {
+        float totalWeight = 0;
+        foreach(var plate in _plates)
+        {
+            totalWeight += plate.GetWeight();
+        }
+
+        if(ScenesManager.Instance)
+        {
+            if (totalWeight <= 5420)
+                ScenesManager.Instance.UpdateScore(0);
+            else if (totalWeight <= 6013)
+                ScenesManager.Instance.UpdateScore(.25f);
+            else if (totalWeight <= 6606)
+                ScenesManager.Instance.UpdateScore(.5f);
+            else if (totalWeight <= 7200)
+                ScenesManager.Instance.UpdateScore(.75f);
+            else if (totalWeight > 7200)
+                ScenesManager.Instance.UpdateScore(1f);
+        }
+    }
 }
