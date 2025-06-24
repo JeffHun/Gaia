@@ -7,7 +7,7 @@ namespace Traffic
     public class PedestrianNavigationController : NavigationController
     {
         [SerializeField] private Animator _animator;
-        private float _animationWalkSpeed = 1.5f;
+        [SerializeField] private float _animationWalkSpeed = 1.5f;
 
         [SerializeField] private float _waitingTime = 5f;
         [SerializeField] private float _waitingTimer = 0f;
