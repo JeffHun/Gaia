@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scenarios;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class ScenarioManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] private KeyCode _previousSceneKey = KeyCode.LeftArrow;
 
     private List<DynamicEnvItem> _dynamicEnvItems;
-    public Scenario scenario;
+    public Scenario scenario = Scenario.scenarioA;
     private Scenario _previousScenario;
 
     private float _score = 0;
@@ -20,7 +21,7 @@ public class ScenarioManager : MonoBehaviour
 
     private void Awake()
     {
-        scenario = Scenario.scenarioA;
+        //scenario = Scenario.scenarioA;
     }
 
     private void Update()
@@ -51,13 +52,15 @@ public class ScenarioManager : MonoBehaviour
     private void Start()
     {
         // Allow time for the dynamically created object to appear
-        StartCoroutine(Wait(.1f));
+        //StartCoroutine(Wait(.1f));
         _dynamicEnvItems = new List<DynamicEnvItem>(FindObjectsOfType<DynamicEnvItem>());
         _isDynamicEnvItemsFund = true;
 
-        if(ScenesManager.Instance)
+        if (ScenesManager.Instance && SceneManager.GetActiveScene().name == "Town")
+        {
             _score = ScenesManager.Instance.Score / ScenesManager.Instance.MaxScore;
-
+            PickScenario(_score);
+        }
     }
 
     private IEnumerator Wait(float waitTime)
@@ -106,6 +109,7 @@ public class ScenarioManager : MonoBehaviour
             scenario = Scenario.scenarioA;
         }
 
-        ApplyScenarioLook();
+        if(_isDynamicEnvItemsFund)
+            ApplyScenarioLook();
     }
 }

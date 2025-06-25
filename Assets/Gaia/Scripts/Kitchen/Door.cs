@@ -28,17 +28,20 @@ public class Door : MonoBehaviour
     {
         if (!_isOpen)
         {
+            Debug.Log("Opening Door");
             _isMoving = true;
             _isOpen = true;
             _timer = 0;
             _startRotation = Quaternion.identity;
             _endRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
-            //ScenesManager.Instance.SwitchAsyncSceneAuto();
+            if (ScenesManager.Instance)
+                ScenesManager.Instance.SwitchAsyncSceneAuto();
         }
     }
 
     public void CloseDoor()
     {
+        Debug.Log("Closing Door");
         if (_isOpen)
         {
             _isMoving = true;
@@ -46,13 +49,12 @@ public class Door : MonoBehaviour
             _timer = 0;
             _endRotation = Quaternion.identity;
             _startRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, 90f, 0));
-            if (ScenesManager.Instance)
-                ScenesManager.Instance.SwitchAsyncSceneAuto();
         }
     }
 
     public void StartCountDown()
     {
+        Debug.Log("Counting down");
         if (_isOpen)
             _isCount = true;
     }
@@ -77,7 +79,7 @@ public class Door : MonoBehaviour
             if (_timer <= 0)
             {
                 if (ScenesManager.Instance)
-                    ScenesManager.Instance.SwitchAsyncSceneAuto();
+                    ScenesManager.Instance.LaunchScene();
             }
         }
     }

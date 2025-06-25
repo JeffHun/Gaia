@@ -36,6 +36,7 @@ public class PlatesManager : MonoBehaviour
 
     void CheckMeatPlates()
     {
+        Debug.Log("Checking meats");
         HashSet<string> foundMeats = new HashSet<string>();
 
         foreach (var plate in _plates)
@@ -47,6 +48,7 @@ public class PlatesManager : MonoBehaviour
         }
 
         _isMeat = _targetMeats.All(target => foundMeats.Contains(target));
+        Debug.Log(_isMeat);
     }
 
     void ScoreManage()
