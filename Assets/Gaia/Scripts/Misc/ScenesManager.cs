@@ -98,8 +98,9 @@ public class ScenesManager : MonoBehaviour
                     return;
             }
         }
-        else
+        else if (_scenes.Count == 2)
         {
+            Debug.Log("Score : " + Score);
             StartCoroutine(AsyncSceneSwitch(_townSceneName));
             return;
         }
