@@ -7,10 +7,11 @@ public class FileLogsManager: MonoBehaviour
     public static FileLogsManager Instance;
 
     // ATTRIBUTES
-    private string path;
+    private string _basePath = Application.dataPath + "/Logs";
+    private string _path;
 
     // PROPERTIES
-    public string Path { get { return path; } private set { } }
+    public string Path { get { return _path; } private set { } }
 
     // METHODS
     private void Awake()
@@ -21,17 +22,22 @@ public class FileLogsManager: MonoBehaviour
             return;
         }
 
+        if (!Directory.Exists(_basePath))
+        {
+            Directory.CreateDirectory(_basePath);
+        }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        path = Application.dataPath + "/Logs/" + System.DateTime.Now.ToString("yy-MM-dd_h-m") + ".txt";
-        if (!File.Exists(path))
+        _path = _basePath + "/" + System.DateTime.Now.ToString("yy-MM-dd_h-m") + ".txt";
+        if (!File.Exists(_path))
         {
-            File.WriteAllText(path, "Logging " + System.DateTime.Now + "\n\n");
+            File.WriteAllText(_path, "Logging " + System.DateTime.Now + "\n\n");
         }
     }
 
     public void LogToFile(string text)
     {
-        File.AppendAllText(path, text);
+        File.AppendAllText(_path, text);
     }
 }
