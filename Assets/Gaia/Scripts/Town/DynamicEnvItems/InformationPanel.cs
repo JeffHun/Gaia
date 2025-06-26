@@ -16,7 +16,8 @@ public class InformationPanel: DynamicEnvItem
 
     public override void ChangeLook(Scenario scenario)
     {
-        switch(scenario)
+        _mat = GetComponent<MeshRenderer>().material;
+        switch (scenario)
         {
             case Scenario.scenarioA:
                 _mat.mainTexture = _texA;

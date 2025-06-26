@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class Plate : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class Plate : MonoBehaviour
     public float GetPrice()
     {
         return _price;
+    }
+
+    private void OnEnable()
+    {
+        ScenesManager.Instance.OnSceneChange.AddListener(SaveToLog);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,5 +74,16 @@ public class Plate : MonoBehaviour
         _weightTxt.text = Mathf.Round(_weight).ToString() + " g";
         _footprintTxt.text = Mathf.Round(_footprint).ToString() + " g";
         _priceTxt.text = (Mathf.Floor(_price * 100) / 100).ToString() + " €";
+    }
+
+    public void SaveToLog()
+    {
+        string text = "Plate :\n Meats: " + string.Join("\n\t", GetMeats().Select(s => $"{s}")) + 
+            "\nWeight: " + GetWeight() + 
+            "\nFootprint: " + GetFootprint() + 
+            "\nPrice: " + GetPrice() + 
+            "\n"; 
+
+        FileLogsManager.Instance.LogToFile(text);
     }
 }

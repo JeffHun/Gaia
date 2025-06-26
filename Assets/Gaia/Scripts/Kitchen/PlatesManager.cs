@@ -18,6 +18,12 @@ public class PlatesManager : MonoBehaviour
 
     bool _isWeight, _isMeat;
 
+    private void OnEnable()
+    {
+        if (ScenesManager.Instance)
+            ScenesManager.Instance.OnSceneChange.AddListener(ScoreManage);
+    }
+
     public void CheckPlate()
     {
         _isWeight = false;
@@ -36,7 +42,6 @@ public class PlatesManager : MonoBehaviour
 
     void CheckMeatPlates()
     {
-        Debug.Log("Checking meats");
         HashSet<string> foundMeats = new HashSet<string>();
 
         foreach (var plate in _plates)
@@ -48,9 +53,8 @@ public class PlatesManager : MonoBehaviour
         }
 
         _isMeat = _targetMeats.All(target => foundMeats.Contains(target));
-        Debug.Log(_isMeat);
     }
-
+    
     void ScoreManage()
     {
         float totalWeight = 0;
@@ -69,7 +73,7 @@ public class PlatesManager : MonoBehaviour
                 ScenesManager.Instance.UpdateScore(.5f);
             else if (totalWeight <= 7200)
                 ScenesManager.Instance.UpdateScore(.75f);
-            else if (totalWeight > 7200)
+            else
                 ScenesManager.Instance.UpdateScore(1f);
         }
     }

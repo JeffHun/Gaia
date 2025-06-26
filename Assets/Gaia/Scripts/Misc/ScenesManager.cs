@@ -1,17 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
-{
-    /*
-     * Keep track of the score for final scene
-     * Keep track of the scenes order of the user
-     * 
-     * Prepare Scenario Manager to handle scores
-    */
-    
+{    
     // SINGLETON
     public static ScenesManager Instance;
 
@@ -26,6 +20,8 @@ public class ScenesManager : MonoBehaviour
     private List<string> _scenes = new List<string>();
 
     private AsyncOperation _asyncOperation;
+
+    public UnityEvent OnSceneChange;
 
     // PROPERTIES
     public float Score { get { return _score; } private set { _score = value;  } }
@@ -46,6 +42,7 @@ public class ScenesManager : MonoBehaviour
 
     public void UpdateScore(float score)
     {
+        FileLogsManager.Instance.LogToFile("Update score " +  score);
         _score += score;
     }
 
@@ -108,6 +105,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LaunchScene()
     {
+        OnSceneChange.Invoke();
         _asyncOperation.allowSceneActivation = true;
     }
 

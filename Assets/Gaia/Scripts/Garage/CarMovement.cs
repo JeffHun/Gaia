@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CarMovement : MonoBehaviour
@@ -20,6 +21,12 @@ public class CarMovement : MonoBehaviour
         {
             _elapsedTime = 0f;
             _isMoving = true;
+            string text = "Car : \nComponents: " +
+                string.Join("\n\t", _componentManager.GetComponents().Select(c => $"{c.Name}")) + 
+                "\nFootprint: " + 
+                _componentManager.GetTotalFootprint() +"\nPrice: " + 
+                _componentManager.GetTotalPrice() + "\n";
+            FileLogsManager.Instance.LogToFile(text);
             if(ScenesManager.Instance != null)
             {
                 float value = 0f;

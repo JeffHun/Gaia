@@ -52,7 +52,7 @@ public class ScenarioManager : MonoBehaviour
     private void Start()
     {
         // Allow time for the dynamically created object to appear
-        //StartCoroutine(Wait(.1f));
+        StartCoroutine(Wait(.1f));
         _dynamicEnvItems = new List<DynamicEnvItem>(FindObjectsOfType<DynamicEnvItem>());
         _isDynamicEnvItemsFund = true;
 

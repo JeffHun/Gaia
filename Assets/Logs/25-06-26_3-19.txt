@@ -1,0 +1,33 @@
+Logging 26/06/2025 15:19:38
+
+Car : 
+Components: Citadine
+	Thermique
+	Confort
+Footprint: 39850
+Price: 25500
+Update score 0,27Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6
+Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6
+Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6
+Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6
+Update score 0Plate :
+ Meats: Veget
+Weight: 200
+Footprint: 600,0001
+Price: 2,8
