@@ -26,7 +26,8 @@ public class CarMovement : MonoBehaviour
                 "\nFootprint: " + 
                 _componentManager.GetTotalFootprint() +"\nPrice: " + 
                 _componentManager.GetTotalPrice() + "\n";
-            FileLogsManager.Instance.LogToFile(text);
+            if(FileLogsManager.Instance != null)
+                FileLogsManager.Instance.LogToFile(text);
             if(ScenesManager.Instance != null)
             {
                 float value = 0f;

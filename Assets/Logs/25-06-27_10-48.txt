@@ -1,0 +1,33 @@
+Logging 27/06/2025 10:48:11
+
+Car : 
+Components: Citadine
+	Hybide
+	Sécurité
+Footprint: 27950
+Price: 27000
+Update score 0,19Plate :
+ Meats: Beef
+Weight: 200
+Footprint: 5399,999
+Price: 2,4
+Plate :
+ Meats: Veget
+Weight: 200
+Footprint: 600,0001
+Price: 2,8
+Plate :
+ Meats: Porc
+Weight: 200
+Footprint: 1400
+Price: 2
+Plate :
+ Meats: Saumon
+Weight: 200
+Footprint: 1000
+Price: 3,6
+Update score 1Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6

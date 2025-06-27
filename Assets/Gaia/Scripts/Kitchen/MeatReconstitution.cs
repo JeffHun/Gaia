@@ -96,7 +96,7 @@ public class MeatReconstitution : MonoBehaviour
 
     public void SpawnLastMeat()
     {
-        GameObject aVeget = Instantiate(_lastMeat, _spawnPoint.transform.position, Quaternion.identity);
+        GameObject aVeget = Instantiate(_lastMeat, _spawnPoint.transform.position, _spawnPoint.transform.rotation);
         foreach (GameObject meat in _meats)
             Destroy(meat);
     }

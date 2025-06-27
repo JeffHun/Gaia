@@ -39963,7 +39963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52003,23 +52003,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7984493216597748355, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1012
+      value: -0.094
       objectReference: {fileID: 0}
     - target: {fileID: 7984493216597748355, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1466
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8239875010015613264, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8239875010015613264, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1078
+      value: -0.1189
       objectReference: {fileID: 0}
     - target: {fileID: 8239875010015613264, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1869
+      value: 0.3008
       objectReference: {fileID: 0}
     - target: {fileID: 8317878209998150081, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: cutForce
@@ -52029,6 +52029,10 @@ PrefabInstance:
       propertyPath: meatsManager
       value: 
       objectReference: {fileID: 276396921}
+    - target: {fileID: 8317878209998150081, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8317878209998150081, guid: 967ca1eff5f1e72408f254cee43e0a6b, type: 3}
       propertyPath: sliceOffsetDistance
       value: 0.025
@@ -63971,7 +63975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348099698628162872, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5649531939078744749, guid: 526efcb444a0565408db13475a909935, type: 3}
       propertyPath: m_LocalPosition.x

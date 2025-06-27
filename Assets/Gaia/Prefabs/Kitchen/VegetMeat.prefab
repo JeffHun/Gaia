@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3541807017849008779}
   - component: {fileID: 6946560683779771187}
   - component: {fileID: 2808243776653682920}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VegetMeat
   m_TagString: Veget
   m_Icon: {fileID: 0}

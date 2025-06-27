@@ -12,16 +12,27 @@ public class SliceObject : MonoBehaviour
     [SerializeField] VelocityEstimator velocityEstimator;
     [SerializeField] MeatsManager meatsManager;
     [SerializeField] float sliceOffsetDistance;
+    [SerializeField] LayerMask layerMask;
+
+    RaycastHit _hit;
 
     void FixedUpdate()
     {
-        bool hasHit = Physics.Linecast(startSlicePtn.position, endSlicePtn.position, out RaycastHit hit);
+        bool hasHit = Physics.Linecast(startSlicePtn.position, endSlicePtn.position, out _hit, layerMask);
         if(hasHit)
         {
-            GameObject target = hit.transform.gameObject;
+            GameObject target = _hit.transform.gameObject;
             if(target.GetComponent<Meat>())
                 Slice(target);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(_hit.point, 0.005f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(startSlicePtn.position, endSlicePtn.position);
     }
 
     void Slice(GameObject target)
@@ -64,6 +75,7 @@ public class SliceObject : MonoBehaviour
                     meatsManager.AddVeget(lowerHull);
                     break;
             }
+            // CHECK IF TARGET IS HELD
             Destroy(target);
         }
     }
@@ -76,6 +88,7 @@ public class SliceObject : MonoBehaviour
         MeshCollider col = slicedObj.AddComponent<MeshCollider>();
         col.convex = true;
 
+        slicedObj.layer = LayerMask.NameToLayer("Meat");
         slicedObj.transform.position += planeNormal * sliceOffsetDistance;
 
         slicedObj.AddComponent<Meat>();

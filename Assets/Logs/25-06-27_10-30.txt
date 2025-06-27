@@ -1,0 +1,27 @@
+Logging 27/06/2025 10:30:41
+
+Plate :
+ Meats: Saumon
+Weight: 200
+Footprint: 1000
+Price: 3,6
+Plate :
+ Meats: Beef
+Weight: 200
+Footprint: 5399,999
+Price: 2,4
+Plate :
+ Meats: Veget
+Weight: 200
+Footprint: 600,0001
+Price: 2,8
+Plate :
+ Meats: Chicken
+Weight: 200
+Footprint: 1200
+Price: 2,6
+Update score 1Plate :
+ Meats: Porc
+Weight: 200
+Footprint: 1400
+Price: 2

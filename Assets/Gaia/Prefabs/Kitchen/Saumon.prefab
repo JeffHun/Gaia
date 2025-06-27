@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7357882680412095556}
   - component: {fileID: 3223549680931288483}
   - component: {fileID: 772580604049252480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Saumon
   m_TagString: Saumon
   m_Icon: {fileID: 0}

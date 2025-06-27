@@ -29,31 +29,31 @@ public class MeatsManager : MonoBehaviour
 
     public void SpawnBeef()
     {
-        GameObject aBeef = Instantiate(originalBeef, spawnPoint.transform.position, Quaternion.identity);
+        GameObject aBeef = Instantiate(originalBeef, spawnPoint.transform.position, spawnPoint.transform.rotation);
         AddBeef(aBeef);
     }
 
     public void SpawnSaumon()
     {
-        GameObject aSaumon = Instantiate(originalSaumon, spawnPoint.transform.position, Quaternion.identity);
+        GameObject aSaumon = Instantiate(originalSaumon, spawnPoint.transform.position, spawnPoint.transform.rotation);
         AddSaumon(aSaumon);
     }
 
     public void SpawnPorc()
     {
-        GameObject aPorc = Instantiate(originalPorc, spawnPoint.transform.position, Quaternion.identity);
+        GameObject aPorc = Instantiate(originalPorc, spawnPoint.transform.position, spawnPoint.transform.rotation);
         AddPorc(aPorc);
     }
 
     public void SpawnChickens()
     {
-        GameObject aChicken = Instantiate(originalChicken, spawnPoint.transform.position, Quaternion.identity);
+        GameObject aChicken = Instantiate(originalChicken, spawnPoint.transform.position, spawnPoint.transform.rotation);
         AddChicken(aChicken);
     }
 
     public void SpawnVeget()
     {
-        GameObject aVeget = Instantiate(originalVeget, spawnPoint.transform.position, Quaternion.identity);
+        GameObject aVeget = Instantiate(originalVeget, spawnPoint.transform.position, spawnPoint.transform.rotation);
         AddVeget(aVeget);
     }
 

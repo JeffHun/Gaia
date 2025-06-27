@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5824472997764476509}
   - component: {fileID: 5012453837639980480}
   - component: {fileID: 4091719412170329506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beef
   m_TagString: Beef
   m_Icon: {fileID: 0}
