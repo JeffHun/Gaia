@@ -1,0 +1,34 @@
+Logging 27/06/2025 10:15:06
+
+Car : 
+Components: Citadine
+	Thermique
+	Eco conduite
+Footprint: 36340
+Price: 23750
+Update score 0,23Plate :
+ Meats: Beef
+Weight: 92,04999
+Footprint: 2485,35
+Price: 1,1046
+Plate :
+ Meats: Chicken
+Weight: 77,65517
+Footprint: 465,931
+Price: 1,009517
+Plate :
+ Meats: Saumon
+Weight: 117,0056
+Footprint: 585,0278
+Price: 2,1061
+Plate :
+ Meats: Porc
+	Porc
+Weight: 400
+Footprint: 2800
+Price: 4
+Update score 0Plate :
+ Meats: Veget
+Weight: 104,2797
+Footprint: 312,8391
+Price: 1,459916

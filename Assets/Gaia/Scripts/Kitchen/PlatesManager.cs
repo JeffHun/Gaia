@@ -60,7 +60,7 @@ public class PlatesManager : MonoBehaviour
         float totalWeight = 0;
         foreach(var plate in _plates)
         {
-            totalWeight += plate.GetWeight();
+            totalWeight += plate.GetFootprint();
         }
 
         if(ScenesManager.Instance)
