@@ -29,10 +29,14 @@ public class FileLogsManager: MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        _path = _basePath + "/" + System.DateTime.Now.ToString("yy-MM-dd_h-m") + ".txt";
+    }
+
+    public void CreateFile(string id)
+    {
+        _path = _basePath + "/" + id + ".txt";
         if (!File.Exists(_path))
         {
-            File.WriteAllText(_path, "Logging " + System.DateTime.Now + "\n\n");
+            File.WriteAllText(_path, "Logging " + id + "\n" + System.DateTime.Now + "\n\n");
         }
     }
 

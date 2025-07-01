@@ -1,0 +1,16 @@
+Logging test
+01/07/2025 16:35:59
+
+Car : 
+Components: Citadine
+	Thermique
+	Eco conduite
+Footprint: 36340
+Price: 23750
+Update score 0,23Car : 
+Components: Citadine
+	Thermique
+	Eco conduite
+Footprint: 36340
+Price: 23750
+Update score 0,23

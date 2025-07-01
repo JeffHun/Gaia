@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Management;
 
 public class ScenesManager : MonoBehaviour
 {    
@@ -17,7 +19,11 @@ public class ScenesManager : MonoBehaviour
     private string _garageSceneName = "Garage";
     private string _townSceneName = "Town";
 
+    private string _userID = "";
+
     private List<string> _scenes = new List<string>();
+
+    private bool _isVRMode = false;
 
     private AsyncOperation _asyncOperation;
 
@@ -38,6 +44,44 @@ public class ScenesManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        DisableVR();
+    }
+
+    public void StartApp()
+    {
+        ToggleVRMode();
+        FileLogsManager.Instance.CreateFile(_userID);
+        SwitchScene("Garage");
+    }
+
+    public void UpdateId(string id)
+    {
+        _userID = id;
+    }
+
+    public void ToggleVRMode()
+    {
+        if (_isVRMode)
+            DisableVR();
+        else
+            EnableVR();
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void EnableVR()
+    {
+        StartCoroutine(StartXR());
+        _isVRMode = true;
+    }
+
+    private void DisableVR()
+    {
+        StopXR();
+        _isVRMode = false;
     }
 
     public void UpdateScore(float score)
@@ -49,7 +93,8 @@ public class ScenesManager : MonoBehaviour
     public void SwitchScene(string sceneName)
     {
         Debug.Log(sceneName);
-        _scenes.Add(sceneName);
+        if(!_scenes.Contains(sceneName))
+            _scenes.Add(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -58,6 +103,10 @@ public class ScenesManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             SwitchSceneAuto();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
         }
     }
 
@@ -112,7 +161,8 @@ public class ScenesManager : MonoBehaviour
     {
         _asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         _asyncOperation.allowSceneActivation = false;
-        _scenes.Add(sceneName);
+        if (!_scenes.Contains(sceneName))
+            _scenes.Add(sceneName);
 
         while (!_asyncOperation.isDone)
         {
@@ -120,4 +170,36 @@ public class ScenesManager : MonoBehaviour
         }
     }
 
+    private IEnumerator StartXR()
+    {
+        var xrManager = XRGeneralSettings.Instance.Manager;
+        if(xrManager == null)
+        {
+            Debug.LogWarning("The XR Manager is not set up or ready");
+            yield break;
+        }
+
+        xrManager.InitializeLoaderSync();
+        if(xrManager.activeLoader == null)
+        {
+            Debug.LogWarning("The XR Loader failed to initialize");
+            yield break;
+        }
+
+        xrManager.StartSubsystems();
+    }
+
+    private void StopXR()
+    {
+        var xrManager = XRGeneralSettings.Instance.Manager;
+        if(xrManager == null)
+        {
+            Debug.LogWarning("The XR Manager is not set up or ready");
+            return;
+        }
+
+        xrManager.StopSubsystems();
+        xrManager.DeinitializeLoader();
+    }
+    
 }
