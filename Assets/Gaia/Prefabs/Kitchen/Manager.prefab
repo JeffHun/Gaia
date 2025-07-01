@@ -84,10 +84,12 @@ MonoBehaviour:
   CO2WeighCoefSaumon: 0.01
   CO2WeighCoefPorc: 0.03
   CO2WeighCoefChicken: 0.02
+  CO2WeighCoefVeget: 0
   priceWeighCoefBeef: 0.014
   priceWeighCoefSaumon: 0.012
   priceWeighCoefPorc: 0.01
   priceWeighCoefChicken: 0.008
+  priceWeighCoefVeget: 0
   meats: []
 --- !u!114 &3966233077003153262
 MonoBehaviour:
@@ -105,10 +107,12 @@ MonoBehaviour:
   originalSaumon: {fileID: 0}
   originalPorc: {fileID: 0}
   originalChicken: {fileID: 0}
+  originalVeget: {fileID: 0}
   beefsParent: {fileID: 8527894865290720078}
   saumonsParent: {fileID: 8701855651067765321}
   porcsParent: {fileID: 8309235130658012570}
   chickensParent: {fileID: 3010929088266435907}
+  vegetsParent: {fileID: 0}
   spawnPoint: {fileID: 0}
   scale: {fileID: 0}
 --- !u!1 &8309235130658012570

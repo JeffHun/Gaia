@@ -76,6 +76,27 @@ public class SliceObject : MonoBehaviour
                     break;
             }
             // CHECK IF TARGET IS HELD
+            XRGrabInteractable grabInteractable = target.GetComponent<XRGrabInteractable>();
+            if (grabInteractable != null &&
+                grabInteractable.interactorsSelecting.Count > 0)
+            {
+                Transform attach = grabInteractable.firstInteractorSelecting.GetAttachTransform(grabInteractable);
+                
+
+                var interactor = grabInteractable.firstInteractorSelecting as XRBaseInteractor;
+                if (interactor)
+                {
+                    interactor.EndManualInteraction();
+                }
+
+                if (Vector3.Distance(attach.position, upperHull.transform.position) < Vector3.Distance(attach.position, lowerHull.transform.position))
+                {
+                    interactor.StartManualInteraction(upperHull.GetComponent<IXRSelectInteractable>());
+                }else
+                {
+                    interactor.StartManualInteraction(lowerHull.GetComponent<IXRSelectInteractable>());
+                }
+            }
             Destroy(target);
         }
     }
@@ -97,7 +118,7 @@ public class SliceObject : MonoBehaviour
         slicedObj.tag = aTag;
 
         XRGrabInteractable grabInteractable = slicedObj.AddComponent<XRGrabInteractable>();
-        grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
+        grabInteractable.movementType = XRBaseInteractable.MovementType.Instantaneous;
         grabInteractable.useDynamicAttach = true;
     }
 }

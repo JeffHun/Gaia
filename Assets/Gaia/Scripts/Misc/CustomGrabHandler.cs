@@ -19,6 +19,8 @@ public class CustomGrabHandler : MonoBehaviour
 
     private void Update()
     {
+        if (!directInteractor)
+            return;
         // Check input values from the Controllers
         bool gripPressed = xrController.inputDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue) && gripValue > 0.5f;
         bool triggerPressed = xrController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue) && triggerValue > 0.5f;
@@ -37,7 +39,9 @@ public class CustomGrabHandler : MonoBehaviour
                 directInteractor.StartManualInteraction(_currentInteractable);
                 _selected = true;
             }
-            if (directInteractor.interactablesSelected.Count >= 1 && directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>())
+            if (directInteractor.interactablesSelected.Count >= 1 &&
+                directInteractor.interactablesSelected[0] != null &&
+                directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>())
                 directInteractor.interactablesSelected[0].transform.GetComponent<ComponentData>().SetCompStatus(ComponentStatus.Hand);
         }
         else
@@ -73,9 +77,35 @@ public class CustomGrabHandler : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if(other.name == "Handle" && _currentInteractable != null)
+        {
+            Debug.Log("Handle is out of range");
+            _currentInteractable = null;
+            directInteractor.EndManualInteraction();
+            _selected = false;
+        }
+
         if (other.transform.parent && TagsList.Contains(other.transform.parent.tag) && _currentInteractable != null)
             _currentInteractable = null;
         else if (TagsList.Contains(other.tag) && _currentInteractable != null)
             _currentInteractable = null;
+
+    }
+
+    public void SelectObject(IXRSelectInteractable selectInteractable)
+    {
+        directInteractor.StartManualInteraction(selectInteractable);
+        _selected = true;
+    }
+
+    public void EndSelectObject(IXRSelectInteractable selectInteractable)
+    {
+        directInteractor.EndManualInteraction();
+        _selected = false;
+    }
+
+    public void SetSelected(bool selected)
+    {
+        _selected = selected;
     }
 }
