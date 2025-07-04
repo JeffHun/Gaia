@@ -34,10 +34,6 @@ public class PlatesManager : MonoBehaviour
         if (_isWeight)
             CheckMeatPlates();
 
-        if (_isWeight && _isMeat)
-            _door.OpenDoor();
-        else
-            _door.CloseDoor();
     }
 
     void CheckMeatPlates()
@@ -76,5 +72,13 @@ public class PlatesManager : MonoBehaviour
             else
                 ScenesManager.Instance.UpdateScore(1f);
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (_isWeight && _isMeat)
+            _door.OpenDoor();
+        else
+            _door.CloseDoor();
     }
 }

@@ -79,7 +79,6 @@ public class CustomGrabHandler : MonoBehaviour
     {
         if(other.name == "Handle" && _currentInteractable != null)
         {
-            Debug.Log("Handle is out of range");
             _currentInteractable = null;
             directInteractor.EndManualInteraction();
             _selected = false;

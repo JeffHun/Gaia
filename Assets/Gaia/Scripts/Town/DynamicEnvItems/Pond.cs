@@ -52,7 +52,6 @@ public class Pond : DynamicEnvItem
         {
             case Scenario.scenarioA:
                 _water.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-                Debug.Log(_material + " " + _waterDeepColorA);
                 _material.SetColor("_DeepColor", _waterDeepColorA);
                 _material.SetColor("_ShallowColor", _waterDeepColorA);
                 _material.SetFloat("_Smoothness", 1f);

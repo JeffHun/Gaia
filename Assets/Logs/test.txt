@@ -38,3 +38,53 @@ Update score 1Plate :
 Weight: 200
 Footprint: 1400
 Price: 2
+Plate :
+ Meats: Chicken
+Weight: 138,0979
+Footprint: 828,5875
+Price: 1,795273
+Plate :
+ Meats: Porc
+Weight: 110,6804
+Footprint: 774,7625
+Price: 1,106804
+Plate :
+ Meats: Saumon
+Weight: 139,9702
+Footprint: 699,8512
+Price: 2,519464
+Plate :
+ Meats: Beef
+Weight: 87,31049
+Footprint: 2357,383
+Price: 1,047726
+Update score 0Plate :
+ Meats: Veget
+Weight: 98,73677
+Footprint: 296,2103
+Price: 1,382315
+Plate :
+ Meats: Veget
+Weight: 100,5194
+Footprint: 301,5581
+Price: 1,407271
+Plate :
+ Meats: Saumon
+Weight: 76,96649
+Footprint: 384,8325
+Price: 1,385397
+Plate :
+ Meats: Beef
+Weight: 116,5768
+Footprint: 3147,573
+Price: 1,398922
+Plate :
+ Meats: Porc
+Weight: 110,0598
+Footprint: 770,4182
+Price: 1,100598
+Update score 0Plate :
+ Meats: Chicken
+Weight: 117,953
+Footprint: 707,718
+Price: 1,533389

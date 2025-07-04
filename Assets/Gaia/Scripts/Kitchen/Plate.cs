@@ -56,6 +56,13 @@ public class Plate : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        Meat _meat;
+        if (other.gameObject.TryGetComponent<Meat>(out _meat))
+            if (!_meats.Contains((other.gameObject.tag)))
+                _meats.Add(other.gameObject.tag);
+    }
     private void OnTriggerExit(Collider other)
     {
         Meat _meat;
