@@ -39,7 +39,8 @@ public class MeatReconstitution : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Meat>(out Meat aMeat))
         {
-            _meats.Add(other.gameObject);
+            if (!_meats.Contains(other.gameObject))
+                _meats.Add(other.gameObject);
             switch (aMeat.GetMeatType())
             {
                 case Meat.MeatType.Beef:
@@ -68,7 +69,8 @@ public class MeatReconstitution : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Meat>(out Meat aMeat))
         {
-            _meats.Remove(other.gameObject);
+            if (_meats.Contains(other.gameObject))
+                _meats.Remove(other.gameObject);
         }
     }
 
@@ -99,5 +101,10 @@ public class MeatReconstitution : MonoBehaviour
         GameObject aVeget = Instantiate(_lastMeat, _spawnPoint.transform.position, _spawnPoint.transform.rotation);
         foreach (GameObject meat in _meats)
             Destroy(meat);
+
+        for(int i = _meats.Count - 1; i >= 0; i--)
+        {
+                _meats.RemoveAt(i);
+        }
     }
 }

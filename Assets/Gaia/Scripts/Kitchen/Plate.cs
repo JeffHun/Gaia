@@ -49,7 +49,8 @@ public class Plate : MonoBehaviour
             _weight += _meat.GetWeigh();
             _footprint += _meat.GetFootprint();
             _price += _meat.GetPrice();
-            _meats.Add(other.gameObject.tag);
+            if(!_meats.Contains((other.gameObject.tag)))
+                _meats.Add(other.gameObject.tag);
             UpdateUI();
             _plateManager.CheckPlate();
         }
