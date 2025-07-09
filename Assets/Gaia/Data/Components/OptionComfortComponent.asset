@@ -15,12 +15,12 @@ MonoBehaviour:
   _componentId: 31
   _category: 2
   _name: Confort
-  _price: 2000
+  _price: 1500
   _manufactureFootprint: 250
   _useFootprint: 300
   _recycleFootprint: -40
   _image: {fileID: 21300000, guid: 0e68a0150072b4242ac2f568b3da67d1, type: 3}
-  _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
+  _model: {fileID: 6647519357348757429, guid: 63d25d57df55af547a2aeb9a1259de82, type: 3}
   _shelfScale: {x: 1, y: 1, z: 1}
   _handScale: {x: 0.3, y: 0.3, z: 0.3}
   _carScale: {x: 1, y: 1, z: 1}

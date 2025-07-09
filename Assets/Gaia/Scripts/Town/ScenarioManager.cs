@@ -47,6 +47,12 @@ public class ScenarioManager : MonoBehaviour
             --scenario;
             ApplyScenarioLook();
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            scenario = 0;
+            ApplyScenarioLook();
+        }
     }
 
     private void Start()

@@ -15,12 +15,12 @@ MonoBehaviour:
   _componentId: 33
   _category: 2
   _name: "S\xE9curit\xE9"
-  _price: 1000
+  _price: 1500
   _manufactureFootprint: 300
   _useFootprint: 350
   _recycleFootprint: -50
   _image: {fileID: 21300000, guid: 2791e6560329b9e4a95f3407dbd263f1, type: 3}
-  _model: {fileID: 1933297280396201637, guid: 953158c0bcaac2542b8d951b194a804b, type: 3}
+  _model: {fileID: 6647519357348757429, guid: 700fa910cedf2e84fb81ab16b02a2a76, type: 3}
   _shelfScale: {x: 1, y: 1, z: 1}
   _handScale: {x: 0.3, y: 0.3, z: 0.3}
   _carScale: {x: 1, y: 1, z: 1}
