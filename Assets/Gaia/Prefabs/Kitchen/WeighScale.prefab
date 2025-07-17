@@ -583,12 +583,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6356579509311669946}
   - {fileID: 2972808395575128884}
   - {fileID: 3847668059400256455}
   - {fileID: 7185194780853713074}
   - {fileID: 440977571082615648}
   - {fileID: 4779677948366774484}
+  - {fileID: 6356579509311669946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 68.29, z: 0}
 --- !u!33 &8857285669567624626
@@ -707,8 +707,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015907288114322432}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1685, y: 0.234, z: 0}
+  m_LocalRotation: {x: -1.16415315e-10, y: -0.7071068, z: 5.8207654e-11, w: 0.7071068}
+  m_LocalPosition: {x: 0.16850002, y: 0.23399997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 7759783784305703094}
   - component: {fileID: 6201782817386205897}
   - component: {fileID: 5000496264561353161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MeatPresenceDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,8 +1366,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8176102253509682736}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.1657}
+  m_LocalRotation: {x: -1.6463612e-10, y: -0, z: -6.938893e-18, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.16570005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1392,8 +1392,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2839635, y: 0.054203033, z: 0.28354102}
-  m_Center: {x: 0, y: 0.024202824, z: 0}
+  m_Size: {x: 0.2839635, y: 0.041209687, z: 0.28354102}
+  m_Center: {x: 2.2687093e-13, y: 0.01770622, z: 3.5383725e-12}
 --- !u!114 &5000496264561353161
 MonoBehaviour:
   m_ObjectHideFlags: 0

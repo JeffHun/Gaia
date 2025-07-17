@@ -66369,6 +66369,10 @@ PrefabInstance:
       propertyPath: meatManager
       value: 
       objectReference: {fileID: 276396921}
+    - target: {fileID: 5023434465060482212, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5048373943371767981, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
       propertyPath: m_Name
       value: WeighScale
@@ -66413,6 +66417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.073
       objectReference: {fileID: 0}
+    - target: {fileID: 6019281410696175870, guid: 56cc7ea3faa4b9a4b9fc4dcdcce3144a, type: 3}
+      propertyPath: m_TagString
+      value: WeighScalePlate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -66440,7 +66448,6 @@ SceneRoots:
   - {fileID: 1297180105}
   - {fileID: 658727225}
   - {fileID: 793244186}
-  - {fileID: 9181386143802364605}
   - {fileID: 2128324592}
   - {fileID: 2943610427845546601}
   - {fileID: 1976706062}
@@ -66455,3 +66462,4 @@ SceneRoots:
   - {fileID: 1536101160}
   - {fileID: 1857958499}
   - {fileID: 981902423}
+  - {fileID: 9181386143802364605}

@@ -35,7 +35,7 @@ public class MeatPresenceDetector : MonoBehaviour
                     meatManager.ParentedChicken(other.gameObject);
                     break;
                 case Meat.MeatType.Veget:
-                    meatManager.ParentedChicken(other.gameObject);
+                    meatManager.ParentedVeget(other.gameObject);
                     break;
             }
             scale.MeatExit(other.gameObject);
