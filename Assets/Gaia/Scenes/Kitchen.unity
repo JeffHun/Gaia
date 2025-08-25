@@ -8431,14 +8431,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2120855365337303374, guid: adc354294574da6489895ecce4096afe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1933038251}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4579514009160771673, guid: adc354294574da6489895ecce4096afe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1207508404}
   m_SourcePrefab: {fileID: 100100000, guid: adc354294574da6489895ecce4096afe, type: 3}
+--- !u!1 &276396917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4579514009160771673, guid: adc354294574da6489895ecce4096afe, type: 3}
+  m_PrefabInstance: {fileID: 276396916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &276396921 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3966233077003153262, guid: adc354294574da6489895ecce4096afe, type: 3}
   m_PrefabInstance: {fileID: 276396916}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 276396917}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd60eaa759b9a364dbf57681f8a411e4, type: 3}
@@ -37696,6 +37704,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2120855365337303374, guid: adc354294574da6489895ecce4096afe, type: 3}
   m_PrefabInstance: {fileID: 276396916}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1207508404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276396917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9dec9f41490fb44906770c12a73f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSceneChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1208410247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46674,6 +46697,8 @@ MonoBehaviour:
   - Chicken
   - Veget
   _door: {fileID: 1063203794}
+  _scenesManager: {fileID: 1207508404}
+  _score: {fileID: 11400000, guid: 53c2f9c6bde8be541bef343c0f8a387f, type: 2}
   _currentMeats: []
 --- !u!4 &1536101160
 Transform:
@@ -66111,6 +66136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7325217332958373831, guid: 144411942728c884b9133476f2fc49a3, type: 3}
+      propertyPath: _scenesManager
+      value: 
+      objectReference: {fileID: 1207508404}
     - target: {fileID: 7325217332958373831, guid: 144411942728c884b9133476f2fc49a3, type: 3}
       propertyPath: OnDoorOpen.m_PersistentCalls.m_Calls.Array.size
       value: 0

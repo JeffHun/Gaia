@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,60 +8,67 @@ public class ScatterPlotChart : MonoBehaviour
     /*
      * https://www.youtube.com/watch?v=8cFALzCB3dA
      */
-    public class Point
+    private class Point
     {
-        public float x;
-        public float y;
-        public string glyph { get; private set; }
-        public Color color { get; private set; }
+        private Vector2 _coordinates;
+        private string _glyph;
+        private Color _color;
 
-        public GameObject pointObject;
+        private GameObject _pointObject;
 
         public Point(float x, float y, string glyph, Color color)
         {
-            this.x = x;
-            this.y = y;
-            this.glyph = glyph;
-            this.color = color;
+            _coordinates = new Vector2(x, y);
+            _glyph = glyph;
+            _color = color;
         }
+
+        public GameObject GetPointObject()
+        {
+            return _pointObject;
+        }
+        public void SetPointObject(GameObject pointObject)
+        {
+            _pointObject = pointObject;
+        }
+
+        public Vector2 GetCoordinates()
+        {
+            return _coordinates;
+        }
+
+        public void SetCoordinates(Vector2 coordinates)
+        {
+            _coordinates = coordinates;
+        }
+
+        public string GetGlyph()
+        { return _glyph; }
+
+        public Color GetColor() 
+        { return _color; }
     }
 
-    [SerializeField]
-    private Canvas _canvas;
-    [SerializeField]
-    private Transform _xAxis;
-    [SerializeField]
-    private Transform _yAxis;
-    [SerializeField]
-    private Transform _main;
-    [SerializeField]
-    private Transform _panel;
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private Transform _xAxis;
+    [SerializeField] private Transform _yAxis;
+    [SerializeField] private Transform _main;
+    [SerializeField] private Transform _panel;
 
-    [SerializeField]
-    private int _xIncrement = 100;
-    [SerializeField]
-    private int _yIncrement = 100;
-    [SerializeField]
-    private int _minXValue = 0;
-    [SerializeField]
-    private int _minYValue = 0;
-    [SerializeField]
-    private int _xLabelCount = 10;
-    [SerializeField]
-    private int _yLabelCount = 10;
+    [SerializeField] private int _xIncrement = 100;
+    [SerializeField] private int _yIncrement = 100;
+    [SerializeField] private int _minXValue = 0;
+    [SerializeField] private int _minYValue = 0;
+    [SerializeField] private int _xLabelCount = 10;
+    [SerializeField] private int _yLabelCount = 10;
 
 
-    [SerializeField]
-    private GameObject _pointPrefab;
-    [SerializeField]
-    private GameObject _xValPrefab;
-    [SerializeField]
-    private GameObject _yValPrefab;
+    [SerializeField] private GameObject _pointPrefab;
+    [SerializeField] private GameObject _xValPrefab;
+    [SerializeField] private GameObject _yValPrefab;
 
-    [SerializeField]
-    private float _mainWidth = 1400;
-    [SerializeField]
-    private float _mainHeight = 800;
+    [SerializeField] private float _mainWidth = 1400;
+    [SerializeField] private float _mainHeight = 800;
 
     private List<Point> _points = new List<Point>();
 
@@ -88,7 +93,7 @@ public class ScatterPlotChart : MonoBehaviour
 
     private void OnEnable()
     {
-        InitiatePoints();
+        UpdatePoints();
     }
 
     private void DrawAxis(int xAxisCount, int yAxisCount)
@@ -119,32 +124,37 @@ public class ScatterPlotChart : MonoBehaviour
 
         foreach (Point point in _points)
         {
-            GameObject tempObject = Instantiate(_pointPrefab, _main);
-            RectTransform rectangleTransform = tempObject.GetComponent<RectTransform>();
-            rectangleTransform.anchorMax = Vector2.zero;
-            rectangleTransform.anchorMin = Vector2.zero;
-            rectangleTransform.anchoredPosition3D = new Vector3((point.x * xFactor) - xOffset, (point.y * yFactor) - yOffset, 0);
-            point.pointObject = tempObject;
-            tempObject.GetComponentInChildren<Text>().text = point.glyph;
-            tempObject.GetComponentInChildren<Text>().color = point.color;
+            CreateView(point, xFactor, yFactor, xOffset, yOffset);
         }
     }
 
-    private void InitiatePoints()
+    private void CreateView(Point point, float xFactor, float yFactor, float xOffset, float yOffset)
+    {
+        GameObject tempObject = Instantiate(_pointPrefab, _main);
+        RectTransform rectangleTransform = tempObject.GetComponent<RectTransform>();
+        rectangleTransform.anchorMax = Vector2.zero;
+        rectangleTransform.anchorMin = Vector2.zero;
+        rectangleTransform.anchoredPosition3D = new Vector3((point.GetCoordinates().x * xFactor) - xOffset, (point.GetCoordinates().y * yFactor) - yOffset, 0);
+        point.SetPointObject(tempObject);
+        tempObject.GetComponentInChildren<Text>().text = point.GetGlyph();
+        tempObject.GetComponentInChildren<Text>().color = point.GetColor();
+    }
+
+    private void UpdatePoints()
     {
         ClearPoints();
         _points = new List<Point>();
-        Point cheapestPoint = new Point(36340, 23750, "O", Color.red);
-        Point mostExpensivePoint = new Point(58320, 47000, "O", Color.magenta);
-        Point lessPollutingPoint = new Point(17610, 32250, "O", Color.blue);
-        Point mostPollutingPoint = new Point(77140, 37500, "O", Color.cyan);
-        Point carPoint = new Point(0, 0, "X", Color.green);
+        CreatePoint(36340, 23750, "O", Color.red);
+        CreatePoint(58320, 47000, "O", Color.magenta);
+        CreatePoint(17610, 32250, "O", Color.blue);
+        CreatePoint(77140, 37500, "O", Color.cyan);
+        CreatePoint(0, 0, "X", Color.green);
+    }
 
-        _points.Add(cheapestPoint);
-        _points.Add(mostExpensivePoint);
-        _points.Add(lessPollutingPoint);
-        _points.Add(mostPollutingPoint);
-        _points.Add(carPoint);
+    private void CreatePoint(float x, float y, string glyph, Color color)
+    {
+        Point point = new Point(x, y, glyph, color);
+        _points.Add(point);
     }
 
     private void ClearPoints()
@@ -159,8 +169,7 @@ public class ScatterPlotChart : MonoBehaviour
     {
         if (_points.Count > 0) 
         {
-        _points[4].x = x;
-        _points[4].y = y;
+            _points[4].SetCoordinates(new Vector2(x, y));
         }
         DrawPoints();
     }

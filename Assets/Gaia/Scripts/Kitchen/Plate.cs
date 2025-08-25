@@ -16,6 +16,7 @@ public class Plate : MonoBehaviour
     [SerializeField]
     PlatesManager _plateManager;
 
+
     public List<string> GetMeats()
     {
         return _meats;
@@ -38,7 +39,7 @@ public class Plate : MonoBehaviour
 
     private void OnEnable()
     {
-        ScenesManager.Instance.OnSceneChange.AddListener(SaveToLog);
+        _plateManager._scenesManager.OnSceneChange.AddListener(SaveToLog);
     }
 
     private void OnTriggerEnter(Collider other)

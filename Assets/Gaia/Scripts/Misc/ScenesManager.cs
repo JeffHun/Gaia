@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -8,20 +7,12 @@ using UnityEngine.XR.Management;
 
 public class ScenesManager : MonoBehaviour
 {    
-    // SINGLETON
-    public static ScenesManager Instance;
-
     // ATTRIBUTES
-    private float _score = 0;
-    private float _maxScore = 2;
-
     private string _kitchenSceneName = "Kitchen";
     private string _garageSceneName = "Garage";
     private string _townSceneName = "Town";
 
     private string _userID = "";
-
-    private List<string> _scenes = new List<string>();
 
     private bool _isVRMode = false;
 
@@ -29,24 +20,8 @@ public class ScenesManager : MonoBehaviour
 
     public UnityEvent OnSceneChange;
 
-    // PROPERTIES
-    public float Score { get { return _score; } private set { _score = value;  } }
-    public float MaxScore { get { return _maxScore; } private set { _maxScore = value; } }
 
     // METHODS
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        DisableVR();
-    }
-
     public void StartApp()
     {
         ToggleVRMode();
@@ -84,17 +59,9 @@ public class ScenesManager : MonoBehaviour
         _isVRMode = false;
     }
 
-    public void UpdateScore(float score)
-    {
-        FileLogsManager.Instance.LogToFile("Update score " +  score);
-        _score += score;
-    }
-
     public void SwitchScene(string sceneName)
     {
         Debug.Log(sceneName);
-        if(!_scenes.Contains(sceneName))
-            _scenes.Add(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -112,42 +79,28 @@ public class ScenesManager : MonoBehaviour
 
     public void SwitchSceneAuto()
     {
-        if (_scenes.Count == 1)
+        switch (SceneManager.GetActiveScene().name)
         {
-            switch(_scenes[0])
-            {
-                case "Kitchen":
-                    SwitchScene(_garageSceneName); 
-                    return;
-                case "Garage":
-                    SwitchScene(_kitchenSceneName);
-                    return;
-            }
-        }
-        if (_scenes.Count == 2)
-        {
-            SwitchScene(_townSceneName);
+            case "Kitchen":
+                SwitchScene(_townSceneName);
+                return;
+            case "Garage":
+                SwitchScene(_kitchenSceneName);
+                return;
         }
     }
     
     public void SwitchAsyncSceneAuto()
     {
-        if (_scenes.Count == 1)
+
+        switch (SceneManager.GetActiveScene().name)
         {
-            switch (_scenes[0])
-            {
-                case "Kitchen":
-                    StartCoroutine(AsyncSceneSwitch(_garageSceneName));
-                    return;
-                case "Garage":
-                    StartCoroutine(AsyncSceneSwitch(_kitchenSceneName));
-                    return;
-            }
-        }
-        else if (_scenes.Count == 2)
-        {
-            StartCoroutine(AsyncSceneSwitch(_townSceneName));
-            return;
+            case "Kitchen":
+                StartCoroutine(AsyncSceneSwitch(_townSceneName));
+                return;
+            case "Garage":
+                StartCoroutine(AsyncSceneSwitch(_kitchenSceneName));
+                return;
         }
     }
 
@@ -161,8 +114,6 @@ public class ScenesManager : MonoBehaviour
     {
         _asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         _asyncOperation.allowSceneActivation = false;
-        if (!_scenes.Contains(sceneName))
-            _scenes.Add(sceneName);
 
         while (!_asyncOperation.isDone)
         {

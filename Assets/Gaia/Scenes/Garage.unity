@@ -1717,6 +1717,7 @@ MonoBehaviour:
   _cloudManager: {fileID: 1250672424}
   _UIManager: {fileID: 1560197962}
   _componentManager: {fileID: 1560197959}
+  _score: {fileID: 11400000, guid: 53c2f9c6bde8be541bef343c0f8a387f, type: 2}
 --- !u!1 &179404157
 GameObject:
   m_ObjectHideFlags: 0
@@ -13120,6 +13121,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7325217332958373831, guid: 144411942728c884b9133476f2fc49a3, type: 3}
+      propertyPath: _scenesManager
+      value: 
+      objectReference: {fileID: 1560197964}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13206,6 +13211,7 @@ GameObject:
   - component: {fileID: 1560197962}
   - component: {fileID: 1560197961}
   - component: {fileID: 1560197963}
+  - component: {fileID: 1560197964}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -13311,6 +13317,21 @@ MonoBehaviour:
   _audioSource: {fileID: 2127931138}
   _positiveClip: {fileID: 8300000, guid: 3999686eb6bfe064dbac984cba102085, type: 3}
   _negativeClip: {fileID: 8300000, guid: 37678ddb12d4d8d40891560204a5ba58, type: 3}
+--- !u!114 &1560197964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560197958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9dec9f41490fb44906770c12a73f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSceneChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1571294335
 GameObject:
   m_ObjectHideFlags: 0

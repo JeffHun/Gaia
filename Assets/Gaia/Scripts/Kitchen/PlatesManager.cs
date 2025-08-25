@@ -14,14 +14,19 @@ public class PlatesManager : MonoBehaviour
     [SerializeField]
     Door _door;
 
+    public ScenesManager _scenesManager;
+
+    [SerializeField]
+    FloatSO _score;
+
     public List<string> _currentMeats = new List<string>();
 
     bool _isWeight, _isMeat;
 
     private void OnEnable()
     {
-        if (ScenesManager.Instance)
-            ScenesManager.Instance.OnSceneChange.AddListener(ScoreManage);
+        if (_scenesManager)
+            _scenesManager.OnSceneChange.AddListener(ScoreManage);
     }
 
     public void CheckPlate()
@@ -59,19 +64,16 @@ public class PlatesManager : MonoBehaviour
             totalWeight += plate.GetFootprint();
         }
 
-        if(ScenesManager.Instance)
-        {
-            if (totalWeight <= 5420)
-                ScenesManager.Instance.UpdateScore(0);
-            else if (totalWeight <= 6013)
-                ScenesManager.Instance.UpdateScore(.25f);
-            else if (totalWeight <= 6606)
-                ScenesManager.Instance.UpdateScore(.5f);
-            else if (totalWeight <= 7200)
-                ScenesManager.Instance.UpdateScore(.75f);
-            else
-                ScenesManager.Instance.UpdateScore(1f);
-        }
+        if (totalWeight <= 5420)
+            _score.Value += 0;
+        else if (totalWeight <= 6013)
+            _score.Value += .25f;
+        else if (totalWeight <= 6606)
+            _score.Value += .5f;
+        else if (totalWeight <= 7200)
+            _score.Value += .75f;
+        else
+            _score.Value += 1f;
     }
 
     private void LateUpdate()

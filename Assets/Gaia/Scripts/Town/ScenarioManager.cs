@@ -14,7 +14,7 @@ public class ScenarioManager : MonoBehaviour
     public Scenario scenario = Scenario.scenarioA;
     private Scenario _previousScenario;
 
-    private float _score = 0;
+    public FloatSO Score;
 
     //Boolean used to avoid calling ApplyScenarioLook if the enum's Unity UI does not match the default scenario value
     private bool _isDynamicEnvItemsFund = false; 
@@ -62,10 +62,10 @@ public class ScenarioManager : MonoBehaviour
         _dynamicEnvItems = new List<DynamicEnvItem>(FindObjectsOfType<DynamicEnvItem>());
         _isDynamicEnvItemsFund = true;
 
-        if (ScenesManager.Instance && SceneManager.GetActiveScene().name == "Town")
+        if (SceneManager.GetActiveScene().name == "Town")
         {
-            _score = ScenesManager.Instance.Score / ScenesManager.Instance.MaxScore;
-            PickScenario(_score);
+            float score = Score.Value / Score.MaxValue;
+            PickScenario(score);
         }
     }
 
