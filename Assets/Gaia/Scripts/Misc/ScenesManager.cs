@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.Management;
 
 public class ScenesManager : MonoBehaviour
 {    
@@ -14,9 +12,9 @@ public class ScenesManager : MonoBehaviour
 
     private string _userID = "";
 
-    private bool _isVRMode = false;
-
     private AsyncOperation _asyncOperation;
+    [SerializeField]
+    private XRManager _xrManager;
 
     public UnityEvent OnSceneChange;
 
@@ -24,7 +22,6 @@ public class ScenesManager : MonoBehaviour
     // METHODS
     public void StartApp()
     {
-        ToggleVRMode();
         FileLogsManager.Instance.CreateFile(_userID);
         SwitchScene("Garage");
     }
@@ -34,34 +31,15 @@ public class ScenesManager : MonoBehaviour
         _userID = id;
     }
 
-    public void ToggleVRMode()
-    {
-        if (_isVRMode)
-            DisableVR();
-        else
-            EnableVR();
-    }
 
     public void Reload()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void EnableVR()
-    {
-        StartCoroutine(StartXR());
-        _isVRMode = true;
-    }
-
-    private void DisableVR()
-    {
-        StopXR();
-        _isVRMode = false;
-    }
 
     public void SwitchScene(string sceneName)
     {
-        Debug.Log(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
@@ -119,38 +97,5 @@ public class ScenesManager : MonoBehaviour
         {
             yield return null;
         }
-    }
-
-    private IEnumerator StartXR()
-    {
-        var xrManager = XRGeneralSettings.Instance.Manager;
-        if(xrManager == null)
-        {
-            Debug.LogWarning("The XR Manager is not set up or ready");
-            yield break;
-        }
-
-        xrManager.InitializeLoaderSync();
-        if(xrManager.activeLoader == null)
-        {
-            Debug.LogWarning("The XR Loader failed to initialize");
-            yield break;
-        }
-
-        xrManager.StartSubsystems();
-    }
-
-    private void StopXR()
-    {
-        var xrManager = XRGeneralSettings.Instance.Manager;
-        if(xrManager == null)
-        {
-            Debug.LogWarning("The XR Manager is not set up or ready");
-            return;
-        }
-
-        xrManager.StopSubsystems();
-        xrManager.DeinitializeLoader();
-    }
-    
+    }    
 }
